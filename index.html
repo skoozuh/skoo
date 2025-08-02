@@ -21,11 +21,11 @@
  .card-wrapper {
   padding: 4px;
   border-radius: 24px;
-  background: linear-gradient(135deg, #1e3c72, #2a5298, #4e6e8e, #7b9acc, #9bc1ff);
+  background: linear-gradient(135deg, #ffbc8b, #ffd3a5, #fff6e0, #ffcba4, #ffbc8b);
   background-size: 200% 200%;
   animation: borderScroll 3s ease-in-out infinite alternate;
   display: inline-block;
-  box-shadow: 0 0 14px rgba(30, 60, 114, 0.3), 0 0 20px rgba(42, 82, 152, 0.2), 0 4px 10px rgba(123, 154, 204, 0.15);
+  box-shadow: 0 0 14px rgba(255, 188, 139, 0.3), 0 0 20px rgba(255, 211, 165, 0.2), 0 4px 10px rgba(255, 203, 164, 0.15);
   transition: transform 0.2s ease;
   transform-style: preserve-3d;
   will-change: transform;
@@ -61,34 +61,19 @@
  }
 
  .name {
-  font-size: 35px;
-  font-weight: 600;
-  margin-left: 5px;
-  background: linear-gradient(135deg, #1e3c72, #2a5298, #4e6e8e, #7b9acc, #9bc1ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
-
-  text-shadow:
-    0 0 6px #3de8f5,
-    0 0 10px #1bcfe8,
-    0 0 14px #13a5b9,
-    0 0 18px #0e7a89;
-}
+ font-size: 35px;
+ font-weight: 600;
+ margin-left: 5px;
+ color: #fff;
+ }
 
  .description {
-  font-size: 16px;
-  color: transparent; /* hide default color */
-  line-height: 1.4;
-  max-width: 100%;
-  margin-left: 5px;
-
-  background: linear-gradient(135deg, #FFD700, #FFEA70, #FFB800, #FFD700);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
+ font-size: 16px;
+ color: #ddd;
+ line-height: 1.4;
+ max-width: 100%;
+ margin-left: 5px;
+ }
 
  .presence-card {
  display: flex;
@@ -250,7 +235,7 @@ badge.bravery {
   bottom: -2px;
   z-index: -1;
   border-radius: 18px;
-  background: linear-gradient(135deg, #1e3c72, #2a5298, #4e6e8e, #7b9acc, #9bc1ff);
+  background: linear-gradient(135deg, #ffbc8b, #ffd3a5, #fff6e0, #ffcba4, #ffbc8b);
   background-size: 200% 200%;
   animation: borderScroll 3s ease-in-out infinite alternate;
 }
@@ -349,12 +334,11 @@ badge.bravery {
  <div class="name" id="profileName">prod @skoozuh</div>
  <div class="badge-container">
  <img src="assets/crownw.png" alt="owner">
-<img src="assets/trophy.png" alt="owner">
  <!-- You can add more badges here -->
  </div>
 </div>
  <div class="description" id="profileDescription">
- Owner <br> @skoozuh
+ Owner <br>
  </div>
 
  <div class="presence-card">
@@ -384,6 +368,9 @@ badge.bravery {
     <div class="social-logos">
   <a href="https://instagram.com/zccmu" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
     <img src="assets/iglogo.png" alt="Instagram" class="social-icon" />
+  </a>
+  <a href="https://last.fm/user/crsttt" target="_blank" rel="noopener noreferrer" aria-label="Last.fm">
+    <img src="assets/lastfmlogo.png" alt="Last.fm" class="social-icon" />
   </a>
 </div>
 </div>
