@@ -21,11 +21,11 @@
  .card-wrapper {
   padding: 4px;
   border-radius: 24px;
-  background: linear-gradient(135deg, #89f7fe, #66a6ff, #ffd3a5, #ffecd2, #a1c4fd, #c2ffd8);
+  background: linear-gradient(135deg, #00f0ff, #ff7eb3, #fff200, #00f0ff, #ff7eb3, #fff200);
   background-size: 200% 200%;
   animation: borderScroll 3s ease-in-out infinite alternate;
   display: inline-block;
-  box-shadow: 0 0 12px rgba(100, 100, 100, 0.25), 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 18px rgba(0, 240, 255, 0.35), 0 0 22px rgba(255, 126, 179, 0.3), 0 4px 10px rgba(255, 242, 0, 0.2);
   transition: transform 0.2s ease;
   transform-style: preserve-3d;
   will-change: transform;
@@ -227,17 +227,17 @@ badge.bravery {
 }
 
 .badge-container::before {
- content: '';
- position: absolute;
- top: -2px;
- left: -2px;
- right: -2px;
- bottom: -2px;
- z-index: -1;
- border-radius: 18px;
- background: linear-gradient(135deg, #89f7fe, #66a6ff, #ffd3a5, #ffecd2, #a1c4fd, #c2ffd8);
- background-size: 200% 200%;
- animation: borderScroll 3s ease-in-out infinite alternate;
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  z-index: -1;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #00f0ff, #ff7eb3, #fff200, #00f0ff, #ff7eb3, #fff200);
+  background-size: 200% 200%;
+  animation: borderScroll 3s ease-in-out infinite alternate;
 }
 
 .badge-container img {
