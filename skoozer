@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1" />
+ <title>crd | zc</title>
+ <link rel="icon" type="image/png" href="assets/favicon.png" />
+ <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+ <style>
+ body {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ height: 100vh;
+ background: #111;
+ margin: 0;
+ font-family: 'Poppins', sans-serif;
+ }
+
+ .card-wrapper {
+ padding: 4px;
+ border-radius: 24px;
+ background: linear-gradient(135deg, #ff6ec4, #73eaff, #ffc36e, #ff6ec4, #73eaff, #ffc36e);
+ background-size: 200% 200%;
+ animation: borderScroll 3s ease-in-out infinite alternate;
+ display: inline-block;
+ box-shadow: 0 0 12px rgba(255, 110, 196, 0.3);
+ transition: transform 0.2s ease;
+ transform-style: preserve-3d;
+ will-change: transform;
+ }
+
+ @keyframes borderScroll {
+ 0% { background-position: 0% 50%; }
+ 100% { background-position: 100% 50%; }
+ }
+
+ .card {
+ width: 400px;
+ min-height: 450px;
+ background: #111;
+ border-radius: 20px;
+ padding: 25px;
+ box-sizing: border-box;
+ display: flex;
+ flex-direction: column;
+ align-items: flex-start;
+ transition: transform 0.1s ease, box-shadow 0.2s ease;
+ transform-style: preserve-3d;
+ will-change: transform;
+ }
+
+ .profile-pic {
+ width: 120px;
+ height: 120px;
+ border-radius: 50%;
+ object-fit: cover;
+ margin-bottom: 5px;
+ border: 4px solid rgba(255, 255, 255, 0.05);
+ }
+
+ .name {
+ font-size: 35px;
+ font-weight: 600;
+ margin-left: 5px;
+ color: #fff;
+ }
+
+ .description {
+ font-size: 16px;
+ color: #ddd;
+ line-height: 1.4;
+ max-width: 100%;
+ margin-left: 5px;
+ }
+
+ .presence-card {
+ display: flex;
+ align-items: center;
+ background: rgba(255, 255, 255, 0.05);
+ border-radius: 12px;
+ padding: 10px 14px;
+ box-sizing: border-box;
+ width: 100%;
+ backdrop-filter: blur(5px);
+ margin-top: 25px;
+ }
+
+ .avatar {
+ width: 60px;
+ height: 60px;
+ border-radius: 50%;
+ object-fit: cover;
+ margin-right: 12px;
+ }
+
+ .details .username {
+ font-size: 15px;
+ font-weight: 500;
+ color: #fff;
+ }
+
+ .badge {
+ display: inline-block;
+ width: 16px;
+ height: 16px;
+ border-radius: 0px;
+ background-size: cover;
+ background-position: center;
+ vertical-align: middle;
+ }
+
+ .badge.bravery {
+ background-image: url('assets/bravery.png');
+ margin-left: 5px;
+ }
+
+ .badge.quest {
+ background-image: url('assets/quest.png');
+ margin-left: 1px;
+ }
+
+ .music-player {
+ margin-top: 10px;
+ width: 100%;
+ background: rgba(30, 30, 30, 0.7);
+ border-radius: 12px;
+ padding: 12px 14px;
+ box-sizing: border-box;
+ backdrop-filter: blur(5px);
+ display: flex;
+ flex-direction: column;
+ gap: 10px;
+ }
+
+ .track-info {
+ color: rgb(255, 255, 255, 0.9);
+ font-size: 14px;
+ font-weight: 400;
+ display: flex;
+ flex-direction: column;
+ line-height: 0.5;
+ }
+
+ .artist-name {
+ font-weight: 400;
+ color: rgba(255, 255, 255, 0.50);
+ font-size: 14px;
+ margin-top: 5px;
+ }
+
+ .controls {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ }
+
+ .controls button {
+ background: transparent;
+ border: none;
+ cursor: pointer;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ padding: 0;
+ transition: transform 0.2s ease;
+ }
+
+ .controls button:hover {
+ transform: scale(1.1);
+ }
+
+ .controls img {
+ width: 26px;
+ height: 26px;
+ transition: opacity 0.25s ease;
+ }
+
+ #seekBar {
+ -webkit-appearance: none;
+ width: 100%;
+ height: 4px;
+ background: rgba(255, 255, 255, 0.165); /* darker gray background */
+ border-radius: 10px;
+ position: relative;
+ cursor: pointer;
+ overflow: hidden;
+ transition: height 0.2s ease;
+}
+
+/* Remove the default thumb */
+#seekBar::-webkit-slider-thumb {
+ -webkit-appearance: none;
+ appearance: none;
+ width: 0;
+ height: 0;
+ background: transparent;
+ border: none;
+}
+
+#seekBar::before {
+ content: '';
+ position: absolute;
+ height: 100%;
+ background: rgba(255, 255, 255, 0.267); /* slightly lighter gray than background */
+ width: 0%;
+ z-index: 1;
+ transition: width 0.1s linear;
+}
+
+#seekBar:hover,
+#seekBar:active {
+ height: 8px;
+}
+
+.badge-container {
+ display: flex;
+ align-items: center;
+ margin-left: 10px;
+ padding: 5px;
+ border-radius: 16px;
+ background: #111;
+ border: 2px solid transparent;
+ background-clip: padding-box;
+ position: relative;
+}
+
+.badge-container::before {
+ content: '';
+ position: absolute;
+ top: -2px;
+ left: -2px;
+ right: -2px;
+ bottom: -2px;
+ z-index: -1;
+ border-radius: 18px;
+ background: linear-gradient(135deg, #ff6ec4, #73eaff, #ffc36e, #ff6ec4, #73eaff, #ffc36e);
+ background-size: 200% 200%;
+ animation: borderScroll 3s ease-in-out infinite alternate;
+}
+
+.badge-container img {
+ width: 15px;
+ height: 15px;
+ border-radius: 2px;
+ margin-right: 4px;
+ margin-left: 1px;
+ object-fit: cover;
+}
+
+.social-logos {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 15px;
+  margin-top: 25px;
+  margin-left: 5px;
+  opacity: 0.2;
+}
+
+.social-icon {
+  width: 35px;
+  height: 35px;
+  object-fit: contain;
+}
+
+.social-logos a {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.social-logos a:hover {
+  transform: scale(1.15);
+}
+
+@media (max-width: 480px) {
+  .card {
+    width: 90vw; /* use 90% of the viewport width */
+    padding: 20px;
+  }
+
+  .profile-pic {
+    width: 100px;
+    height: 100px;
+  }
+
+  .name {
+    font-size: 28px;
+  }
+
+  .description {
+    font-size: 14px;
+  }
+
+  .presence-card,
+  .music-player {
+    padding: 10px;
+  }
+
+  .social-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .avatar {
+    width: 48px;
+    height: 48px;
+  }
+
+  .track-info {
+    font-size: 13px;
+  }
+
+  .artist-name {
+    font-size: 12px;
+  }
+}
+
+ </style>
+</head>
+
+<body>
+
+ <div class="card-wrapper" id="cardWrapper">
+ <div class="card" id="card">
+ <img 
+ src="assets/05dbc15d63cecdd914dfaa52eb0405d5.webp" 
+ alt="pfp" 
+ class="profile-pic" 
+ id="profilePic"
+ />
+ <div style="display: flex; align-items: center;">
+ <div class="name" id="profileName">zc</div>
+ <div class="badge-container">
+ <img src="assets/crownw.png" alt="owner">
+ <img src="assets/dev.png" alt="dev">
+ <img src="assets/pencil.png" alt="artist">
+ <!-- You can add more badges here -->
+ </div>
+</div>
+ <div class="description" id="profileDescription">
+ II/III <br> @depletable
+ </div>
+
+ <div class="presence-card">
+ <img class="avatar" src="https://cdn.discordapp.com/avatars/1359815625538797719/05dbc15d63cecdd914dfaa52eb0405d5.png" alt="Avatar">
+ <div class="details">
+ <div class="username">
+ depletable
+ <span class="badge bravery"></span>
+ <span class="badge quest"></span>
+ </div>
+ </div>
+ </div>
+
+ <div class="music-player">
+    <div class="controls">
+      <div class="track-info">
+        <span id="track-title">Lazy Boy and the Temple of Wonders</span><br>
+        <span id="track-artist" class="artist-name">Weedpecker</span>
+        </div>
+        <button id="playPauseBtn">
+        <img id="playPauseIcon" src="assets/play.png" alt="Play" />
+        </button>
+        </div>
+        <input type="range" id="seekBar" value="0" min="0" step="1">
+        <audio id="audio" src="assets/lazyboyweedpecker.mp3"></audio>
+      </div>
+    <div class="social-logos">
+  <a href="https://instagram.com/zccmu" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+    <img src="assets/iglogo.png" alt="Instagram" class="social-icon" />
+  </a>
+  <a href="https://last.fm/user/crsttt" target="_blank" rel="noopener noreferrer" aria-label="Last.fm">
+    <img src="assets/lastfmlogo.png" alt="Last.fm" class="social-icon" />
+  </a>
+</div>
+</div>
+  </div>
+  
+
+ <script>
+ const wrapper = document.getElementById('cardWrapper');
+
+ wrapper.addEventListener('mousemove', (e) => {
+ const rect = wrapper.getBoundingClientRect();
+ const x = e.clientX - rect.left;
+ const y = e.clientY - rect.top;
+
+ const centerX = rect.width / 2;
+ const centerY = rect.height / 2;
+
+ const rotateX = ((y - centerY) / centerY) * 8;
+ const rotateY = ((x - centerX) / centerX) * 8;
+
+ wrapper.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+ });
+
+ wrapper.addEventListener('mouseleave', () => {
+ wrapper.style.transform = 'rotateX(0deg) rotateY(0deg)';
+ });
+ </script>
+
+<script>
+const audio = document.getElementById('audio');
+const playPauseBtn = document.getElementById('playPauseBtn');
+const playPauseIcon = document.getElementById('playPauseIcon');
+const trackTitle = document.getElementById('track-title');
+const trackArtist = document.getElementById('track-artist');
+const seekBar = document.getElementById('seekBar');
+
+const song = {
+  title: "Lazy Boy and the Temple of Wonders",
+  artist: "Weedpecker",
+  url: "assets/lazyboyweedpecker.mp3"
+};
+
+// Set initial text
+trackTitle.textContent = song.title;
+trackArtist.textContent = song.artist;
+
+// Load audio
+audio.src = song.url;
+audio.load();
+
+let isPlaying = false;
+
+// Play/pause logic
+playPauseBtn.addEventListener('click', () => {
+  playPauseIcon.style.opacity = 0;
+
+  setTimeout(() => {
+    if (isPlaying) {
+      audio.pause();
+      playPauseIcon.src = "assets/play.png";
+    } else {
+      audio.play().catch(err => console.error("Playback failed:", err));
+      playPauseIcon.src = "assets/pause.png";
+    }
+
+    isPlaying = !isPlaying;
+    playPauseIcon.style.opacity = 1;
+  }, 200);
+});
+
+// Update seek bar as song plays
+audio.addEventListener('timeupdate', () => {
+  if (!isNaN(audio.duration)) {
+    seekBar.max = audio.duration;
+    seekBar.value = audio.currentTime;
+
+    const fillPercent = (audio.currentTime / audio.duration) * 100;
+    seekBar.style.background = `linear-gradient(to right, rgba(255, 255, 255, 0.267) ${fillPercent}%, rgba(255, 255, 255, 0.165) ${fillPercent}%)`;
+  }
+});
+
+// Seek logic
+seekBar.addEventListener('input', () => {
+  audio.currentTime = seekBar.value;
+});
+</script>
+
+</body>
+</html>
