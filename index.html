@@ -77,13 +77,18 @@
     0 0 30px #3e00cc;
 }
 
- .description {
- font-size: 16px;
- color: #ddd;
- line-height: 1.4;
- max-width: 100%;
- margin-left: 5px;
- }
+.description {
+  font-size: 16px;
+  color: transparent; /* hide default color */
+  line-height: 1.4;
+  max-width: 100%;
+  margin-left: 5px;
+
+  background: linear-gradient(135deg, #FFD700, #FFEA70, #FFB800, #FFD700);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 
  .presence-card {
  display: flex;
