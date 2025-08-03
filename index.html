@@ -1,13 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>grief.bio — modern bio link platform</title>
-  <link rel="icon" type="image/png" href="assets/favicon.png" />
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
-
     /* Reset & base */
     *, *::before, *::after {
       box-sizing: border-box;
@@ -16,7 +13,7 @@
       margin: 0;
       background: #0f1115;
       color: #e1e1e1;
-      font-family: 'Poppins', sans-serif;
+      font-family: "Poppins", sans-serif;
       font-weight: 400;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
@@ -25,262 +22,226 @@
       flex-direction: column;
       align-items: center;
       padding: 2rem 1rem;
-      overflow-x: hidden;
+      scroll-behavior: smooth;
     }
     a {
-      color: #6a76ff;
+      color: #4dabf7;
       text-decoration: none;
       transition: color 0.3s ease;
     }
-    a:hover, a:focus {
-      color: #8191ff;
-      outline: none;
+    a:hover {
+      color: #82c7ff;
     }
 
+    /* Header */
     header {
       width: 100%;
       max-width: 420px;
-      padding: 0 1rem;
-      margin-bottom: 3rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      margin-bottom: 2rem;
+      padding: 0 1rem;
       user-select: none;
     }
     header h1 {
       font-weight: 700;
-      font-size: 1.8rem;
+      font-size: 1.6rem;
+      letter-spacing: 2px;
       color: #6a76ff;
-      letter-spacing: 3px;
       font-feature-settings: "calt" 0;
     }
     nav a {
       font-weight: 600;
+      margin-left: 1.4rem;
       font-size: 0.95rem;
-      margin-left: 1.6rem;
-      cursor: pointer;
-    }
-    nav a#logoutLink {
-      color: #f15b5b;
-      font-weight: 700;
-    }
-    nav a#logoutLink:hover {
-      color: #ff7979;
-    }
-
-    main {
-      width: 100%;
-      max-width: 900px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2.8rem;
-      padding: 0 1rem;
-    }
-
-    /* Hero Section */
-    #hero {
-      width: 100%;
-      background: linear-gradient(135deg, #1b1e25 0%, #0f1115 90%);
-      border-radius: 16px;
-      padding: 3rem 2.5rem;
-      box-shadow:
-        0 10px 30px rgb(106 118 255 / 0.3),
-        inset 0 0 40px rgb(106 118 255 / 0.15);
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      color: #bfc2ff;
-    }
-
-    #hero-left {
-      max-width: 480px;
-    }
-    #hero-left h2 {
-      font-size: 2.4rem;
-      font-weight: 700;
-      margin: 0 0 0.5rem;
-      color: #6a76ff;
-      letter-spacing: 1.5px;
-    }
-    #hero-left p {
-      font-size: 1.1rem;
-      line-height: 1.5;
-      margin-bottom: 1.8rem;
-      color: #c0c3ffcc;
-    }
-    #hero-left .btn-group {
-      display: flex;
-      gap: 1.4rem;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-    #hero-left button {
-      cursor: pointer;
-      border-radius: 12px;
-      border: none;
-      padding: 0.8rem 2.4rem;
-      font-weight: 700;
-      font-size: 1.1rem;
       letter-spacing: 0.04em;
-      user-select: none;
-      transition: background 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 6px 16px rgb(106 118 255 / 0.6);
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
+      cursor: pointer;
+      color: #7a7fff;
+      transition: color 0.3s ease;
     }
-    #btnLogin {
-      background: #6a76ff;
-      color: white;
-    }
-    #btnLogin:hover {
-      background: #8191ff;
-      box-shadow: 0 8px 26px rgb(130 145 255 / 0.85);
-    }
-    #btnRegister {
-      background: transparent;
-      border: 2.5px solid #6a76ff;
-      color: #6a76ff;
-    }
-    #btnRegister:hover {
-      background: #6a76ff;
-      color: white;
-      box-shadow: 0 8px 26px rgb(130 145 255 / 0.85);
+    nav a:hover {
+      color: #aabaff;
     }
 
-    #btnLogin img.playIcon,
-    #btnRegister img.playIcon {
-      width: 18px;
-      height: 18px;
-      filter: invert(90%) sepia(20%) saturate(200%) hue-rotate(210deg);
-    }
-
-    #hero-right {
-      max-width: 380px;
+    /* Hero section */
+    #hero {
       position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-      padding: 0 0.5rem;
+      max-width: 420px;
+      width: 100%;
+      background: #181a1f;
+      border-radius: 14px;
+      padding: 2.8rem 2.4rem;
+      box-shadow:
+        0 2px 12px rgb(255 255 255 / 0.04),
+        0 6px 24px rgb(0 0 0 / 0.7);
+      margin-bottom: 3rem;
+      overflow: hidden;
     }
-    #hero-right img.badge {
+    #hero::before {
+      content: "";
+      position: absolute;
+      top: 1rem;
+      right: 2rem;
+      width: 100px;
+      height: 100px;
+      background: url('assets/creator.png') no-repeat center/contain;
+      opacity: 0.08;
+      pointer-events: none;
+      user-select: none;
+      filter: drop-shadow(0 0 4px #6a76ffcc);
+      z-index: 0;
+    }
+    #hero::after {
+      content: "";
+      position: absolute;
+      bottom: 1rem;
+      left: 2rem;
       width: 80px;
       height: 80px;
-      object-fit: contain;
-      border-radius: 14px;
-      filter: drop-shadow(0 0 10px #6a76ffcc);
+      background: url('assets/staff.png') no-repeat center/contain;
+      opacity: 0.06;
+      pointer-events: none;
       user-select: none;
-      transition: transform 0.3s ease;
-      cursor: default;
+      filter: drop-shadow(0 0 4px #8191ffcc);
+      z-index: 0;
     }
-    #hero-right img.badge:hover {
-      transform: scale(1.12) rotate(10deg);
-      filter: drop-shadow(0 0 15px #8191ffdd);
+    #hero > div {
+      position: relative;
+      z-index: 1;
+    }
+    #hero h2 {
+      font-weight: 700;
+      font-size: 1.8rem;
+      margin-bottom: 0.6rem;
+      color: #a0a8ff;
+    }
+    #hero p {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #bbb;
+      margin-bottom: 1.8rem;
     }
 
-    /* Social icons below hero-left text */
-    #socials {
-      margin-top: 1.8rem;
+    /* Buttons in hero */
+    .btn-group {
       display: flex;
-      gap: 1.2rem;
+      gap: 1rem;
     }
-    #socials a {
-      display: inline-block;
-      width: 28px;
-      height: 28px;
-      filter: brightness(0) invert(1);
-      transition: filter 0.3s ease;
+    .btn-group button {
+      background: #6a76ff;
+      border: none;
+      border-radius: 12px;
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 0.9rem 1.8rem;
+      cursor: pointer;
+      letter-spacing: 0.03em;
+      box-shadow:
+        0 4px 14px rgb(106 118 255 / 0.6);
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      align-items: center;
+      user-select: none;
+      border: 1.5px solid transparent;
     }
-    #socials a:hover {
-      filter: brightness(0) invert(0.7) drop-shadow(0 0 4px #6a76ffcc);
+    .btn-group button:hover {
+      background: #8191ff;
+      box-shadow:
+        0 6px 24px rgb(130 145 255 / 0.8);
+      border-color: #a3adff;
     }
-    #socials img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
+    #btnLogin img.playIcon {
+      width: 18px;
+      height: 18px;
+      margin-right: 0.6rem;
+      filter: invert(85%) sepia(10%) saturate(200%) hue-rotate(210deg);
       user-select: none;
     }
 
     /* Features section */
     #features {
+      max-width: 420px;
       width: 100%;
-      max-width: 900px;
-      display: flex;
-      justify-content: space-between;
-      gap: 2rem;
-      flex-wrap: wrap;
-      color: #999bbc;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      user-select: none;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.8rem;
+      margin-bottom: 3rem;
     }
     .feature-item {
-      flex: 1 1 250px;
       background: #181a1f;
-      padding: 1.8rem 1.6rem;
       border-radius: 12px;
+      padding: 1.6rem 1.4rem;
       box-shadow:
-        0 2px 10px rgb(106 118 255 / 0.2);
-      text-align: center;
-      transition: background 0.3s ease;
-      position: relative;
+        0 1px 10px rgb(106 118 255 / 0.1);
+      transition: box-shadow 0.25s ease;
+      cursor: default;
     }
-    .feature-item:hover {
-      background: #2a2e43;
-      color: #b3b7ff;
+    .feature-item:hover,
+    .feature-item:focus-visible {
+      box-shadow:
+        0 4px 20px rgb(130 145 255 / 0.3);
+      outline: none;
     }
     .feature-item h3 {
-      margin-bottom: 0.8rem;
-      color: #6a76ff;
       font-weight: 700;
-      font-size: 1.25rem;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: #8ea0ff;
       display: flex;
-      justify-content: center;
       align-items: center;
-      gap: 0.6rem;
+      user-select: none;
     }
     .feature-item h3 img {
-      width: 28px;
-      height: 28px;
+      width: 22px;
+      height: 22px;
+      margin-right: 10px;
+      filter: drop-shadow(0 0 3px #6a76ffcc);
       user-select: none;
     }
     .feature-item p {
-      font-weight: 400;
-      font-size: 1rem;
+      font-size: 0.9rem;
       line-height: 1.4;
-      color: #bbbfffcc;
+      color: #bbb;
+      user-select: none;
+      margin: 0;
     }
 
     /* Footer */
     footer {
-      margin-top: 4rem;
-      padding: 1rem 0;
-      width: 100%;
       max-width: 420px;
-      color: #555a88;
-      font-size: 0.9rem;
-      user-select: none;
+      width: 100%;
       text-align: center;
+      color: #666;
+      font-size: 0.85rem;
+      user-select: none;
+      padding: 1rem 1rem 0.8rem;
+      border-top: 1px solid #222;
+    }
+    footer a {
+      margin: 0 0.6rem;
+      display: inline-block;
+      filter: grayscale(80%) brightness(150%);
+      transition: filter 0.3s ease;
+      vertical-align: middle;
+    }
+    footer a:hover {
+      filter: grayscale(0%) brightness(120%);
+    }
+    footer img {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+      user-select: none;
+      vertical-align: middle;
     }
 
     /* Responsive */
-    @media (max-width: 880px) {
-      #hero {
-        flex-direction: column;
-        gap: 2rem;
-      }
-      #hero-left, #hero-right {
-        max-width: 100%;
-      }
-      #features {
-        flex-direction: column;
-      }
-      .feature-item {
-        max-width: 100%;
+    @media (max-width: 460px) {
+      #hero, #features, header, footer {
+        padding-left: 1rem;
+        padding-right: 1rem;
       }
     }
   </style>
@@ -290,154 +251,73 @@
 <header>
   <h1>grief.bio</h1>
   <nav id="navLinks">
-    <!-- Nav links will be injected here -->
+    <a href="#login">Login</a>
+    <a href="#register">Register</a>
   </nav>
 </header>
 
 <main>
+
   <section id="hero" aria-label="Welcome section">
-    <div id="hero-left">
+    <div>
       <h2>Modern Bio Link Platform</h2>
       <p>Create and customize your own unique bio page with music, profile pictures, backgrounds, social links, and more.</p>
-      
+
       <div class="btn-group">
         <button id="btnLogin" aria-label="Login to your account">
           <img src="assets/play.png" alt="" class="playIcon" aria-hidden="true" />
           Login
         </button>
-        <button id="btnRegister" aria-label="Register new account">
-          <img src="assets/play.png" alt="" class="playIcon" aria-hidden="true" />
-          Register
-        </button>
+        <button id="btnRegister" aria-label="Register new account">Register</button>
       </div>
-
-      <div id="socials" aria-label="Social media links">
-        <a href="https://instagram.com/yourhandle" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-          <img src="assets/iglogo.png" alt="Instagram logo" />
-        </a>
-        <a href="https://last.fm/user/yourhandle" target="_blank" rel="noopener noreferrer" aria-label="Last.fm">
-          <img src="assets/lastfmlogo.png" alt="Last.fm logo" />
-        </a>
-      </div>
-    </div>
-
-    <div id="hero-right" aria-hidden="true" aria-label="Badges showcase">
-      <img src="assets/creator.png" alt="Creator badge" class="badge" />
-      <img src="assets/staff.png" alt="Staff badge" class="badge" />
-      <img src="assets/crownw.png" alt="Crown badge" class="badge" />
-      <img src="assets/donator.png" alt="Donator badge" class="badge" />
     </div>
   </section>
 
   <section id="features" aria-label="Features overview">
     <article class="feature-item" tabindex="0">
-      <h3>
-        <img src="assets/creative.png" alt="Creative icon" />
-        Fully Customizable
-      </h3>
+      <h3><img src="assets/creative.png" alt="Creative icon" />Fully Customizable</h3>
       <p>Personalize your bio with backgrounds, profile pictures, custom cursors, and embed music players.</p>
     </article>
     <article class="feature-item" tabindex="0">
-      <h3>
-        <img src="assets/booster.png" alt="Booster icon" />
-        Easy to Use
-      </h3>
+      <h3><img src="assets/booster.png" alt="Booster icon" />Easy to Use</h3>
       <p>Intuitive dashboard lets you edit your profile in real-time with seamless file uploads.</p>
     </article>
     <article class="feature-item" tabindex="0">
-      <h3>
-        <img src="assets/trophy.png" alt="Trophy icon" />
-        Secure & Reliable
-      </h3>
+      <h3><img src="assets/crownw.png" alt="Crown icon" />Secure & Reliable</h3>
       <p>Login, register, and manage your account with full privacy and admin controls.</p>
     </article>
   </section>
+
 </main>
 
 <footer>
   &copy; 2025 grief.bio — Made with 💙 by grief
+  <br />
+  <a href="https://instagram.com/yourhandle" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+    <img src="assets/iglogo.png" alt="Instagram logo" />
+  </a>
+  <a href="https://last.fm/user/yourhandle" target="_blank" rel="noopener noreferrer" aria-label="Last.fm">
+    <img src="assets/lastfmlogo.png" alt="Last.fm logo" />
+  </a>
 </footer>
 
 <script>
+  // Simple routing for the demo buttons (Login/Register) just to toggle nav links visually
   const navLinks = document.getElementById('navLinks');
-  const btnLogin = document.getElementById('btnLogin');
-  const btnRegister = document.getElementById('btnRegister');
 
-  function updateNav() {
-    navLinks.innerHTML = '';
-    const token = localStorage.getItem('token');
-    if (!token) {
+  document.getElementById('btnLogin').addEventListener('click', () => {
+    navLinks.innerHTML = `
+      <a href="#dashboard">Dashboard</a>
+      <a href="#" id="logoutLink">Logout</a>
+    `;
+    document.getElementById('logoutLink').onclick = e => {
+      e.preventDefault();
       navLinks.innerHTML = '<a href="#login">Login</a><a href="#register">Register</a>';
-    } else {
-      const admin = localStorage.getItem('isAdmin') === 'true';
-      navLinks.innerHTML = `
-        <a href="#dashboard">Dashboard</a>
-        ${admin ? '<a href="#admin">Admin</a>' : ''}
-        <a href="#" id="logoutLink">Logout</a>
-      `;
-      document.getElementById('logoutLink').onclick = e => {
-        e.preventDefault();
-        logout();
-      };
-    }
-  }
+    };
+  });
 
-  function logout() {
-    localStorage.clear();
-    location.hash = '#login';
-    updateNav();
-  }
-
-  function route() {
-    const token = localStorage.getItem('token');
-    let hash = location.hash.toLowerCase() || '#login';
-
-    if (!token && !['#login', '#register'].includes(hash)) {
-      location.hash = '#login';
-      return;
-    }
-    if (token && ['#login', '#register'].includes(hash)) {
-      location.hash = '#dashboard';
-      return;
-    }
-    if (hash === '#admin' && (!token || localStorage.getItem('isAdmin') !== 'true')) {
-      location.hash = '#dashboard';
-      return;
-    }
-
-    switch (hash) {
-      case '#register': showRegisterForm(); break;
-      case '#login': showLoginForm(); break;
-      case '#dashboard': showDashboard(); break;
-      case '#admin': showAdminPanel(); break;
-      default: location.hash = '#login';
-    }
-  }
-
-  function showLoginForm() {
-    alert('Navigate to Login Page'); 
-    // In real app, you'd display login form section here
-  }
-  function showRegisterForm() {
-    alert('Navigate to Register Page');
-    // In real app, you'd display register form section here
-  }
-  function showDashboard() {
-    alert('Navigate to Dashboard');
-    // In real app, you'd display dashboard section here
-  }
-  function showAdminPanel() {
-    alert('Navigate to Admin Panel');
-    // In real app, you'd display admin panel here
-  }
-
-  btnLogin.onclick = () => { location.hash = '#login'; };
-  btnRegister.onclick = () => { location.hash = '#register'; };
-
-  window.addEventListener('hashchange', route);
-  window.addEventListener('load', () => {
-    updateNav();
-    route();
+  document.getElementById('btnRegister').addEventListener('click', () => {
+    alert('Registration form would open here (demo)');
   });
 </script>
 
