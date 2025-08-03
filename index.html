@@ -15,8 +15,8 @@
       margin: 0;
       min-height: 100vh;
       font-family: 'Poppins', sans-serif;
-      background: #0f1115;
-      color: #e1e1e1;
+      background: #121622;
+      color: #d6d9e1;
       scroll-behavior: smooth;
       line-height: 1.5;
       display: flex;
@@ -26,12 +26,12 @@
       user-select: none;
     }
     a {
-      color: #4dabf7;
+      color: #58a6ff;
       text-decoration: none;
       transition: color 0.3s ease;
     }
     a:hover {
-      color: #82c7ff;
+      color: #8ec1ff;
     }
 
     /* Container */
@@ -47,11 +47,11 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid #222;
+      border-bottom: 1px solid #2f3440;
       user-select: none;
       position: sticky;
       top: 0;
-      background: #0f1115cc;
+      background: #121622cc;
       backdrop-filter: saturate(180%) blur(8px);
       z-index: 999;
     }
@@ -59,7 +59,7 @@
       font-weight: 700;
       font-size: 1.7rem;
       letter-spacing: 0.12em;
-      color: #6a76ff;
+      color: #5c7cfa;
       margin: 0;
       user-select: none;
     }
@@ -67,36 +67,36 @@
       font-weight: 600;
       margin-left: 1.6rem;
       font-size: 0.95rem;
-      color: #7a7fff;
+      color: #7b8aec;
       transition: color 0.3s ease;
     }
     nav#userNav a:hover {
-      color: #aabaff;
+      color: #a4b4ff;
     }
 
     /* Sections */
     section {
-      background: #181a1f;
+      background: #1c202c;
       border-radius: 14px;
       padding: 2rem 2.4rem;
       margin-bottom: 3.5rem;
-      box-shadow: 0 2px 6px rgb(50 60 120 / 0.08);
-      transition: transform 0.3s ease;
+      box-shadow: 0 2px 6px rgb(15 20 40 / 0.12);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
     section.tilt:hover {
-      transform: perspective(600px) rotateY(6deg) rotateX(3deg);
-      box-shadow: 0 10px 20px rgb(50 60 120 / 0.15);
+      transform: translateY(-6px);
+      box-shadow: 0 10px 20px rgb(35 45 80 / 0.3);
     }
     section h2 {
       font-weight: 700;
       font-size: 1.9rem;
-      color: #8ea0ff;
+      color: #7fa2ff;
       margin-bottom: 1rem;
       user-select: none;
     }
     section p {
       font-size: 1rem;
-      color: #bbb;
+      color: #bfc4d9;
       max-width: 720px;
       user-select: none;
       margin-bottom: 1.8rem;
@@ -104,7 +104,7 @@
 
     /* Buttons */
     .btn {
-      background: linear-gradient(135deg, #6a76ff, #8191ff);
+      background: linear-gradient(135deg, #5c7cfa, #7d9fff);
       border: none;
       border-radius: 16px;
       padding: 0.65rem 1.8rem;
@@ -112,7 +112,7 @@
       font-size: 1rem;
       color: white;
       cursor: pointer;
-      box-shadow: 0 3px 8px rgb(106 118 255 / 0.4);
+      box-shadow: 0 3px 8px rgb(92 124 250 / 0.45);
       transition: background 0.3s ease;
       user-select: none;
       display: inline-flex;
@@ -120,16 +120,16 @@
       gap: 0.5rem;
     }
     .btn:hover {
-      background: linear-gradient(135deg, #8191ff, #a1b0ff);
-      box-shadow: 0 5px 15px rgb(130 145 255 / 0.6);
+      background: linear-gradient(135deg, #7d9fff, #a2b7ff);
+      box-shadow: 0 5px 15px rgb(125 159 255 / 0.7);
     }
     .btn:active {
-      box-shadow: 0 2px 6px rgb(106 118 255 / 0.25);
+      box-shadow: 0 2px 6px rgb(92 124 250 / 0.25);
     }
     .btn img {
       width: 18px;
       height: 18px;
-      filter: invert(90%) sepia(15%) saturate(300%) hue-rotate(210deg);
+      filter: invert(85%) sepia(15%) saturate(250%) hue-rotate(210deg);
       user-select: none;
     }
 
@@ -141,27 +141,28 @@
       margin-top: 1rem;
     }
     .badge {
-      background: #222533;
+      background: #2a2f43;
       border-radius: 14px;
       padding: 1.3rem;
       text-align: center;
       cursor: default;
-      transition: box-shadow 0.3s ease;
+      transition: box-shadow 0.3s ease, background 0.3s ease;
     }
     .badge:hover {
-      box-shadow: 0 6px 20px rgb(106 118 255 / 0.25);
+      box-shadow: 0 6px 20px rgb(92 124 250 / 0.3);
+      background: #394563;
       transform: translateY(-4px);
     }
     .badge img {
       width: 56px;
       height: 56px;
       margin-bottom: 0.5rem;
-      filter: drop-shadow(0 0 4px #6a76ff99);
+      filter: drop-shadow(0 0 4px #5c7cfaaa);
       user-select: none;
     }
     .badge h4 {
       margin: 0.3rem 0 0.1rem;
-      color: #8ea0ff;
+      color: #7fa2ff;
       font-weight: 700;
       font-size: 1.05rem;
       user-select: none;
@@ -169,7 +170,7 @@
     .badge p {
       margin: 0;
       font-size: 0.9rem;
-      color: #bbb;
+      color: #bbc0d6;
       user-select: none;
     }
 
@@ -179,7 +180,7 @@
       padding-left: 1rem;
       max-width: 720px;
       margin-top: 1rem;
-      color: #bbb;
+      color: #bfc4d9;
       font-size: 1rem;
       user-select: none;
     }
@@ -192,13 +193,13 @@
       content: "•";
       position: absolute;
       left: 0;
-      color: #6a76ff;
+      color: #5c7cfa;
       font-weight: 700;
     }
 
     /* UID Info */
     .uid-info {
-      background: #222533;
+      background: #2a2f43;
       border-radius: 12px;
       padding: 1rem 1.4rem;
       margin-top: 1rem;
@@ -206,7 +207,7 @@
     }
     .uid-info h3 {
       margin-top: 0;
-      color: #8ea0ff;
+      color: #7fa2ff;
       font-weight: 700;
       font-size: 1.2rem;
       user-select: none;
@@ -214,7 +215,7 @@
     .uid-info p {
       margin: 0.25rem 0 0;
       font-size: 0.95rem;
-      color: #ccc;
+      color: #d0d3e0;
       user-select: none;
     }
 
@@ -227,7 +228,7 @@
     summary {
       cursor: pointer;
       font-weight: 600;
-      color: #8ea0ff;
+      color: #7fa2ff;
       list-style: none;
       user-select: none;
       font-size: 1.05rem;
@@ -237,7 +238,7 @@
     }
     details p {
       margin: 0.4rem 0 0 1rem;
-      color: #bbb;
+      color: #bbc0d6;
       font-size: 0.95rem;
       user-select: none;
     }
@@ -248,9 +249,9 @@
       max-width: 920px;
       text-align: center;
       padding: 2rem 1.5rem 3rem;
-      color: #555;
+      color: #555a70;
       font-size: 0.9rem;
-      border-top: 1px solid #222;
+      border-top: 1px solid #2f3440;
       user-select: none;
     }
     footer a {
