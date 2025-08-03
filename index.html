@@ -35,7 +35,7 @@
     width: 90%;
     max-width: 960px;
     margin: 0 auto;
-    padding: 2rem 0;
+    padding: 3rem 0;
   }
 
   /* Header */
@@ -44,7 +44,7 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #333;
-    padding-bottom: 1rem;
+    padding-bottom: 1.5rem;
     position: sticky;
     top: 0;
     background: #181818;
@@ -52,15 +52,15 @@
   }
   header h1 {
     font-weight: 700;
-    font-size: 1.9rem;
+    font-size: 2rem;
     letter-spacing: 0.1em;
     color: #00bcd4;
     margin: 0;
   }
   nav a {
     font-weight: 600;
-    margin-left: 1.6rem;
-    font-size: 1rem;
+    margin-left: 2rem;
+    font-size: 1.05rem;
     color: #00bcd4;
   }
   nav a:hover {
@@ -72,9 +72,9 @@
     background: #00bcd4;
     border: none;
     border-radius: 14px;
-    padding: 0.6rem 1.6rem;
+    padding: 0.7rem 2rem;
     font-weight: 700;
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: #181818;
     cursor: pointer;
     transition: background 0.3s ease;
@@ -88,195 +88,204 @@
   #hero {
     display: flex;
     flex-wrap: wrap;
-    gap: 2rem;
+    gap: 3rem;
     align-items: center;
-    padding: 3rem 0;
+    padding-bottom: 4rem;
     border-bottom: 1px solid #333;
   }
   #hero-text {
-    flex: 1 1 320px;
-    max-width: 540px;
+    flex: 1 1 350px;
+    max-width: 600px;
   }
   #hero-text h2 {
     font-weight: 700;
-    font-size: 2.2rem;
-    margin-bottom: 1rem;
+    font-size: 2.6rem;
+    margin-bottom: 1.5rem;
     color: #00bcd4;
   }
   #hero-text p {
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
     color: #ccc;
   }
   #hero-buttons {
     display: flex;
-    gap: 1rem;
+    gap: 1.5rem;
   }
 
   #hero-visual {
     flex: 1 1 320px;
-    max-width: 380px;
+    max-width: 360px;
     background: #222;
-    border-radius: 16px;
-    box-shadow: 0 4px 10px rgba(0, 188, 212, 0.3);
-    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 6px 18px rgba(0, 188, 212, 0.3);
+    padding: 2.5rem 2rem;
     color: #eee;
     display: flex;
     flex-direction: column;
     align-items: center;
+    user-select: none;
   }
-  #hero-visual .avatar {
+  #hero-visual img.pfp {
     width: 160px;
     height: 160px;
-    background: #00bcd4;
     border-radius: 50%;
-    margin-bottom: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 900;
-    font-size: 3.2rem;
-    color: #181818;
-    user-select: none;
+    object-fit: cover;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 0 8px #00bcd4cc;
   }
   #hero-visual .username {
     font-weight: 700;
-    font-size: 1.4rem;
-    margin-bottom: 0.6rem;
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    color: #00bcd4;
   }
   #hero-visual .badges {
     display: flex;
-    gap: 0.8rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
   }
   #hero-visual .badge {
     background: #00bcd4;
-    border-radius: 8px;
-    padding: 0.3rem 0.8rem;
-    font-size: 0.9rem;
+    border-radius: 10px;
+    padding: 0.5rem 1.2rem;
+    font-size: 1rem;
     font-weight: 600;
     color: #181818;
+    box-shadow: 0 0 6px #00bcd4aa;
     user-select: none;
+    transition: background 0.25s ease;
+  }
+  #hero-visual .badge:hover {
+    background: #26c6da;
   }
 
   /* Features section */
   #features {
-    padding: 3rem 0;
+    padding: 4rem 0;
     border-bottom: 1px solid #333;
   }
   #features h2 {
     color: #00bcd4;
     font-weight: 700;
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
+    font-size: 2.4rem;
+    margin-bottom: 2rem;
   }
   #features ul {
     list-style: none;
     padding-left: 0;
     max-width: 720px;
+    margin: 0 auto;
   }
   #features ul li {
     background: #222;
-    padding: 1rem 1.2rem;
-    margin-bottom: 1rem;
-    border-radius: 12px;
-    box-shadow: 0 2px 6px rgba(0,188,212,0.15);
+    padding: 1.5rem 2rem;
+    margin-bottom: 1.4rem;
+    border-radius: 16px;
+    box-shadow: 0 3px 10px rgba(0,188,212,0.15);
     font-weight: 500;
+    font-size: 1.1rem;
   }
 
   /* Profile preview */
   #profile-preview {
-    padding: 3rem 0;
+    padding: 4rem 0;
     border-bottom: 1px solid #333;
     background: #222;
-    border-radius: 16px;
+    border-radius: 24px;
     max-width: 720px;
-    margin: 0 auto 3rem;
-    box-shadow: 0 5px 15px rgba(0,188,212,0.25);
+    margin: 0 auto 4rem;
+    box-shadow: 0 7px 20px rgba(0,188,212,0.25);
   }
   #profile-preview h2 {
     color: #00bcd4;
     font-weight: 700;
-    font-size: 1.9rem;
-    margin-bottom: 1rem;
+    font-size: 2.1rem;
+    margin-bottom: 1.2rem;
+    text-align: center;
   }
   #profile-preview .mockup {
     background: #181818;
-    border-radius: 12px;
-    padding: 1.5rem;
+    border-radius: 18px;
+    padding: 2rem 2.5rem;
     color: #ddd;
-    box-shadow: inset 0 0 15px rgba(0,188,212,0.15);
+    box-shadow: inset 0 0 20px rgba(0,188,212,0.15);
   }
   #profile-preview .mockup-header {
     display: flex;
     align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: 1.6rem;
   }
   #profile-preview .mockup-avatar {
-    width: 72px;
-    height: 72px;
+    width: 96px;
+    height: 96px;
     border-radius: 50%;
-    background: #00bcd4;
-    color: #181818;
-    font-weight: 900;
-    font-size: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 1rem;
-    user-select: none;
+    object-fit: cover;
+    margin-right: 1.6rem;
+    box-shadow: 0 0 10px #00bcd4cc;
   }
   #profile-preview .mockup-username {
     font-weight: 700;
-    font-size: 1.4rem;
+    font-size: 1.7rem;
+    color: #00bcd4;
   }
   #profile-preview .mockup-badges {
-    margin-top: 0.6rem;
+    margin-top: 1rem;
     display: flex;
-    gap: 0.6rem;
+    gap: 1.1rem;
   }
   #profile-preview .mockup-badge {
     background: #00bcd4;
-    padding: 0.3rem 0.7rem;
-    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
     font-weight: 600;
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: #181818;
     user-select: none;
+    box-shadow: 0 0 6px #00bcd4cc;
+    transition: background 0.2s ease;
+    cursor: default;
+  }
+  #profile-preview .mockup-badge:hover {
+    background: #26c6da;
   }
   #profile-preview .mockup-music {
     background: #181818;
-    margin-top: 1.4rem;
-    padding: 0.8rem 1rem;
-    border-radius: 10px;
-    font-size: 0.9rem;
+    margin-top: 1.8rem;
+    padding: 1rem 1.2rem;
+    border-radius: 12px;
+    font-size: 1rem;
     color: #bbb;
-    user-select: none;
     font-style: italic;
+    text-align: center;
   }
 
   /* UID + Badges */
   #uid-badges {
-    padding: 3rem 0;
+    padding: 4rem 0;
     max-width: 720px;
     margin: 0 auto;
   }
   #uid-badges h2 {
     color: #00bcd4;
     font-weight: 700;
-    font-size: 2rem;
-    margin-bottom: 1rem;
+    font-size: 2.4rem;
+    margin-bottom: 1.6rem;
+    text-align: center;
   }
   .badge-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 1.2rem;
+    gap: 1.8rem;
+    justify-content: center;
   }
   .badge-card {
     background: #222;
-    border-radius: 14px;
-    flex: 1 1 180px;
-    padding: 1.4rem;
-    box-shadow: 0 2px 8px rgba(0,188,212,0.15);
+    border-radius: 18px;
+    flex: 1 1 220px;
+    padding: 2rem 1.6rem;
+    box-shadow: 0 4px 15px rgba(0,188,212,0.2);
     cursor: default;
     transition: background 0.3s ease;
   }
@@ -284,82 +293,92 @@
     background: #00bcd422;
   }
   .badge-card img {
-    width: 48px;
-    height: 48px;
-    margin-bottom: 0.8rem;
+    width: 54px;
+    height: 54px;
+    margin-bottom: 1rem;
     user-select: none;
   }
   .badge-card h4 {
-    margin: 0 0 0.4rem;
+    margin: 0 0 0.5rem;
     font-weight: 700;
     color: #00bcd4;
+    font-size: 1.3rem;
   }
   .badge-card p {
     margin: 0;
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: #bbb;
+    line-height: 1.4;
   }
 
   .uid-tiers {
-    margin-top: 2rem;
+    margin-top: 3rem;
     background: #222;
-    padding: 1rem 1.4rem;
-    border-radius: 12px;
+    padding: 1.6rem 2rem;
+    border-radius: 16px;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #ccc;
   }
   .uid-tiers h3 {
     color: #00bcd4;
     font-weight: 700;
-    margin-bottom: 0.8rem;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
   }
   .uid-tiers p {
-    margin: 0.2rem 0;
+    margin: 0.4rem 0;
     font-weight: 500;
-    color: #ccc;
   }
 
   /* Roadmap */
   #roadmap {
     max-width: 720px;
-    margin: 3rem auto;
+    margin: 4rem auto;
     border-left: 3px solid #00bcd4;
-    padding-left: 1.5rem;
+    padding-left: 2rem;
   }
   #roadmap h2 {
     color: #00bcd4;
     font-weight: 700;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 2.4rem;
   }
   .roadmap-item {
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
     position: relative;
   }
   .roadmap-item::before {
     content: '';
     position: absolute;
-    left: -12px;
-    top: 4px;
-    width: 16px;
-    height: 16px;
+    left: -14px;
+    top: 6px;
+    width: 20px;
+    height: 20px;
     background: #00bcd4;
     border-radius: 50%;
-    box-shadow: 0 0 10px rgba(0,188,212,0.7);
+    box-shadow: 0 0 12px rgba(0,188,212,0.7);
   }
   .roadmap-item h3 {
-    margin: 0 0 0.3rem;
+    margin: 0 0 0.5rem;
     font-weight: 700;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
   }
   .roadmap-item p {
     margin: 0;
     color: #bbb;
+    font-size: 1rem;
+    max-width: 700px;
   }
 
   /* Community stats */
   #stats {
     max-width: 720px;
-    margin: 3rem auto;
+    margin: 5rem auto 6rem;
     display: flex;
-    gap: 3rem;
+    gap: 4rem;
     justify-content: center;
     text-align: center;
     color: #00bcd4;
@@ -369,57 +388,64 @@
   }
   #stats div span {
     display: block;
-    font-size: 2.2rem;
+    font-size: 2.6rem;
     line-height: 1;
   }
   #stats div label {
     font-weight: 500;
-    font-size: 1rem;
+    font-size: 1.2rem;
     color: #bbb;
   }
 
   /* Pricing */
   #pricing {
     max-width: 720px;
-    margin: 3rem auto 5rem;
+    margin: 0 auto 6rem;
   }
   #pricing h2 {
     color: #00bcd4;
     font-weight: 700;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
     text-align: center;
+    font-size: 2.4rem;
   }
   .pricing-cards {
     display: flex;
-    gap: 2rem;
+    gap: 2.8rem;
     flex-wrap: wrap;
     justify-content: center;
   }
   .pricing-card {
     background: #222;
-    padding: 2rem;
-    border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(0,188,212,0.25);
-    flex: 1 1 280px;
+    padding: 2.5rem 2rem;
+    border-radius: 20px;
+    box-shadow: 0 6px 18px rgba(0,188,212,0.3);
+    flex: 1 1 320px;
     color: #ddd;
+    display: flex;
+    flex-direction: column;
   }
   .pricing-card h3 {
     margin-top: 0;
     color: #00bcd4;
+    font-size: 1.7rem;
   }
   .pricing-card ul {
     list-style: none;
     padding-left: 0;
+    margin-top: 1.2rem;
+    flex-grow: 1;
   }
   .pricing-card ul li {
-    margin-bottom: 0.8rem;
+    margin-bottom: 1.1rem;
+    font-size: 1.1rem;
   }
   .pricing-card strong {
     color: #26c6da;
   }
   .pricing-card .price {
-    font-size: 2rem;
-    margin: 1rem 0 1.5rem;
+    font-size: 2.4rem;
+    margin: 1.5rem 0 2rem;
     font-weight: 700;
     color: #00bcd4;
   }
@@ -432,25 +458,27 @@
   /* FAQ */
   #faq {
     max-width: 720px;
-    margin: 0 auto 4rem;
+    margin: 0 auto 6rem;
   }
   #faq h2 {
     color: #00bcd4;
     font-weight: 700;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 2.4rem;
   }
   details {
-    margin-bottom: 1rem;
+    margin-bottom: 1.4rem;
     background: #222;
-    border-radius: 10px;
-    padding: 1rem 1.4rem;
+    border-radius: 14px;
+    padding: 1.2rem 1.8rem;
     color: #ccc;
     cursor: pointer;
     user-select: none;
   }
   summary {
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 1.1rem;
     outline: none;
   }
   details[open] {
@@ -458,8 +486,8 @@
     color: #ddd;
   }
   details p {
-    margin-top: 0.8rem;
-    font-size: 0.95rem;
+    margin-top: 1rem;
+    font-size: 1rem;
   }
 
   /* Footer */
@@ -467,12 +495,12 @@
     background: #181818;
     color: #555;
     text-align: center;
-    padding: 2rem 1rem 4rem;
-    font-size: 0.9rem;
+    padding: 3rem 1rem 5rem;
+    font-size: 0.95rem;
     border-top: 1px solid #333;
   }
   footer a {
-    margin: 0 1rem;
+    margin: 0 1.2rem;
     color: #00bcd4;
     transition: color 0.25s ease;
   }
@@ -486,24 +514,27 @@
   }
 
   /* Responsive */
-  @media (max-width: 700px) {
+  @media (max-width: 720px) {
     #hero {
       flex-direction: column;
       text-align: center;
+      padding-bottom: 3rem;
     }
     #hero-visual {
       max-width: 100%;
     }
     .badge-list {
       flex-direction: column;
+      gap: 1.6rem;
     }
     .pricing-cards {
       flex-direction: column;
       align-items: center;
+      gap: 2rem;
     }
     #stats {
       flex-direction: column;
-      gap: 1.6rem;
+      gap: 2.5rem;
     }
   }
 </style>
@@ -526,56 +557,39 @@
       <h2>Your modern bio link platform</h2>
       <p>Customize your personal landing page with music, badges, backgrounds, social links, and more — all in one place.</p>
       <div id="hero-buttons">
-        <button class="btn" id="btnLoginMain" aria-label="Login to your account">Login</button>
-        <button class="btn" id="btnRegisterMain" aria-label="Register a new account">Register</button>
+        <button id="btnLoginMain" class="btn" aria-label="Login to your account">Login</button>
+        <button id="btnRegisterMain" class="btn" aria-label="Register new account">Register</button>
       </div>
     </div>
-    <div id="hero-visual" aria-hidden="true">
-      <div class="avatar" title="User Avatar">G</div>
+    <aside id="hero-visual" aria-label="Profile preview with badges">
+      <img src="assets/pfp.png" alt="User profile picture" class="pfp" />
       <div class="username">griefuser</div>
       <div class="badges" aria-label="User badges">
-        <div class="badge" title="OG Badge">OG</div>
-        <div class="badge" title="Premium Badge">Premium</div>
-        <div class="badge" title="Creative Badge">Creative</div>
+        <div class="badge" title="OG Badge — Awarded to first 50 users">OG</div>
+        <div class="badge" title="Premium Subscriber Badge">Premium</div>
+        <div class="badge" title="Creative Badge — For advanced profile customization">Creative</div>
       </div>
-    </div>
+    </aside>
   </section>
 
   <!-- Features -->
   <section id="features" aria-label="Platform features">
-    <h2>Key Features</h2>
+    <h2>Features</h2>
     <ul>
-      <li>Fully customizable profiles: backgrounds, avatars, custom cursors</li>
-      <li>Embed music players from popular platforms</li>
-      <li>Real-time dashboard with file upload support</li>
-      <li>Unique UID system for verified usernames</li>
-      <li>Premium subscription with exclusive customization</li>
-      <li>Privacy focused & secure login system</li>
-      <li>Admin tools to manage users, badges & more</li>
-      <li>Responsive design, mobile friendly</li>
+      <li>Fully customizable profiles with backgrounds, profile pics, and custom cursors</li>
+      <li>Embed your favorite music players directly on your page</li>
+      <li>Unique UID system assigning exclusive badges like OG, Premium, and more</li>
+      <li>Seamless real-time dashboard for editing your bio page</li>
+      <li>File uploads supported for profile pictures and backgrounds</li>
+      <li>Secure login and account management with privacy-first design</li>
     </ul>
   </section>
 
-  <!-- Profile Preview -->
-  <section id="profile-preview" aria-label="Example profile preview">
-    <h2>Profile Preview</h2>
-    <div class="mockup" aria-hidden="true">
-      <div class="mockup-header">
-        <div class="mockup-avatar">G</div>
-        <div class="mockup-username">griefuser</div>
-      </div>
-      <div class="mockup-badges" role="list" aria-label="User badges">
-        <div class="mockup-badge" role="listitem" title="OG Badge">OG</div>
-        <div class="mockup-badge" role="listitem" title="Premium Badge">Premium</div>
-      </div>
-      <div class="mockup-music">🎵 Currently playing: "Chill Vibes"</div>
-    </div>
-  </section>
-
   <!-- UID & Badges -->
-  <section id="uid-badges" aria-label="User ID and badges information">
+  <section id="uid-badges" aria-label="UID system and badges information">
     <h2>UID & Badges</h2>
-    <p>Users are assigned a unique numeric User ID (UID) on signup. Badges can be unlocked based on UID or activity.</p>
+    <p>Users earn badges based on their UID or subscription status. The first 50 users (UID 1-50) get the prestigious OG Badge. Premium subscribers receive a Premium Badge, and creative users earn special Creative Badges.</p>
+
     <div class="badge-list">
       <article class="badge-card" tabindex="0">
         <img src="assets/ogbadge.png" alt="OG Badge icon" />
@@ -591,11 +605,6 @@
         <img src="assets/creativebadge.png" alt="Creative Badge icon" />
         <h4>Creative Badge</h4>
         <p>For users who utilize advanced profile customization tools creatively.</p>
-      </article>
-      <article class="badge-card" tabindex="0">
-        <img src="assets/activebadge.png" alt="Active User Badge icon" />
-        <h4>Active User</h4>
-        <p>Earned by users active for over 6 months continuously.</p>
       </article>
     </div>
 
@@ -657,7 +666,7 @@
           <li>Standard UID assignment</li>
           <li>Social links & music embeds</li>
         </ul>
-        <button class="btn">Get Started</button>
+        <button class="btn" aria-label="Get started with free plan">Get Started</button>
       </div>
       <div class="pricing-card" tabindex="0">
         <h3>Premium</h3>
@@ -669,7 +678,7 @@
           <li>File uploads: PFP & backgrounds</li>
           <li>Custom cursors & embeds</li>
         </ul>
-        <button class="btn">Upgrade Now</button>
+        <button class="btn" aria-label="Upgrade to premium plan">Upgrade Now</button>
       </div>
     </div>
   </section>
@@ -705,13 +714,19 @@
 </footer>
 
 <script>
-  // Demo button handlers
+  // Demo nav toggle for Login
   const nav = document.querySelector('nav');
   document.getElementById('btnLoginMain').addEventListener('click', () => {
-    nav.innerHTML = `<a href="#dashboard">Dashboard</a> <a href="#" id="logoutLink">Logout</a>`;
+    nav.innerHTML = `
+      <a href="#dashboard">Dashboard</a> 
+      <a href="#" id="logoutLink">Logout</a>
+    `;
     document.getElementById('logoutLink').onclick = e => {
       e.preventDefault();
-      nav.innerHTML = `<a href="#login">Login</a> <a href="#register">Register</a>`;
+      nav.innerHTML = `
+        <a href="#login">Login</a>
+        <a href="#register">Register</a>
+      `;
     };
   });
   document.getElementById('btnRegisterMain').addEventListener('click', () => {
