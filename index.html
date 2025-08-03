@@ -13,29 +13,26 @@
   }
   body {
     margin: 0;
-    min-height: 100vh;
     font-family: 'Poppins', sans-serif;
-    background: #181818;
-    color: #ddd;
+    background: #121212;
+    color: #e0e0e0;
+    min-height: 100vh;
+    line-height: 1.5;
     scroll-behavior: smooth;
-    line-height: 1.6;
-    user-select: none;
   }
   a {
     color: #00bcd4;
     text-decoration: none;
-    transition: color 0.25s ease;
+    transition: color 0.3s ease;
   }
   a:hover {
     color: #26c6da;
   }
 
-  /* Container */
   .container {
-    width: 90%;
     max-width: 960px;
     margin: 0 auto;
-    padding: 3rem 0;
+    padding: 2rem 1rem;
   }
 
   /* Header */
@@ -43,466 +40,283 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #333;
-    padding-bottom: 1.5rem;
+    padding: 1.4rem 1rem;
+    border-bottom: 1px solid #222;
+    background: #121212;
     position: sticky;
     top: 0;
-    background: #181818;
-    z-index: 1000;
+    z-index: 999;
   }
   header h1 {
     font-weight: 700;
     font-size: 2rem;
-    letter-spacing: 0.1em;
     color: #00bcd4;
-    margin: 0;
+    letter-spacing: 0.12em;
   }
   nav a {
     font-weight: 600;
-    margin-left: 2rem;
-    font-size: 1.05rem;
-    color: #00bcd4;
-  }
-  nav a:hover {
-    color: #26c6da;
+    margin-left: 1.8rem;
+    font-size: 1rem;
   }
 
-  /* Buttons */
-  .btn {
-    background: #00bcd4;
-    border: none;
-    border-radius: 14px;
-    padding: 0.7rem 2rem;
-    font-weight: 700;
-    font-size: 1.1rem;
-    color: #181818;
-    cursor: pointer;
-    transition: background 0.3s ease;
-    user-select: none;
-  }
-  .btn:hover {
-    background: #26c6da;
-  }
-
-  /* Hero (split layout) */
+  /* Hero section */
   #hero {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 3rem;
-    align-items: center;
-    padding-bottom: 4rem;
-    border-bottom: 1px solid #333;
+    text-align: center;
+    padding: 5rem 1rem 4rem;
+    background: linear-gradient(135deg, #0d7377, #14ffec);
+    color: #121212;
+    border-radius: 24px;
+    margin: 2rem auto 4rem;
+    max-width: 700px;
+    box-shadow: 0 10px 30px rgba(20,255,236,0.35);
   }
-  #hero-text {
-    flex: 1 1 350px;
-    max-width: 600px;
-  }
-  #hero-text h2 {
-    font-weight: 700;
-    font-size: 2.6rem;
-    margin-bottom: 1.5rem;
-    color: #00bcd4;
-  }
-  #hero-text p {
-    font-size: 1.2rem;
-    margin-bottom: 2.5rem;
-    color: #ccc;
-  }
-  #hero-buttons {
-    display: flex;
-    gap: 1.5rem;
-  }
-
-  #hero-visual {
-    flex: 1 1 320px;
-    max-width: 360px;
-    background: #222;
-    border-radius: 20px;
-    box-shadow: 0 6px 18px rgba(0, 188, 212, 0.3);
-    padding: 2.5rem 2rem;
-    color: #eee;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    user-select: none;
-  }
-  #hero-visual img.pfp {
+  #hero img.pfp {
     width: 160px;
     height: 160px;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 0 8px #00bcd4cc;
+    box-shadow: 0 0 25px #00bcd4cc;
+    margin-bottom: 1.8rem;
   }
-  #hero-visual .username {
+  #hero h2 {
+    font-size: 2.8rem;
+    margin-bottom: 0.4rem;
     font-weight: 700;
-    font-size: 1.6rem;
-    margin-bottom: 1rem;
-    color: #00bcd4;
   }
-  #hero-visual .badges {
+  #hero p {
+    font-size: 1.3rem;
+    margin-bottom: 2.6rem;
+    font-weight: 500;
+  }
+  #hero .btn-group {
     display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
     justify-content: center;
+    gap: 1.6rem;
   }
-  #hero-visual .badge {
-    background: #00bcd4;
-    border-radius: 10px;
-    padding: 0.5rem 1.2rem;
-    font-size: 1rem;
-    font-weight: 600;
-    color: #181818;
-    box-shadow: 0 0 6px #00bcd4aa;
+  #hero .btn {
+    background: #121212;
+    color: #00bcd4;
+    border: 2.5px solid #00bcd4;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 1.15rem;
+    padding: 0.8rem 2.4rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
     user-select: none;
+  }
+  #hero .btn:hover {
+    background-color: #00bcd4;
+    color: #121212;
+  }
+
+  /* Badges horizontal scroll */
+  #badges-bar {
+    display: flex;
+    overflow-x: auto;
+    gap: 1.6rem;
+    padding: 1rem 0 3rem;
+    max-width: 960px;
+    margin: 0 auto 3rem;
+  }
+  #badges-bar::-webkit-scrollbar {
+    height: 8px;
+  }
+  #badges-bar::-webkit-scrollbar-thumb {
+    background-color: #00bcd4cc;
+    border-radius: 4px;
+  }
+  .badge-pill {
+    flex: 0 0 auto;
+    background: #222;
+    border-radius: 30px;
+    padding: 0.8rem 1.6rem;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #00bcd4;
+    box-shadow: 0 0 8px #00bcd4bb;
+    cursor: default;
+    user-select: none;
+    white-space: nowrap;
     transition: background 0.25s ease;
   }
-  #hero-visual .badge:hover {
-    background: #26c6da;
+  .badge-pill:hover {
+    background: #00bcd4;
+    color: #121212;
   }
 
-  /* Features section */
+  /* Features stacked vertical with icons */
   #features {
-    padding: 4rem 0;
-    border-bottom: 1px solid #333;
-  }
-  #features h2 {
-    color: #00bcd4;
-    font-weight: 700;
-    font-size: 2.4rem;
-    margin-bottom: 2rem;
-  }
-  #features ul {
-    list-style: none;
-    padding-left: 0;
-    max-width: 720px;
-    margin: 0 auto;
-  }
-  #features ul li {
-    background: #222;
-    padding: 1.5rem 2rem;
-    margin-bottom: 1.4rem;
-    border-radius: 16px;
-    box-shadow: 0 3px 10px rgba(0,188,212,0.15);
-    font-weight: 500;
-    font-size: 1.1rem;
-  }
-
-  /* Profile preview */
-  #profile-preview {
-    padding: 4rem 0;
-    border-bottom: 1px solid #333;
-    background: #222;
-    border-radius: 24px;
     max-width: 720px;
     margin: 0 auto 4rem;
-    box-shadow: 0 7px 20px rgba(0,188,212,0.25);
   }
-  #profile-preview h2 {
-    color: #00bcd4;
-    font-weight: 700;
-    font-size: 2.1rem;
-    margin-bottom: 1.2rem;
-    text-align: center;
-  }
-  #profile-preview .mockup {
-    background: #181818;
-    border-radius: 18px;
-    padding: 2rem 2.5rem;
-    color: #ddd;
-    box-shadow: inset 0 0 20px rgba(0,188,212,0.15);
-  }
-  #profile-preview .mockup-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1.6rem;
-  }
-  #profile-preview .mockup-avatar {
-    width: 96px;
-    height: 96px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 1.6rem;
-    box-shadow: 0 0 10px #00bcd4cc;
-  }
-  #profile-preview .mockup-username {
-    font-weight: 700;
-    font-size: 1.7rem;
-    color: #00bcd4;
-  }
-  #profile-preview .mockup-badges {
-    margin-top: 1rem;
-    display: flex;
-    gap: 1.1rem;
-  }
-  #profile-preview .mockup-badge {
-    background: #00bcd4;
-    padding: 0.5rem 1rem;
-    border-radius: 12px;
-    font-weight: 600;
-    font-size: 1rem;
-    color: #181818;
-    user-select: none;
-    box-shadow: 0 0 6px #00bcd4cc;
-    transition: background 0.2s ease;
-    cursor: default;
-  }
-  #profile-preview .mockup-badge:hover {
-    background: #26c6da;
-  }
-  #profile-preview .mockup-music {
-    background: #181818;
-    margin-top: 1.8rem;
-    padding: 1rem 1.2rem;
-    border-radius: 12px;
-    font-size: 1rem;
-    color: #bbb;
-    font-style: italic;
-    text-align: center;
-  }
-
-  /* UID + Badges */
-  #uid-badges {
-    padding: 4rem 0;
-    max-width: 720px;
-    margin: 0 auto;
-  }
-  #uid-badges h2 {
-    color: #00bcd4;
-    font-weight: 700;
+  #features h2 {
     font-size: 2.4rem;
-    margin-bottom: 1.6rem;
-    text-align: center;
-  }
-  .badge-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.8rem;
-    justify-content: center;
-  }
-  .badge-card {
-    background: #222;
-    border-radius: 18px;
-    flex: 1 1 220px;
-    padding: 2rem 1.6rem;
-    box-shadow: 0 4px 15px rgba(0,188,212,0.2);
-    cursor: default;
-    transition: background 0.3s ease;
-  }
-  .badge-card:hover {
-    background: #00bcd422;
-  }
-  .badge-card img {
-    width: 54px;
-    height: 54px;
-    margin-bottom: 1rem;
-    user-select: none;
-  }
-  .badge-card h4 {
-    margin: 0 0 0.5rem;
     font-weight: 700;
     color: #00bcd4;
-    font-size: 1.3rem;
-  }
-  .badge-card p {
-    margin: 0;
-    font-size: 1rem;
-    color: #bbb;
-    line-height: 1.4;
-  }
-
-  .uid-tiers {
-    margin-top: 3rem;
-    background: #222;
-    padding: 1.6rem 2rem;
-    border-radius: 16px;
-    max-width: 560px;
-    margin-left: auto;
-    margin-right: auto;
-    color: #ccc;
-  }
-  .uid-tiers h3 {
-    color: #00bcd4;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    font-size: 1.4rem;
-  }
-  .uid-tiers p {
-    margin: 0.4rem 0;
-    font-weight: 500;
-  }
-
-  /* Roadmap */
-  #roadmap {
-    max-width: 720px;
-    margin: 4rem auto;
-    border-left: 3px solid #00bcd4;
-    padding-left: 2rem;
-  }
-  #roadmap h2 {
-    color: #00bcd4;
-    font-weight: 700;
     margin-bottom: 2rem;
     text-align: center;
-    font-size: 2.4rem;
+  }
+  .feature-item {
+    display: flex;
+    align-items: center;
+    gap: 1.8rem;
+    background: #1c1c1c;
+    border-radius: 20px;
+    padding: 1.8rem 2.4rem;
+    margin-bottom: 1.8rem;
+    box-shadow: 0 0 12px #00bcd4bb;
+  }
+  .feature-icon {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    filter: drop-shadow(0 0 3px #00bcd4cc);
+    user-select: none;
+  }
+  .feature-text {
+    flex: 1;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #ddd;
+  }
+
+  /* UID tiers grid */
+  #uid-tiers {
+    max-width: 960px;
+    margin: 0 auto 4rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+  }
+  .tier-card {
+    background: #222;
+    border-radius: 22px;
+    padding: 2rem 1.8rem;
+    box-shadow: 0 6px 20px #00bcd433;
+    color: #00bcd4;
+    text-align: center;
+    user-select: none;
+    cursor: default;
+    transition: background-color 0.3s ease;
+  }
+  .tier-card:hover {
+    background-color: #00bcd422;
+  }
+  .tier-card h3 {
+    margin-bottom: 1rem;
+    font-weight: 700;
+    font-size: 1.4rem;
+  }
+  .tier-card p {
+    font-weight: 500;
+    font-size: 1rem;
+    color: #ccc;
+  }
+
+  /* Roadmap & Pricing side by side */
+  #bottom-sections {
+    max-width: 960px;
+    margin: 0 auto 6rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+
+  #roadmap, #pricing {
+    background: #1a1a1a;
+    border-radius: 20px;
+    padding: 2rem 2.5rem;
+    box-shadow: 0 6px 18px #00bcd433;
+  }
+  #roadmap h2, #pricing h2 {
+    color: #00bcd4;
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 1.8rem;
+    text-align: center;
   }
   .roadmap-item {
-    margin-bottom: 2.5rem;
-    position: relative;
+    margin-bottom: 1.5rem;
+    padding-left: 1rem;
+    border-left: 4px solid #00bcd4;
   }
-  .roadmap-item::before {
-    content: '';
-    position: absolute;
-    left: -14px;
-    top: 6px;
-    width: 20px;
-    height: 20px;
-    background: #00bcd4;
-    border-radius: 50%;
-    box-shadow: 0 0 12px rgba(0,188,212,0.7);
+  .roadmap-item:last-child {
+    margin-bottom: 0;
   }
   .roadmap-item h3 {
-    margin: 0 0 0.5rem;
+    margin: 0 0 0.3rem 0;
     font-weight: 700;
-    font-size: 1.2rem;
+    color: #26c6da;
   }
   .roadmap-item p {
     margin: 0;
-    color: #bbb;
+    color: #ccc;
     font-size: 1rem;
-    max-width: 700px;
   }
 
-  /* Community stats */
-  #stats {
-    max-width: 720px;
-    margin: 5rem auto 6rem;
-    display: flex;
-    gap: 4rem;
-    justify-content: center;
-    text-align: center;
-    color: #00bcd4;
-  }
-  #stats div {
-    font-weight: 700;
-  }
-  #stats div span {
-    display: block;
-    font-size: 2.6rem;
-    line-height: 1;
-  }
-  #stats div label {
-    font-weight: 500;
-    font-size: 1.2rem;
-    color: #bbb;
-  }
-
-  /* Pricing */
-  #pricing {
-    max-width: 720px;
-    margin: 0 auto 6rem;
-  }
-  #pricing h2 {
-    color: #00bcd4;
-    font-weight: 700;
-    margin-bottom: 2rem;
-    text-align: center;
-    font-size: 2.4rem;
-  }
   .pricing-cards {
     display: flex;
-    gap: 2.8rem;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
   }
   .pricing-card {
     background: #222;
-    padding: 2.5rem 2rem;
-    border-radius: 20px;
-    box-shadow: 0 6px 18px rgba(0,188,212,0.3);
-    flex: 1 1 320px;
+    border-radius: 18px;
+    padding: 2rem 1.8rem;
+    box-shadow: 0 5px 15px #00bcd433;
     color: #ddd;
-    display: flex;
-    flex-direction: column;
   }
   .pricing-card h3 {
     margin-top: 0;
     color: #00bcd4;
-    font-size: 1.7rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  .pricing-card p.price {
+    font-weight: 700;
+    font-size: 2rem;
+    color: #26c6da;
+    margin: 0 0 1.6rem;
   }
   .pricing-card ul {
     list-style: none;
-    padding-left: 0;
-    margin-top: 1.2rem;
-    flex-grow: 1;
+    padding-left: 1rem;
+    margin: 0 0 1.6rem;
   }
   .pricing-card ul li {
-    margin-bottom: 1.1rem;
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+  }
+  .pricing-card button {
+    background: #00bcd4;
+    border: none;
+    border-radius: 28px;
+    color: #121212;
+    padding: 0.7rem 1.8rem;
+    font-weight: 700;
     font-size: 1.1rem;
-  }
-  .pricing-card strong {
-    color: #26c6da;
-  }
-  .pricing-card .price {
-    font-size: 2.4rem;
-    margin: 1.5rem 0 2rem;
-    font-weight: 700;
-    color: #00bcd4;
-  }
-  .pricing-card .btn {
-    width: 100%;
-    text-align: center;
-    display: block;
-  }
-
-  /* FAQ */
-  #faq {
-    max-width: 720px;
-    margin: 0 auto 6rem;
-  }
-  #faq h2 {
-    color: #00bcd4;
-    font-weight: 700;
-    margin-bottom: 2rem;
-    text-align: center;
-    font-size: 2.4rem;
-  }
-  details {
-    margin-bottom: 1.4rem;
-    background: #222;
-    border-radius: 14px;
-    padding: 1.2rem 1.8rem;
-    color: #ccc;
     cursor: pointer;
     user-select: none;
+    transition: background 0.3s ease;
   }
-  summary {
-    font-weight: 600;
-    font-size: 1.1rem;
-    outline: none;
-  }
-  details[open] {
-    background: #00bcd422;
-    color: #ddd;
-  }
-  details p {
-    margin-top: 1rem;
-    font-size: 1rem;
+  .pricing-card button:hover {
+    background: #26c6da;
   }
 
   /* Footer */
   footer {
-    background: #181818;
-    color: #555;
     text-align: center;
-    padding: 3rem 1rem 5rem;
-    font-size: 0.95rem;
-    border-top: 1px solid #333;
+    color: #666;
+    padding: 3rem 1rem 6rem;
+    border-top: 1px solid #222;
+    user-select: none;
   }
   footer a {
     margin: 0 1.2rem;
     color: #00bcd4;
-    transition: color 0.25s ease;
+    transition: color 0.3s ease;
   }
   footer a:hover {
     color: #26c6da;
@@ -514,195 +328,148 @@
   }
 
   /* Responsive */
-  @media (max-width: 720px) {
+  @media (max-width: 840px) {
+    #bottom-sections {
+      grid-template-columns: 1fr;
+    }
     #hero {
+      max-width: 90vw;
+    }
+  }
+  @media (max-width: 420px) {
+    #badges-bar {
+      padding-bottom: 1rem;
+    }
+    .feature-item {
       flex-direction: column;
       text-align: center;
-      padding-bottom: 3rem;
+      gap: 1rem;
     }
-    #hero-visual {
-      max-width: 100%;
-    }
-    .badge-list {
-      flex-direction: column;
-      gap: 1.6rem;
-    }
-    .pricing-cards {
-      flex-direction: column;
-      align-items: center;
-      gap: 2rem;
-    }
-    #stats {
-      flex-direction: column;
-      gap: 2.5rem;
+    .feature-icon {
+      margin: 0 auto;
     }
   }
 </style>
 </head>
 <body>
 
-<header class="container" role="banner">
+<header role="banner" class="container">
   <h1>grief.bio</h1>
-  <nav aria-label="User navigation">
+  <nav aria-label="Primary navigation">
     <a href="#login">Login</a>
     <a href="#register">Register</a>
   </nav>
 </header>
 
-<main role="main" class="container">
+<main role="main">
 
   <!-- Hero -->
-  <section id="hero" aria-label="Welcome to grief.bio">
-    <div id="hero-text">
-      <h2>Your modern bio link platform</h2>
-      <p>Customize your personal landing page with music, badges, backgrounds, social links, and more — all in one place.</p>
-      <div id="hero-buttons">
-        <button id="btnLoginMain" class="btn" aria-label="Login to your account">Login</button>
-        <button id="btnRegisterMain" class="btn" aria-label="Register new account">Register</button>
-      </div>
+  <section id="hero" aria-label="User profile hero" role="region">
+    <img src="assets/pfp.png" alt="Profile picture of griefuser" class="pfp" />
+    <h2>griefuser</h2>
+    <p>Customizable bio links, music embeds, badges & more — all on one page.</p>
+    <div class="btn-group">
+      <button class="btn" id="btnLoginHero" aria-label="Login to your account">Login</button>
+      <button class="btn" id="btnRegisterHero" aria-label="Register new account">Register</button>
     </div>
-    <aside id="hero-visual" aria-label="Profile preview with badges">
-      <img src="assets/pfp.png" alt="User profile picture" class="pfp" />
-      <div class="username">griefuser</div>
-      <div class="badges" aria-label="User badges">
-        <div class="badge" title="OG Badge — Awarded to first 50 users">OG</div>
-        <div class="badge" title="Premium Subscriber Badge">Premium</div>
-        <div class="badge" title="Creative Badge — For advanced profile customization">Creative</div>
-      </div>
-    </aside>
   </section>
 
-  <!-- Features -->
+  <!-- Badges horizontal scroll -->
+  <section id="badges-bar" aria-label="Available badges">
+    <div class="badge-pill" title="OG Badge — awarded to first 50 users">OG</div>
+    <div class="badge-pill" title="Premium subscriber badge">Premium</div>
+    <div class="badge-pill" title="Creative profile customizer">Creative</div>
+    <div class="badge-pill" title="Veteran user badge coming soon">Veteran</div>
+    <div class="badge-pill" title="Exclusive supporter badge">Supporter</div>
+  </section>
+
+  <!-- Features stacked -->
   <section id="features" aria-label="Platform features">
     <h2>Features</h2>
-    <ul>
-      <li>Fully customizable profiles with backgrounds, profile pics, and custom cursors</li>
-      <li>Embed your favorite music players directly on your page</li>
-      <li>Unique UID system assigning exclusive badges like OG, Premium, and more</li>
-      <li>Seamless real-time dashboard for editing your bio page</li>
-      <li>File uploads supported for profile pictures and backgrounds</li>
-      <li>Secure login and account management with privacy-first design</li>
-    </ul>
-  </section>
-
-  <!-- UID & Badges -->
-  <section id="uid-badges" aria-label="UID system and badges information">
-    <h2>UID & Badges</h2>
-    <p>Users earn badges based on their UID or subscription status. The first 50 users (UID 1-50) get the prestigious OG Badge. Premium subscribers receive a Premium Badge, and creative users earn special Creative Badges.</p>
-
-    <div class="badge-list">
-      <article class="badge-card" tabindex="0">
-        <img src="assets/ogbadge.png" alt="OG Badge icon" />
-        <h4>OG Badge</h4>
-        <p>Awarded to first 50 users (UID 1–50). Exclusive early adopters badge.</p>
-      </article>
-      <article class="badge-card" tabindex="0">
-        <img src="assets/premiumbadge.png" alt="Premium Badge icon" />
-        <h4>Premium Badge</h4>
-        <p>Granted to premium subscribers with enhanced customization features.</p>
-      </article>
-      <article class="badge-card" tabindex="0">
-        <img src="assets/creativebadge.png" alt="Creative Badge icon" />
-        <h4>Creative Badge</h4>
-        <p>For users who utilize advanced profile customization tools creatively.</p>
-      </article>
+    <div class="feature-item">
+      <img src="assets/creative.png" alt="Creative icon" class="feature-icon" />
+      <div class="feature-text">Fully customizable profiles with backgrounds, profile pictures, custom cursors, and music embeds.</div>
     </div>
-
-    <div class="uid-tiers" aria-label="UID tiers explanation">
-      <h3>UID Tiers</h3>
-      <p><strong>UID 1–50:</strong> OG Early Adopters Badge</p>
-      <p><strong>UID 51–500:</strong> Veteran Badge (coming soon)</p>
-      <p><strong>UID 501+:</strong> Standard User</p>
+    <div class="feature-item">
+      <img src="assets/booster.png" alt="Booster icon" class="feature-icon" />
+      <div class="feature-text">Intuitive real-time dashboard with seamless file uploads and social link management.</div>
+    </div>
+    <div class="feature-item">
+      <img src="assets/crownw.png" alt="Crown icon" class="feature-icon" />
+      <div class="feature-text">Secure login, privacy-first account management, and admin controls.</div>
     </div>
   </section>
 
-  <!-- Roadmap -->
-  <section id="roadmap" aria-label="Platform roadmap">
-    <h2>Roadmap</h2>
-    <div class="roadmap-item">
-      <h3>Jan 2024</h3>
-      <p>Platform launch — grief.bio goes live to public.</p>
+  <!-- UID tiers -->
+  <section id="uid-tiers" aria-label="User ID badge tiers">
+    <div class="tier-card" tabindex="0">
+      <h3>UID 1-50</h3>
+      <p>OG Badge — Early adopters with exclusive perks.</p>
     </div>
-    <div class="roadmap-item">
-      <h3>Feb 2024</h3>
-      <p>UID system introduced with OG badges for first 50 users.</p>
+    <div class="tier-card" tabindex="0">
+      <h3>UID 51-500</h3>
+      <p>Veteran Badge — Recognizing loyal users (coming soon).</p>
     </div>
-    <div class="roadmap-item">
-      <h3>Q3 2024</h3>
-      <p>Premium subscription launch with exclusive badges and features.</p>
-    </div>
-    <div class="roadmap-item">
-      <h3>Q4 2025</h3>
-      <p>Expanded social link integrations and dashboard improvements.</p>
+    <div class="tier-card" tabindex="0">
+      <h3>UID 501+</h3>
+      <p>Standard User — Access to core features and customization.</p>
     </div>
   </section>
 
-  <!-- Community Stats -->
-  <section id="stats" aria-label="Community statistics">
-    <div>
-      <span>5,000+</span>
-      <label>Users</label>
-    </div>
-    <div>
-      <span>120,000+</span>
-      <label>Links Created</label>
-    </div>
-    <div>
-      <span>1,200+</span>
-      <label>Active Premium Users</label>
-    </div>
-  </section>
-
-  <!-- Pricing -->
-  <section id="pricing" aria-label="Pricing plans">
-    <h2>Pricing & Plans</h2>
-    <div class="pricing-cards">
-      <div class="pricing-card" tabindex="0">
-        <h3>Free</h3>
-        <p class="price">Free</p>
-        <ul>
-          <li>Customizable profile</li>
-          <li>Basic badge system</li>
-          <li>Standard UID assignment</li>
-          <li>Social links & music embeds</li>
-        </ul>
-        <button class="btn" aria-label="Get started with free plan">Get Started</button>
+  <!-- Roadmap & Pricing -->
+  <section id="bottom-sections" aria-label="Roadmap and Pricing">
+    <article id="roadmap" role="region">
+      <h2>Roadmap</h2>
+      <div class="roadmap-item">
+        <h3>Jan 2024</h3>
+        <p>grief.bio platform launch.</p>
       </div>
-      <div class="pricing-card" tabindex="0">
-        <h3>Premium</h3>
-        <p class="price">$7 / month</p>
-        <ul>
-          <li>All Free features</li>
-          <li>Exclusive badges & priority UID</li>
-          <li>Advanced customization</li>
-          <li>File uploads: PFP & backgrounds</li>
-          <li>Custom cursors & embeds</li>
-        </ul>
-        <button class="btn" aria-label="Upgrade to premium plan">Upgrade Now</button>
+      <div class="roadmap-item">
+        <h3>Feb 2024</h3>
+        <p>UID and OG badges introduced.</p>
       </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section id="faq" aria-label="Frequently Asked Questions">
-    <h2>FAQ</h2>
-    <details>
-      <summary>How does UID assignment work?</summary>
-      <p>Each user is assigned a unique ID when registering, which determines their badge and privileges.</p>
-    </details>
-    <details>
-      <summary>What customization options are available?</summary>
-      <p>Profile backgrounds, profile pictures, music embeds, custom cursors, and social link integration.</p>
-    </details>
-    <details>
-      <summary>How do I upgrade to premium?</summary>
-      <p>You can upgrade anytime from your dashboard with various payment options.</p>
-    </details>
+      <div class="roadmap-item">
+        <h3>Q3 2024</h3>
+        <p>Premium subscriptions with exclusive badges and features.</p>
+      </div>
+      <div class="roadmap-item">
+        <h3>Q4 2025</h3>
+        <p>Expanded social link integrations and dashboard upgrades.</p>
+      </div>
+    </article>
+    <article id="pricing" role="region">
+      <h2>Pricing & Plans</h2>
+      <div class="pricing-cards">
+        <div class="pricing-card" tabindex="0">
+          <h3>Free</h3>
+          <p class="price">Free</p>
+          <ul>
+            <li>Customizable profile</li>
+            <li>Basic badges</li>
+            <li>Standard UID</li>
+            <li>Music & social embeds</li>
+          </ul>
+          <button>Get Started</button>
+        </div>
+        <div class="pricing-card" tabindex="0">
+          <h3>Premium</h3>
+          <p class="price">$7 / month</p>
+          <ul>
+            <li>All Free features</li>
+            <li>Exclusive badges</li>
+            <li>Advanced customization</li>
+            <li>File uploads</li>
+            <li>Custom cursors</li>
+          </ul>
+          <button>Upgrade Now</button>
+        </div>
+      </div>
+    </article>
   </section>
 
 </main>
 
-<footer>
+<footer role="contentinfo">
   &copy; 2025 grief.bio — Made with 💙 by grief
   <br />
   <a href="https://instagram.com/yourhandle" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
@@ -714,11 +481,10 @@
 </footer>
 
 <script>
-  // Demo nav toggle for Login
   const nav = document.querySelector('nav');
-  document.getElementById('btnLoginMain').addEventListener('click', () => {
+  document.getElementById('btnLoginHero').addEventListener('click', () => {
     nav.innerHTML = `
-      <a href="#dashboard">Dashboard</a> 
+      <a href="#dashboard">Dashboard</a>
       <a href="#" id="logoutLink">Logout</a>
     `;
     document.getElementById('logoutLink').onclick = e => {
@@ -729,7 +495,7 @@
       `;
     };
   });
-  document.getElementById('btnRegisterMain').addEventListener('click', () => {
+  document.getElementById('btnRegisterHero').addEventListener('click', () => {
     alert('Registration form would open here (demo)');
   });
 </script>
