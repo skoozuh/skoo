@@ -17,11 +17,13 @@
       font-family: 'Poppins', sans-serif;
       background: #0f1115;
       color: #e1e1e1;
+      scroll-behavior: smooth;
+      line-height: 1.5;
       display: flex;
       flex-direction: column;
       align-items: center;
-      scroll-behavior: smooth;
-      line-height: 1.5;
+      padding: 1.5rem 1rem;
+      user-select: none;
     }
     a {
       color: #4dabf7;
@@ -36,108 +38,76 @@
     .container {
       width: 100%;
       max-width: 920px;
-      padding: 0 1.5rem;
     }
 
     /* Header */
     header {
       width: 100%;
-      padding: 1rem 0;
+      padding: 1rem 0 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       border-bottom: 1px solid #222;
       user-select: none;
-      background: rgba(15, 17, 21, 0.95);
-      backdrop-filter: saturate(180%) blur(10px);
       position: sticky;
       top: 0;
+      background: #0f1115cc;
+      backdrop-filter: saturate(180%) blur(8px);
       z-index: 999;
     }
     header h1 {
       font-weight: 700;
-      font-size: 1.8rem;
+      font-size: 1.7rem;
       letter-spacing: 0.12em;
       color: #6a76ff;
-      user-select: none;
       margin: 0;
-    }
-    nav#mainNav {
-      display: flex;
-      gap: 1.8rem;
-    }
-    nav#mainNav button {
-      background: none;
-      border: none;
-      color: #7a7fff;
-      font-weight: 600;
-      font-size: 1rem;
-      letter-spacing: 0.04em;
-      cursor: pointer;
-      padding: 0.3rem 0;
-      border-bottom: 2px solid transparent;
-      transition: color 0.3s ease, border-color 0.3s ease;
       user-select: none;
     }
-    nav#mainNav button:hover {
-      color: #aabaff;
-    }
-    nav#mainNav button.active {
-      color: #aabaff;
-      border-color: #6a76ff;
-    }
-
-    /* User action nav */
     nav#userNav a {
       font-weight: 600;
       margin-left: 1.6rem;
       font-size: 0.95rem;
       color: #7a7fff;
-      user-select: none;
       transition: color 0.3s ease;
     }
     nav#userNav a:hover {
       color: #aabaff;
     }
 
-    /* Main content area */
-    main {
-      margin-top: 2rem;
-      width: 100%;
-      max-width: 920px;
-      padding-bottom: 5rem;
-      min-height: 70vh;
-      user-select: none;
-    }
-
-    /* Section styling */
+    /* Sections */
     section {
       background: #181a1f;
       border-radius: 14px;
-      padding: 2rem 2.5rem;
-      margin-bottom: 3rem;
-      box-shadow: 0 1px 6px rgb(50 60 120 / 0.12);
+      padding: 2rem 2.4rem;
+      margin-bottom: 3.5rem;
+      box-shadow: 0 2px 6px rgb(50 60 120 / 0.08);
+      transition: transform 0.3s ease;
+    }
+    section.tilt:hover {
+      transform: perspective(600px) rotateY(6deg) rotateX(3deg);
+      box-shadow: 0 10px 20px rgb(50 60 120 / 0.15);
     }
     section h2 {
       font-weight: 700;
-      font-size: 2rem;
+      font-size: 1.9rem;
       color: #8ea0ff;
       margin-bottom: 1rem;
       user-select: none;
     }
     section p {
       font-size: 1rem;
-      color: #ccc;
-      max-width: 700px;
+      color: #bbb;
+      max-width: 720px;
       user-select: none;
+      margin-bottom: 1.8rem;
     }
 
     /* Buttons */
     .btn {
       background: linear-gradient(135deg, #6a76ff, #8191ff);
       border: none;
-      border-radius: 18px;
-      padding: 0.7rem 2rem;
+      border-radius: 16px;
+      padding: 0.65rem 1.8rem;
       font-weight: 700;
       font-size: 1rem;
       color: white;
@@ -166,56 +136,48 @@
     /* Badges grid */
     .badges-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 1.6rem;
-      margin-top: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1.4rem;
+      margin-top: 1rem;
     }
     .badge {
       background: #222533;
       border-radius: 14px;
-      padding: 1.4rem;
+      padding: 1.3rem;
       text-align: center;
-      box-shadow: none;
-      user-select: none;
-      transition: box-shadow 0.3s ease;
       cursor: default;
+      transition: box-shadow 0.3s ease;
     }
     .badge:hover {
-      box-shadow: 0 4px 15px rgb(106 118 255 / 0.25);
+      box-shadow: 0 6px 20px rgb(106 118 255 / 0.25);
+      transform: translateY(-4px);
     }
     .badge img {
-      width: 64px;
-      height: 64px;
-      margin-bottom: 0.6rem;
-      user-select: none;
+      width: 56px;
+      height: 56px;
+      margin-bottom: 0.5rem;
       filter: drop-shadow(0 0 4px #6a76ff99);
+      user-select: none;
     }
     .badge h4 {
-      margin: 0.4rem 0 0.2rem;
+      margin: 0.3rem 0 0.1rem;
       color: #8ea0ff;
       font-weight: 700;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
+      user-select: none;
     }
     .badge p {
       margin: 0;
       font-size: 0.9rem;
       color: #bbb;
-    }
-
-    /* Tabs content container */
-    #tabContent > div {
-      display: none;
       user-select: none;
-    }
-    #tabContent > div.active {
-      display: block;
     }
 
     /* Features list */
     ul.features-list {
       list-style: none;
       padding-left: 1rem;
-      max-width: 700px;
+      max-width: 720px;
       margin-top: 1rem;
       color: #bbb;
       font-size: 1rem;
@@ -234,22 +196,46 @@
       font-weight: 700;
     }
 
-    /* FAQ styles */
-    .faq-item {
-      margin-bottom: 1.2rem;
+    /* UID Info */
+    .uid-info {
+      background: #222533;
+      border-radius: 12px;
+      padding: 1rem 1.4rem;
+      margin-top: 1rem;
+      max-width: 720px;
+    }
+    .uid-info h3 {
+      margin-top: 0;
+      color: #8ea0ff;
+      font-weight: 700;
+      font-size: 1.2rem;
       user-select: none;
     }
-    .faq-item summary {
+    .uid-info p {
+      margin: 0.25rem 0 0;
+      font-size: 0.95rem;
+      color: #ccc;
+      user-select: none;
+    }
+
+    /* FAQ styles */
+    details {
+      margin-bottom: 1.2rem;
+      user-select: none;
+      max-width: 720px;
+    }
+    summary {
       cursor: pointer;
       font-weight: 600;
       color: #8ea0ff;
       list-style: none;
       user-select: none;
+      font-size: 1.05rem;
     }
-    .faq-item summary::-webkit-details-marker {
+    summary::-webkit-details-marker {
       display: none;
     }
-    .faq-item p {
+    details p {
       margin: 0.4rem 0 0 1rem;
       color: #bbb;
       font-size: 0.95rem;
@@ -286,7 +272,7 @@
     }
 
     /* Responsive */
-    @media (max-width: 700px) {
+    @media (max-width: 720px) {
       .badges-grid {
         grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
       }
@@ -300,12 +286,6 @@
 
 <header class="container" role="banner">
   <h1>grief.bio</h1>
-  <nav id="mainNav" role="navigation" aria-label="Primary navigation">
-    <button class="active" data-tab="home" aria-current="page">Home</button>
-    <button data-tab="features">Features</button>
-    <button data-tab="badges">Badges</button>
-    <button data-tab="faq">FAQ</button>
-  </nav>
   <nav id="userNav" aria-label="User actions">
     <a href="#login">Login</a>
     <a href="#register">Register</a>
@@ -314,111 +294,115 @@
 
 <main role="main" class="container">
 
-  <div id="tabContent">
+  <!-- Hero / Intro -->
+  <section aria-label="Welcome section" class="tilt">
+    <h2>Modern Bio Link Platform</h2>
+    <p>
+      Create and customize your own unique bio page with music, profile pictures, backgrounds, social links, and more.
+      grief.bio puts you in control of your online presence with easy tools and powerful features.
+    </p>
+    <button class="btn" id="btnLoginMain" aria-label="Login to your account">
+      <img src="assets/play.png" alt="" aria-hidden="true" />
+      Login
+    </button>
+    <button class="btn" id="btnRegisterMain" aria-label="Register a new account">Register</button>
+  </section>
 
-    <!-- Home tab -->
-    <div id="home" class="active" role="region" aria-labelledby="home-tab">
-      <section aria-label="Welcome">
-        <h2>Welcome to grief.bio</h2>
-        <p>
-          grief.bio is a modern bio link platform that allows you to create fully customizable bio pages.
-          Showcase your personality with unique backgrounds, music embeds, social links, and more.
-          Whether you’re a content creator, gamer, or social butterfly, grief.bio puts you in control of your online presence.
-        </p>
-        <button class="btn" id="btnLoginMain" aria-label="Login to your account">
-          <img src="assets/play.png" alt="" aria-hidden="true" />
-          Login
-        </button>
-        <button class="btn" id="btnRegisterMain" aria-label="Register a new account">Register</button>
-      </section>
+  <!-- Features -->
+  <section aria-label="Features overview" class="tilt">
+    <h2>Key Features</h2>
+    <ul class="features-list">
+      <li>Fully customizable profiles: backgrounds, profile pictures, custom cursors</li>
+      <li>Embed music players from popular platforms</li>
+      <li>Real-time dashboard with seamless file uploads</li>
+      <li>Unique UID system for verified usernames</li>
+      <li>Premium subscription with exclusive customization options</li>
+      <li>Secure login and privacy-focused account management</li>
+      <li>Admin panel to manage users, badges, and more</li>
+      <li>Responsive design for all screen sizes</li>
+    </ul>
+  </section>
+
+  <!-- Badges -->
+  <section aria-label="Badges and unlockables" class="tilt">
+    <h2>Badges & Unlockables</h2>
+    <p>Earn badges by achieving milestones on grief.bio. Show off your status and contributions on your profile.</p>
+    <div class="badges-grid">
+      <div class="badge" tabindex="0" aria-describedby="og-badge-desc">
+        <img src="assets/crownw.png" alt="OG Badge" />
+        <h4>OG Badge</h4>
+        <p id="og-badge-desc">For the first 50 users with UIDs 1–50 — true pioneers of grief.bio.</p>
+      </div>
+      <div class="badge" tabindex="0" aria-describedby="premium-badge-desc">
+        <img src="assets/creative.png" alt="Premium Badge" />
+        <h4>Premium Badge</h4>
+        <p id="premium-badge-desc">Unlock by subscribing to premium for extra profile customization options.</p>
+      </div>
+      <div class="badge" tabindex="0" aria-describedby="verified-badge-desc">
+        <img src="assets/booster.png" alt="Verified Badge" />
+        <h4>Verified Badge</h4>
+        <p id="verified-badge-desc">Awarded after completing identity verification to increase trust.</p>
+      </div>
+      <div class="badge" tabindex="0" aria-describedby="creative-badge-desc">
+        <img src="assets/creator.png" alt="Creative Badge" />
+        <h4>Creative Badge</h4>
+        <p id="creative-badge-desc">Given to users who contribute themes, music, and customizations.</p>
+      </div>
+      <div class="badge" tabindex="0" aria-describedby="supporter-badge-desc">
+        <img src="assets/booster.png" alt="Supporter Badge" />
+        <h4>Supporter Badge</h4>
+        <p id="supporter-badge-desc">For users supporting the community via events, feedback, or donations.</p>
+      </div>
     </div>
+  </section>
 
-    <!-- Features tab -->
-    <div id="features" role="region" aria-labelledby="features-tab">
-      <section aria-label="Platform Features">
-        <h2>Platform Features</h2>
-        <ul class="features-list">
-          <li>Fully customizable profiles with backgrounds, profile pictures, and cursors</li>
-          <li>Embed music players from your favorite platforms</li>
-          <li>Real-time dashboard editing with easy file uploads</li>
-          <li>Unique UID system with verified usernames</li>
-          <li>Premium account upgrades for exclusive customization options</li>
-          <li>Secure authentication and privacy controls</li>
-          <li>Admin panel to manage users and badges</li>
-          <li>Responsive design that works on all devices</li>
-        </ul>
-      </section>
+  <!-- UID Info -->
+  <section aria-label="User ID and badge info">
+    <h2>User ID (UID) System</h2>
+    <p>The UID system ensures unique usernames with simple numeric IDs. Early users get special perks:</p>
+    <div class="uid-info" tabindex="0">
+      <h3>UID 1–50</h3>
+      <p>Receive the exclusive <strong>OG Badge</strong> for being early adopters.</p>
     </div>
-
-    <!-- Badges tab -->
-    <div id="badges" role="region" aria-labelledby="badges-tab">
-      <section aria-label="Badges and Unlockables">
-        <h2>Badges & Unlockables</h2>
-        <p>Unlock unique badges by achieving milestones on grief.bio. Badges appear on your profile to show your status and achievements.</p>
-        <div class="badges-grid">
-          <div class="badge" tabindex="0" aria-describedby="og-badge-desc">
-            <img src="assets/crownw.png" alt="OG Badge" />
-            <h4>OG Badge</h4>
-            <p id="og-badge-desc">Awarded to users with UID from 1 to 50. The elite early adopters of grief.bio.</p>
-          </div>
-          <div class="badge" tabindex="0" aria-describedby="premium-badge-desc">
-            <img src="assets/creative.png" alt="Premium Badge" />
-            <h4>Premium Badge</h4>
-            <p id="premium-badge-desc">Granted to users who purchase a premium subscription with advanced customization features.</p>
-          </div>
-          <div class="badge" tabindex="0" aria-describedby="verified-badge-desc">
-            <img src="assets/booster.png" alt="Verified Badge" />
-            <h4>Verified Badge</h4>
-            <p id="verified-badge-desc">For users who have verified their identity and account via our secure system.</p>
-          </div>
-          <div class="badge" tabindex="0" aria-describedby="creative-badge-desc">
-            <img src="assets/creator.png" alt="Creative Badge" />
-            <h4>Creative Badge</h4>
-            <p id="creative-badge-desc">Earned by users who actively create and share custom themes and music embeds.</p>
-          </div>
-          <div class="badge" tabindex="0" aria-describedby="supporter-badge-desc">
-            <img src="assets/booster.png" alt="Supporter Badge" />
-            <h4>Supporter Badge</h4>
-            <p id="supporter-badge-desc">Given to users who contribute to the community through events, feedback, or donations.</p>
-          </div>
-        </div>
-      </section>
+    <div class="uid-info" tabindex="0">
+      <h3>UID 51–500</h3>
+      <p>Access to special profile frames and community recognition badges.</p>
     </div>
-
-    <!-- FAQ tab -->
-    <div id="faq" role="region" aria-labelledby="faq-tab">
-      <section aria-label="Frequently Asked Questions">
-        <h2>Frequently Asked Questions</h2>
-
-        <details class="faq-item" open>
-          <summary>What is grief.bio?</summary>
-          <p>grief.bio is a customizable bio link platform where users create personalized landing pages with music, social links, and badges.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary>How do I get the OG Badge?</summary>
-          <p>The OG Badge is automatically awarded to the first 50 users who register and receive UIDs between 1 and 50.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary>Can I customize my page with music and backgrounds?</summary>
-          <p>Yes! You can upload profile pictures, select backgrounds, and embed music players from various platforms.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary>What payment methods are accepted for premium?</summary>
-          <p>We currently accept major credit cards and PayPal for premium subscriptions.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary>Is my data safe?</summary>
-          <p>Yes, we use modern security standards to protect your data and privacy.</p>
-        </details>
-
-      </section>
+    <div class="uid-info" tabindex="0">
+      <h3>UID 501+</h3>
+      <p>Standard users with full profile customization options.</p>
     </div>
+  </section>
 
-  </div>
+  <!-- FAQ -->
+  <section aria-label="Frequently Asked Questions" class="tilt">
+    <h2>Frequently Asked Questions</h2>
+
+    <details open>
+      <summary>What is grief.bio?</summary>
+      <p>grief.bio is a customizable bio link platform where users can create personalized landing pages with music, social links, and badges.</p>
+    </details>
+
+    <details>
+      <summary>How do I get the OG Badge?</summary>
+      <p>The OG Badge is automatically awarded to the first 50 users with UIDs between 1 and 50.</p>
+    </details>
+
+    <details>
+      <summary>Can I customize my profile with music and backgrounds?</summary>
+      <p>Yes, you can upload profile pictures, select backgrounds, and embed music players from various platforms.</p>
+    </details>
+
+    <details>
+      <summary>What payment methods are accepted for premium?</summary>
+      <p>We currently accept major credit cards and PayPal for premium subscriptions.</p>
+    </details>
+
+    <details>
+      <summary>Is my data safe?</summary>
+      <p>Yes, we use modern security standards to protect your data and privacy.</p>
+    </details>
+  </section>
 
 </main>
 
@@ -435,23 +419,7 @@
 </footer>
 
 <script>
-  // Tab switching logic
-  const tabs = document.querySelectorAll('#mainNav button');
-  const tabContents = document.querySelectorAll('#tabContent > div');
-
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      // Remove active class from all tabs and contents
-      tabs.forEach(t => t.classList.remove('active'));
-      tabContents.forEach(c => c.classList.remove('active'));
-
-      // Activate clicked tab and corresponding content
-      tab.classList.add('active');
-      document.getElementById(tab.dataset.tab).classList.add('active');
-    });
-  });
-
-  // Login/Register buttons demo alert
+  // Login/Register demo alerts
   document.getElementById('btnLoginMain').addEventListener('click', () => {
     alert('Login form would open here (demo)');
   });
