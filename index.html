@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>grief.bio — modern bio link platform</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
@@ -106,13 +107,14 @@
     #hero-left p {
       font-size: 1.1rem;
       line-height: 1.5;
-      margin-bottom: 2rem;
+      margin-bottom: 1.8rem;
       color: #c0c3ffcc;
     }
     #hero-left .btn-group {
       display: flex;
       gap: 1.4rem;
       flex-wrap: wrap;
+      align-items: center;
     }
     #hero-left button {
       cursor: pointer;
@@ -125,6 +127,9 @@
       user-select: none;
       transition: background 0.3s ease, box-shadow 0.3s ease;
       box-shadow: 0 6px 16px rgb(106 118 255 / 0.6);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
     }
     #btnLogin {
       background: #6a76ff;
@@ -145,18 +150,58 @@
       box-shadow: 0 8px 26px rgb(130 145 255 / 0.85);
     }
 
+    #btnLogin img.playIcon,
+    #btnRegister img.playIcon {
+      width: 18px;
+      height: 18px;
+      filter: invert(90%) sepia(20%) saturate(200%) hue-rotate(210deg);
+    }
+
     #hero-right {
       max-width: 380px;
       position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding: 0 0.5rem;
     }
-
-    #hero-right img#gunsImg {
-      max-width: 100%;
+    #hero-right img.badge {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
       border-radius: 14px;
       filter: drop-shadow(0 0 10px #6a76ffcc);
+      user-select: none;
+      transition: transform 0.3s ease;
+      cursor: default;
+    }
+    #hero-right img.badge:hover {
+      transform: scale(1.12) rotate(10deg);
+      filter: drop-shadow(0 0 15px #8191ffdd);
+    }
+
+    /* Social icons below hero-left text */
+    #socials {
+      margin-top: 1.8rem;
+      display: flex;
+      gap: 1.2rem;
+    }
+    #socials a {
+      display: inline-block;
+      width: 28px;
+      height: 28px;
+      filter: brightness(0) invert(1);
+      transition: filter 0.3s ease;
+    }
+    #socials a:hover {
+      filter: brightness(0) invert(0.7) drop-shadow(0 0 4px #6a76ffcc);
+    }
+    #socials img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
       user-select: none;
     }
 
@@ -182,6 +227,7 @@
         0 2px 10px rgb(106 118 255 / 0.2);
       text-align: center;
       transition: background 0.3s ease;
+      position: relative;
     }
     .feature-item:hover {
       background: #2a2e43;
@@ -192,6 +238,15 @@
       color: #6a76ff;
       font-weight: 700;
       font-size: 1.25rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .feature-item h3 img {
+      width: 28px;
+      height: 28px;
+      user-select: none;
     }
     .feature-item p {
       font-weight: 400;
@@ -244,27 +299,56 @@
     <div id="hero-left">
       <h2>Modern Bio Link Platform</h2>
       <p>Create and customize your own unique bio page with music, profile pictures, backgrounds, social links, and more.</p>
+      
       <div class="btn-group">
-        <button id="btnLogin" aria-label="Login to your account">Login</button>
-        <button id="btnRegister" aria-label="Register new account">Register</button>
+        <button id="btnLogin" aria-label="Login to your account">
+          <img src="assets/play.png" alt="" class="playIcon" aria-hidden="true" />
+          Login
+        </button>
+        <button id="btnRegister" aria-label="Register new account">
+          <img src="assets/play.png" alt="" class="playIcon" aria-hidden="true" />
+          Register
+        </button>
+      </div>
+
+      <div id="socials" aria-label="Social media links">
+        <a href="https://instagram.com/yourhandle" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <img src="assets/iglogo.png" alt="Instagram logo" />
+        </a>
+        <a href="https://last.fm/user/yourhandle" target="_blank" rel="noopener noreferrer" aria-label="Last.fm">
+          <img src="assets/lastfmlogo.png" alt="Last.fm logo" />
+        </a>
       </div>
     </div>
-    <div id="hero-right">
-      <img src="assets/guns.png" alt="Decorative graphic" id="gunsImg" />
+
+    <div id="hero-right" aria-hidden="true" aria-label="Badges showcase">
+      <img src="assets/creator.png" alt="Creator badge" class="badge" />
+      <img src="assets/staff.png" alt="Staff badge" class="badge" />
+      <img src="assets/crownw.png" alt="Crown badge" class="badge" />
+      <img src="assets/donator.png" alt="Donator badge" class="badge" />
     </div>
   </section>
 
   <section id="features" aria-label="Features overview">
     <article class="feature-item" tabindex="0">
-      <h3>Fully Customizable</h3>
+      <h3>
+        <img src="assets/creative.png" alt="Creative icon" />
+        Fully Customizable
+      </h3>
       <p>Personalize your bio with backgrounds, profile pictures, custom cursors, and embed music players.</p>
     </article>
     <article class="feature-item" tabindex="0">
-      <h3>Easy to Use</h3>
+      <h3>
+        <img src="assets/booster.png" alt="Booster icon" />
+        Easy to Use
+      </h3>
       <p>Intuitive dashboard lets you edit your profile in real-time with seamless file uploads.</p>
     </article>
     <article class="feature-item" tabindex="0">
-      <h3>Secure & Reliable</h3>
+      <h3>
+        <img src="assets/trophy.png" alt="Trophy icon" />
+        Secure & Reliable
+      </h3>
       <p>Login, register, and manage your account with full privacy and admin controls.</p>
     </article>
   </section>
@@ -347,7 +431,6 @@
     // In real app, you'd display admin panel here
   }
 
-  // Buttons click to navigate
   btnLogin.onclick = () => { location.hash = '#login'; };
   btnRegister.onclick = () => { location.hash = '#register'; };
 
