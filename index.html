@@ -15,24 +15,24 @@
     margin: 0;
     font-family: 'Poppins', sans-serif;
     background: #121212;
-    color: #e0e0e0;
+    color: #d0d0d0;
     min-height: 100vh;
-    line-height: 1.5;
+    line-height: 1.6;
     scroll-behavior: smooth;
   }
   a {
-    color: #00bcd4;
+    color: #0097a7;
     text-decoration: none;
     transition: color 0.3s ease;
   }
   a:hover {
-    color: #26c6da;
+    color: #00acc1;
   }
 
   .container {
     max-width: 960px;
     margin: 0 auto;
-    padding: 2rem 1rem;
+    padding: 3rem 1rem;
   }
 
   /* Header */
@@ -41,7 +41,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 1.4rem 1rem;
-    border-bottom: 1px solid #222;
+    border-bottom: 1px solid #2c2c2c;
     background: #121212;
     position: sticky;
     top: 0;
@@ -50,7 +50,7 @@
   header h1 {
     font-weight: 700;
     font-size: 2rem;
-    color: #00bcd4;
+    color: #0097a7;
     letter-spacing: 0.12em;
   }
   nav a {
@@ -62,51 +62,52 @@
   /* Hero section */
   #hero {
     text-align: center;
-    padding: 5rem 1rem 4rem;
-    background: linear-gradient(135deg, #0d7377, #14ffec);
-    color: #121212;
+    padding: 6rem 2rem 5rem;
+    background: #1c1c1c;
     border-radius: 24px;
-    margin: 2rem auto 4rem;
+    margin: 3rem auto 5rem;
     max-width: 700px;
-    box-shadow: 0 10px 30px rgba(20,255,236,0.35);
   }
   #hero img.pfp {
     width: 160px;
     height: 160px;
     border-radius: 50%;
     object-fit: cover;
-    box-shadow: 0 0 25px #00bcd4cc;
-    margin-bottom: 1.8rem;
+    margin-bottom: 2rem;
+    border: 3px solid #0097a7;
   }
   #hero h2 {
-    font-size: 2.8rem;
-    margin-bottom: 0.4rem;
+    font-size: 2.4rem;
+    margin-bottom: 0.6rem;
     font-weight: 700;
+    color: #00acc1;
   }
   #hero p {
-    font-size: 1.3rem;
-    margin-bottom: 2.6rem;
+    font-size: 1.1rem;
+    max-width: 480px;
+    margin: 0 auto 2.8rem;
     font-weight: 500;
+    color: #bbb;
   }
   #hero .btn-group {
     display: flex;
     justify-content: center;
-    gap: 1.6rem;
+    gap: 2rem;
   }
   #hero .btn {
-    background: #121212;
-    color: #00bcd4;
-    border: 2.5px solid #00bcd4;
+    background: transparent;
+    border: 2.5px solid #0097a7;
     border-radius: 30px;
     font-weight: 700;
     font-size: 1.15rem;
-    padding: 0.8rem 2.4rem;
+    padding: 0.8rem 2.8rem;
     cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    color: #0097a7;
     user-select: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
   #hero .btn:hover {
-    background-color: #00bcd4;
+    background-color: #0097a7;
     color: #121212;
   }
 
@@ -114,38 +115,40 @@
   #badges-bar {
     display: flex;
     overflow-x: auto;
-    gap: 1.6rem;
+    gap: 2rem;
     padding: 1rem 0 3rem;
     max-width: 960px;
     margin: 0 auto 3rem;
+    border-top: 1px solid #2c2c2c;
+    border-bottom: 1px solid #2c2c2c;
   }
   #badges-bar::-webkit-scrollbar {
-    height: 8px;
+    height: 6px;
   }
   #badges-bar::-webkit-scrollbar-thumb {
-    background-color: #00bcd4cc;
-    border-radius: 4px;
+    background-color: #0097a7cc;
+    border-radius: 3px;
   }
   .badge-pill {
     flex: 0 0 auto;
     background: #222;
     border-radius: 30px;
-    padding: 0.8rem 1.6rem;
+    padding: 0.7rem 1.8rem;
     font-weight: 600;
     font-size: 1rem;
-    color: #00bcd4;
-    box-shadow: 0 0 8px #00bcd4bb;
+    color: #0097a7;
     cursor: default;
     user-select: none;
     white-space: nowrap;
-    transition: background 0.25s ease;
+    border: 1px solid #0097a7;
+    transition: background 0.25s ease, color 0.25s ease;
   }
   .badge-pill:hover {
-    background: #00bcd4;
+    background: #0097a7;
     color: #121212;
   }
 
-  /* Features stacked vertical with icons */
+  /* Features stacked */
   #features {
     max-width: 720px;
     margin: 0 auto 4rem;
@@ -153,65 +156,64 @@
   #features h2 {
     font-size: 2.4rem;
     font-weight: 700;
-    color: #00bcd4;
+    color: #0097a7;
     margin-bottom: 2rem;
     text-align: center;
   }
   .feature-item {
     display: flex;
     align-items: center;
-    gap: 1.8rem;
-    background: #1c1c1c;
+    gap: 2rem;
+    background: #1a1a1a;
     border-radius: 20px;
-    padding: 1.8rem 2.4rem;
-    margin-bottom: 1.8rem;
-    box-shadow: 0 0 12px #00bcd4bb;
+    padding: 2rem 3rem;
+    margin-bottom: 2rem;
+    border: 1px solid #2c2c2c;
   }
   .feature-icon {
     flex-shrink: 0;
     width: 50px;
     height: 50px;
-    filter: drop-shadow(0 0 3px #00bcd4cc);
     user-select: none;
   }
   .feature-text {
     flex: 1;
     font-weight: 600;
     font-size: 1.1rem;
-    color: #ddd;
+    color: #ccc;
   }
 
   /* UID tiers grid */
   #uid-tiers {
     max-width: 960px;
-    margin: 0 auto 4rem;
+    margin: 0 auto 5rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 3rem;
   }
   .tier-card {
     background: #222;
     border-radius: 22px;
-    padding: 2rem 1.8rem;
-    box-shadow: 0 6px 20px #00bcd433;
-    color: #00bcd4;
+    padding: 2.5rem 2rem;
+    color: #0097a7;
     text-align: center;
     user-select: none;
     cursor: default;
+    border: 1px solid #2c2c2c;
     transition: background-color 0.3s ease;
   }
   .tier-card:hover {
-    background-color: #00bcd422;
+    background-color: #0097a722;
   }
   .tier-card h3 {
     margin-bottom: 1rem;
     font-weight: 700;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
   }
   .tier-card p {
     font-weight: 500;
-    font-size: 1rem;
-    color: #ccc;
+    font-size: 1.05rem;
+    color: #bbb;
   }
 
   /* Roadmap & Pricing side by side */
@@ -220,81 +222,81 @@
     margin: 0 auto 6rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+    gap: 4rem;
   }
 
   #roadmap, #pricing {
     background: #1a1a1a;
     border-radius: 20px;
-    padding: 2rem 2.5rem;
-    box-shadow: 0 6px 18px #00bcd433;
+    padding: 2.5rem 3rem;
+    border: 1px solid #2c2c2c;
   }
   #roadmap h2, #pricing h2 {
-    color: #00bcd4;
+    color: #0097a7;
     font-weight: 700;
     font-size: 2rem;
-    margin-bottom: 1.8rem;
+    margin-bottom: 2rem;
     text-align: center;
   }
   .roadmap-item {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.8rem;
     padding-left: 1rem;
-    border-left: 4px solid #00bcd4;
+    border-left: 3px solid #0097a7;
   }
   .roadmap-item:last-child {
     margin-bottom: 0;
   }
   .roadmap-item h3 {
-    margin: 0 0 0.3rem 0;
+    margin: 0 0 0.4rem 0;
     font-weight: 700;
-    color: #26c6da;
+    color: #00acc1;
   }
   .roadmap-item p {
     margin: 0;
-    color: #ccc;
+    color: #bbb;
     font-size: 1rem;
   }
 
   .pricing-cards {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 2.5rem;
   }
   .pricing-card {
     background: #222;
     border-radius: 18px;
-    padding: 2rem 1.8rem;
-    box-shadow: 0 5px 15px #00bcd433;
-    color: #ddd;
+    padding: 2.5rem 2rem;
+    color: #ccc;
+    border: 1px solid #2c2c2c;
   }
   .pricing-card h3 {
     margin-top: 0;
-    color: #00bcd4;
-    font-size: 1.6rem;
+    color: #0097a7;
+    font-size: 1.7rem;
     font-weight: 700;
     margin-bottom: 1rem;
   }
   .pricing-card p.price {
     font-weight: 700;
     font-size: 2rem;
-    color: #26c6da;
-    margin: 0 0 1.6rem;
+    color: #00acc1;
+    margin: 0 0 1.8rem;
   }
   .pricing-card ul {
     list-style: none;
-    padding-left: 1rem;
-    margin: 0 0 1.6rem;
+    padding-left: 1.2rem;
+    margin: 0 0 1.8rem;
   }
   .pricing-card ul li {
     margin-bottom: 1rem;
     font-size: 1.05rem;
   }
   .pricing-card button {
-    background: #00bcd4;
+    background: #0097a7;
     border: none;
     border-radius: 28px;
     color: #121212;
-    padding: 0.7rem 1.8rem;
+    padding: 0.75rem 2.2rem;
     font-weight: 700;
     font-size: 1.1rem;
     cursor: pointer;
@@ -302,7 +304,7 @@
     transition: background 0.3s ease;
   }
   .pricing-card button:hover {
-    background: #26c6da;
+    background: #00acc1;
   }
 
   /* Footer */
@@ -310,16 +312,16 @@
     text-align: center;
     color: #666;
     padding: 3rem 1rem 6rem;
-    border-top: 1px solid #222;
+    border-top: 1px solid #2c2c2c;
     user-select: none;
   }
   footer a {
     margin: 0 1.2rem;
-    color: #00bcd4;
+    color: #0097a7;
     transition: color 0.3s ease;
   }
   footer a:hover {
-    color: #26c6da;
+    color: #00acc1;
   }
   footer img {
     width: 28px;
@@ -367,7 +369,7 @@
   <section id="hero" aria-label="User profile hero" role="region">
     <img src="assets/pfp.png" alt="Profile picture of griefuser" class="pfp" />
     <h2>griefuser</h2>
-    <p>Customizable bio links, music embeds, badges & more — all on one page.</p>
+    <p>Customizable bio links, music embeds, badges &amp; more — all on one page.</p>
     <div class="btn-group">
       <button class="btn" id="btnLoginHero" aria-label="Login to your account">Login</button>
       <button class="btn" id="btnRegisterHero" aria-label="Register new account">Register</button>
@@ -438,7 +440,7 @@
       </div>
     </article>
     <article id="pricing" role="region">
-      <h2>Pricing & Plans</h2>
+      <h2>Pricing &amp; Plans</h2>
       <div class="pricing-cards">
         <div class="pricing-card" tabindex="0">
           <h3>Free</h3>
@@ -447,7 +449,7 @@
             <li>Customizable profile</li>
             <li>Basic badges</li>
             <li>Standard UID</li>
-            <li>Music & social embeds</li>
+            <li>Music &amp; social embeds</li>
           </ul>
           <button>Get Started</button>
         </div>
