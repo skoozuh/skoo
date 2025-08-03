@@ -15,13 +15,13 @@
       margin: 0;
       min-height: 100vh;
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #0f1115 0%, #181a1f 100%);
+      background: #0f1115;
       color: #e1e1e1;
       display: flex;
       flex-direction: column;
       align-items: center;
       scroll-behavior: smooth;
-      perspective: 1000px;
+      line-height: 1.5;
     }
     a {
       color: #4dabf7;
@@ -32,10 +32,10 @@
       color: #82c7ff;
     }
 
-    /* Container max width */
+    /* Container */
     .container {
       width: 100%;
-      max-width: 860px;
+      max-width: 920px;
       padding: 0 1.5rem;
     }
 
@@ -48,7 +48,7 @@
       align-items: center;
       border-bottom: 1px solid #222;
       user-select: none;
-      background: rgba(15, 17, 21, 0.85);
+      background: rgba(15, 17, 21, 0.95);
       backdrop-filter: saturate(180%) blur(10px);
       position: sticky;
       top: 0;
@@ -56,315 +56,375 @@
     }
     header h1 {
       font-weight: 700;
-      font-size: 1.7rem;
-      letter-spacing: 0.1em;
+      font-size: 1.8rem;
+      letter-spacing: 0.12em;
       color: #6a76ff;
-      cursor: default;
       user-select: none;
-      text-shadow: none;
+      margin: 0;
     }
-    nav {
-      flex-grow: 1;
+    nav#mainNav {
       display: flex;
-      justify-content: flex-end;
+      gap: 1.8rem;
     }
-    nav a {
-      font-weight: 600;
-      margin-left: 1.6rem;
-      font-size: 0.9rem;
-      letter-spacing: 0.04em;
+    nav#mainNav button {
+      background: none;
+      border: none;
       color: #7a7fff;
-      position: relative;
-      padding-bottom: 3px;
-      transition: color 0.3s ease;
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      padding: 0.3rem 0;
+      border-bottom: 2px solid transparent;
+      transition: color 0.3s ease, border-color 0.3s ease;
+      user-select: none;
     }
-    nav a::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: 0;
-      left: 0;
-      background: #6a76ff;
-      transition: width 0.3s ease;
-      border-radius: 2px;
-    }
-    nav a:hover {
+    nav#mainNav button:hover {
       color: #aabaff;
     }
-    nav a:hover::after {
-      width: 100%;
+    nav#mainNav button.active {
+      color: #aabaff;
+      border-color: #6a76ff;
     }
 
-    /* Hero */
-    #hero {
+    /* User action nav */
+    nav#userNav a {
+      font-weight: 600;
+      margin-left: 1.6rem;
+      font-size: 0.95rem;
+      color: #7a7fff;
+      user-select: none;
+      transition: color 0.3s ease;
+    }
+    nav#userNav a:hover {
+      color: #aabaff;
+    }
+
+    /* Main content area */
+    main {
       margin-top: 2rem;
-      padding: 3rem 2rem 4rem 2rem;
-      background: #1a1c22;
-      border-radius: 12px;
-      box-shadow:
-        0 0 12px 1px #6a76ff33,
-        inset 0 0 30px 5px #8191ff11;
-      position: relative;
-      overflow: hidden;
-      text-align: left;
-    }
-    #hero::before {
-      content: "";
-      position: absolute;
-      top: -30%;
-      right: -25%;
-      width: 300px;
-      height: 300px;
-      background: radial-gradient(circle, #6a76ff55 0%, transparent 70%);
-      filter: blur(70px);
-      z-index: 0;
-      pointer-events: none;
-      transform: rotate(30deg);
-    }
-    #hero h2 {
-      font-weight: 700;
-      font-size: 2.2rem;
-      letter-spacing: 0.06em;
-      margin-bottom: 0.4rem;
-      color: #8ea0ff;
-      position: relative;
-      z-index: 1;
-      user-select: none;
-    }
-    #hero p {
-      font-size: 1.05rem;
-      color: #bbb;
-      max-width: 680px;
-      margin: 0 0 2rem 0;
-      line-height: 1.4;
-      position: relative;
-      z-index: 1;
+      width: 100%;
+      max-width: 920px;
+      padding-bottom: 5rem;
+      min-height: 70vh;
       user-select: none;
     }
 
-    /* Hero buttons (left aligned) */
-    .btn-group {
-      display: flex;
-      gap: 1.4rem;
-      position: relative;
-      z-index: 1;
+    /* Section styling */
+    section {
+      background: #181a1f;
+      border-radius: 14px;
+      padding: 2rem 2.5rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 1px 6px rgb(50 60 120 / 0.12);
     }
-    .btn-group button {
+    section h2 {
+      font-weight: 700;
+      font-size: 2rem;
+      color: #8ea0ff;
+      margin-bottom: 1rem;
+      user-select: none;
+    }
+    section p {
+      font-size: 1rem;
+      color: #ccc;
+      max-width: 700px;
+      user-select: none;
+    }
+
+    /* Buttons */
+    .btn {
       background: linear-gradient(135deg, #6a76ff, #8191ff);
       border: none;
-      border-radius: 20px;
-      padding: 0.7rem 2.2rem;
-      font-size: 1rem;
+      border-radius: 18px;
+      padding: 0.7rem 2rem;
       font-weight: 700;
+      font-size: 1rem;
       color: white;
       cursor: pointer;
-      box-shadow:
-        0 4px 12px rgb(106 118 255 / 0.5);
-      transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.15s ease;
-      display: flex;
+      box-shadow: 0 3px 8px rgb(106 118 255 / 0.4);
+      transition: background 0.3s ease;
+      user-select: none;
+      display: inline-flex;
       align-items: center;
-      user-select: none;
-      border: 1.8px solid transparent;
-      user-select: none;
+      gap: 0.5rem;
     }
-    .btn-group button:hover {
+    .btn:hover {
       background: linear-gradient(135deg, #8191ff, #a1b0ff);
-      box-shadow:
-        0 6px 18px rgb(130 145 255 / 0.7);
-      border-color: #a3adff;
-      transform: translateY(-1.5px);
+      box-shadow: 0 5px 15px rgb(130 145 255 / 0.6);
     }
-    .btn-group button:active {
-      transform: translateY(0);
-      box-shadow: 0 3px 10px rgb(106 118 255 / 0.3);
+    .btn:active {
+      box-shadow: 0 2px 6px rgb(106 118 255 / 0.25);
     }
-    #btnLogin img.playIcon {
+    .btn img {
       width: 18px;
       height: 18px;
-      margin-right: 0.5rem;
       filter: invert(90%) sepia(15%) saturate(300%) hue-rotate(210deg);
       user-select: none;
     }
 
-    /* Features grid with 3D tilt */
-    #features {
-      margin-top: 3rem;
+    /* Badges grid */
+    .badges-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.8rem;
-      padding-bottom: 3.5rem;
-      perspective: 1000px;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.6rem;
+      margin-top: 1.5rem;
     }
-    .feature-item {
+    .badge {
       background: #222533;
       border-radius: 14px;
-      padding: 1.8rem 1.6rem;
-      box-shadow:
-        0 1px 12px rgb(106 118 255 / 0.12);
-      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      padding: 1.4rem;
+      text-align: center;
+      box-shadow: none;
+      user-select: none;
+      transition: box-shadow 0.3s ease;
       cursor: default;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      transform-style: preserve-3d;
-      will-change: transform;
+    }
+    .badge:hover {
+      box-shadow: 0 4px 15px rgb(106 118 255 / 0.25);
+    }
+    .badge img {
+      width: 64px;
+      height: 64px;
+      margin-bottom: 0.6rem;
       user-select: none;
+      filter: drop-shadow(0 0 4px #6a76ff99);
     }
-    /* Subtle 3D tilt on hover */
-    .feature-item:hover,
-    .feature-item:focus-visible {
-      box-shadow:
-        0 8px 32px rgb(130 145 255 / 0.35);
-      outline: none;
-      transform:
-        rotateX(6deg)
-        rotateY(8deg)
-        scale(1.03);
-    }
-    .feature-item h3 {
-      font-weight: 700;
-      font-size: 1.15rem;
-      margin-bottom: 0.8rem;
+    .badge h4 {
+      margin: 0.4rem 0 0.2rem;
       color: #8ea0ff;
-      display: flex;
-      align-items: center;
-      user-select: none;
+      font-weight: 700;
+      font-size: 1.1rem;
     }
-    .feature-item h3 img {
-      width: 26px;
-      height: 26px;
-      margin-right: 10px;
-      filter: drop-shadow(0 0 4px #6a76ffcc);
-      user-select: none;
-    }
-    .feature-item p {
-      font-size: 0.95rem;
-      line-height: 1.45;
-      color: #bbb;
-      user-select: none;
+    .badge p {
       margin: 0;
+      font-size: 0.9rem;
+      color: #bbb;
     }
 
-    /* Footer with horizontal layout */
+    /* Tabs content container */
+    #tabContent > div {
+      display: none;
+      user-select: none;
+    }
+    #tabContent > div.active {
+      display: block;
+    }
+
+    /* Features list */
+    ul.features-list {
+      list-style: none;
+      padding-left: 1rem;
+      max-width: 700px;
+      margin-top: 1rem;
+      color: #bbb;
+      font-size: 1rem;
+      user-select: none;
+    }
+    ul.features-list li {
+      margin-bottom: 0.6rem;
+      position: relative;
+      padding-left: 1.3rem;
+    }
+    ul.features-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #6a76ff;
+      font-weight: 700;
+    }
+
+    /* FAQ styles */
+    .faq-item {
+      margin-bottom: 1.2rem;
+      user-select: none;
+    }
+    .faq-item summary {
+      cursor: pointer;
+      font-weight: 600;
+      color: #8ea0ff;
+      list-style: none;
+      user-select: none;
+    }
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+    .faq-item p {
+      margin: 0.4rem 0 0 1rem;
+      color: #bbb;
+      font-size: 0.95rem;
+      user-select: none;
+    }
+
+    /* Footer */
     footer {
       width: 100%;
-      max-width: 860px;
+      max-width: 920px;
       text-align: center;
       padding: 2rem 1.5rem 3rem;
       color: #555;
       font-size: 0.9rem;
       border-top: 1px solid #222;
       user-select: none;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    footer .copyright {
-      flex-grow: 1;
-      text-align: left;
-    }
-    footer .social-icons {
-      flex-shrink: 0;
     }
     footer a {
-      margin-left: 1rem;
+      margin: 0 1rem;
       filter: grayscale(80%) brightness(140%);
       transition: filter 0.3s ease;
       vertical-align: middle;
       display: inline-block;
     }
-    footer a:first-child {
-      margin-left: 0;
-    }
     footer a:hover {
       filter: grayscale(0%) brightness(120%);
     }
     footer img {
-      width: 24px;
-      height: 24px;
+      width: 28px;
+      height: 28px;
       object-fit: contain;
       user-select: none;
       vertical-align: middle;
     }
 
-    /* Responsive tweaks */
-    @media (max-width: 600px) {
-      #hero h2 {
-        font-size: 1.9rem;
+    /* Responsive */
+    @media (max-width: 700px) {
+      .badges-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
       }
-      .btn-group {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .btn-group button {
-        font-size: 0.9rem;
-        padding: 0.65rem 1.5rem;
-        width: 100%;
-      }
-      #features {
-        grid-template-columns: 1fr;
-      }
-      footer {
-        flex-direction: column;
-        text-align: center;
-      }
-      footer .copyright {
-        text-align: center;
-      }
-      footer .social-icons {
-        margin-top: 0.5rem;
+      ul.features-list {
+        font-size: 0.95rem;
       }
     }
   </style>
 </head>
 <body>
 
-<header class="container">
+<header class="container" role="banner">
   <h1>grief.bio</h1>
-  <nav id="navLinks">
+  <nav id="mainNav" role="navigation" aria-label="Primary navigation">
+    <button class="active" data-tab="home" aria-current="page">Home</button>
+    <button data-tab="features">Features</button>
+    <button data-tab="badges">Badges</button>
+    <button data-tab="faq">FAQ</button>
+  </nav>
+  <nav id="userNav" aria-label="User actions">
     <a href="#login">Login</a>
     <a href="#register">Register</a>
   </nav>
 </header>
 
-<main class="container" role="main">
+<main role="main" class="container">
 
-  <section id="hero" aria-label="Welcome section">
-    <h2>Modern Bio Link Platform</h2>
-    <p>Create and customize your own unique bio page with music, profile pictures, backgrounds, social links, and more.</p>
+  <div id="tabContent">
 
-    <div class="btn-group">
-      <button id="btnLogin" aria-label="Login to your account">
-        <img src="assets/play.png" alt="" class="playIcon" aria-hidden="true" />
-        Login
-      </button>
-      <button id="btnRegister" aria-label="Register new account">Register</button>
+    <!-- Home tab -->
+    <div id="home" class="active" role="region" aria-labelledby="home-tab">
+      <section aria-label="Welcome">
+        <h2>Welcome to grief.bio</h2>
+        <p>
+          grief.bio is a modern bio link platform that allows you to create fully customizable bio pages.
+          Showcase your personality with unique backgrounds, music embeds, social links, and more.
+          Whether you’re a content creator, gamer, or social butterfly, grief.bio puts you in control of your online presence.
+        </p>
+        <button class="btn" id="btnLoginMain" aria-label="Login to your account">
+          <img src="assets/play.png" alt="" aria-hidden="true" />
+          Login
+        </button>
+        <button class="btn" id="btnRegisterMain" aria-label="Register a new account">Register</button>
+      </section>
     </div>
-  </section>
 
-  <section id="features" aria-label="Features overview">
-    <article class="feature-item" tabindex="0">
-      <h3><img src="assets/creative.png" alt="Creative icon" />Fully Customizable</h3>
-      <p>Personalize your bio with backgrounds, profile pictures, custom cursors, and embed music players.</p>
-    </article>
-    <article class="feature-item" tabindex="0">
-      <h3><img src="assets/booster.png" alt="Booster icon" />Easy to Use</h3>
-      <p>Intuitive dashboard lets you edit your profile in real-time with seamless file uploads.</p>
-    </article>
-    <article class="feature-item" tabindex="0">
-      <h3><img src="assets/crownw.png" alt="Crown icon" />Secure & Reliable</h3>
-      <p>Login, register, and manage your account with full privacy and admin controls.</p>
-    </article>
-  </section>
+    <!-- Features tab -->
+    <div id="features" role="region" aria-labelledby="features-tab">
+      <section aria-label="Platform Features">
+        <h2>Platform Features</h2>
+        <ul class="features-list">
+          <li>Fully customizable profiles with backgrounds, profile pictures, and cursors</li>
+          <li>Embed music players from your favorite platforms</li>
+          <li>Real-time dashboard editing with easy file uploads</li>
+          <li>Unique UID system with verified usernames</li>
+          <li>Premium account upgrades for exclusive customization options</li>
+          <li>Secure authentication and privacy controls</li>
+          <li>Admin panel to manage users and badges</li>
+          <li>Responsive design that works on all devices</li>
+        </ul>
+      </section>
+    </div>
+
+    <!-- Badges tab -->
+    <div id="badges" role="region" aria-labelledby="badges-tab">
+      <section aria-label="Badges and Unlockables">
+        <h2>Badges & Unlockables</h2>
+        <p>Unlock unique badges by achieving milestones on grief.bio. Badges appear on your profile to show your status and achievements.</p>
+        <div class="badges-grid">
+          <div class="badge" tabindex="0" aria-describedby="og-badge-desc">
+            <img src="assets/crownw.png" alt="OG Badge" />
+            <h4>OG Badge</h4>
+            <p id="og-badge-desc">Awarded to users with UID from 1 to 50. The elite early adopters of grief.bio.</p>
+          </div>
+          <div class="badge" tabindex="0" aria-describedby="premium-badge-desc">
+            <img src="assets/creative.png" alt="Premium Badge" />
+            <h4>Premium Badge</h4>
+            <p id="premium-badge-desc">Granted to users who purchase a premium subscription with advanced customization features.</p>
+          </div>
+          <div class="badge" tabindex="0" aria-describedby="verified-badge-desc">
+            <img src="assets/booster.png" alt="Verified Badge" />
+            <h4>Verified Badge</h4>
+            <p id="verified-badge-desc">For users who have verified their identity and account via our secure system.</p>
+          </div>
+          <div class="badge" tabindex="0" aria-describedby="creative-badge-desc">
+            <img src="assets/creator.png" alt="Creative Badge" />
+            <h4>Creative Badge</h4>
+            <p id="creative-badge-desc">Earned by users who actively create and share custom themes and music embeds.</p>
+          </div>
+          <div class="badge" tabindex="0" aria-describedby="supporter-badge-desc">
+            <img src="assets/booster.png" alt="Supporter Badge" />
+            <h4>Supporter Badge</h4>
+            <p id="supporter-badge-desc">Given to users who contribute to the community through events, feedback, or donations.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- FAQ tab -->
+    <div id="faq" role="region" aria-labelledby="faq-tab">
+      <section aria-label="Frequently Asked Questions">
+        <h2>Frequently Asked Questions</h2>
+
+        <details class="faq-item" open>
+          <summary>What is grief.bio?</summary>
+          <p>grief.bio is a customizable bio link platform where users create personalized landing pages with music, social links, and badges.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>How do I get the OG Badge?</summary>
+          <p>The OG Badge is automatically awarded to the first 50 users who register and receive UIDs between 1 and 50.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Can I customize my page with music and backgrounds?</summary>
+          <p>Yes! You can upload profile pictures, select backgrounds, and embed music players from various platforms.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What payment methods are accepted for premium?</summary>
+          <p>We currently accept major credit cards and PayPal for premium subscriptions.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Is my data safe?</summary>
+          <p>Yes, we use modern security standards to protect your data and privacy.</p>
+        </details>
+
+      </section>
+    </div>
+
+  </div>
 
 </main>
 
-<footer class="container">
-  <div class="copyright">&copy; 2025 grief.bio — Made with 💙 by grief</div>
-  <div class="social-icons">
+<footer>
+  <div>&copy; 2025 grief.bio — Made with 💙 by grief</div>
+  <div>
     <a href="https://instagram.com/yourhandle" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
       <img src="assets/iglogo.png" alt="Instagram logo" />
     </a>
@@ -375,20 +435,27 @@
 </footer>
 
 <script>
-  const navLinks = document.getElementById('navLinks');
+  // Tab switching logic
+  const tabs = document.querySelectorAll('#mainNav button');
+  const tabContents = document.querySelectorAll('#tabContent > div');
 
-  document.getElementById('btnLogin').addEventListener('click', () => {
-    navLinks.innerHTML = `
-      <a href="#dashboard">Dashboard</a>
-      <a href="#" id="logoutLink">Logout</a>
-    `;
-    document.getElementById('logoutLink').onclick = e => {
-      e.preventDefault();
-      navLinks.innerHTML = '<a href="#login">Login</a><a href="#register">Register</a>';
-    };
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      // Remove active class from all tabs and contents
+      tabs.forEach(t => t.classList.remove('active'));
+      tabContents.forEach(c => c.classList.remove('active'));
+
+      // Activate clicked tab and corresponding content
+      tab.classList.add('active');
+      document.getElementById(tab.dataset.tab).classList.add('active');
+    });
   });
 
-  document.getElementById('btnRegister').addEventListener('click', () => {
+  // Login/Register buttons demo alert
+  document.getElementById('btnLoginMain').addEventListener('click', () => {
+    alert('Login form would open here (demo)');
+  });
+  document.getElementById('btnRegisterMain').addEventListener('click', () => {
     alert('Registration form would open here (demo)');
   });
 </script>
