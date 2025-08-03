@@ -21,6 +21,7 @@
       flex-direction: column;
       align-items: center;
       scroll-behavior: smooth;
+      perspective: 1000px;
     }
     a {
       color: #4dabf7;
@@ -59,7 +60,13 @@
       letter-spacing: 0.1em;
       color: #6a76ff;
       cursor: default;
+      user-select: none;
       text-shadow: none;
+    }
+    nav {
+      flex-grow: 1;
+      display: flex;
+      justify-content: flex-end;
     }
     nav a {
       font-weight: 600;
@@ -92,52 +99,54 @@
     /* Hero */
     #hero {
       margin-top: 2rem;
-      padding: 3rem 1.5rem;
+      padding: 3rem 2rem 4rem 2rem;
       background: #1a1c22;
       border-radius: 12px;
       box-shadow:
         0 0 12px 1px #6a76ff33,
         inset 0 0 30px 5px #8191ff11;
-      text-align: center;
       position: relative;
       overflow: hidden;
+      text-align: left;
     }
     #hero::before {
       content: "";
       position: absolute;
-      top: -20%;
-      right: -15%;
-      width: 250px;
-      height: 250px;
+      top: -30%;
+      right: -25%;
+      width: 300px;
+      height: 300px;
       background: radial-gradient(circle, #6a76ff55 0%, transparent 70%);
-      filter: blur(60px);
+      filter: blur(70px);
       z-index: 0;
       pointer-events: none;
+      transform: rotate(30deg);
     }
     #hero h2 {
       font-weight: 700;
-      font-size: 2.4rem;
-      letter-spacing: 0.08em;
-      margin-bottom: 0.6rem;
+      font-size: 2.2rem;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.4rem;
       color: #8ea0ff;
       position: relative;
       z-index: 1;
+      user-select: none;
     }
     #hero p {
       font-size: 1.05rem;
       color: #bbb;
-      max-width: 640px;
-      margin: 0 auto 1.8rem;
+      max-width: 680px;
+      margin: 0 0 2rem 0;
       line-height: 1.4;
       position: relative;
       z-index: 1;
+      user-select: none;
     }
 
-    /* Hero buttons */
+    /* Hero buttons (left aligned) */
     .btn-group {
       display: flex;
-      justify-content: center;
-      gap: 1.2rem;
+      gap: 1.4rem;
       position: relative;
       z-index: 1;
     }
@@ -145,7 +154,7 @@
       background: linear-gradient(135deg, #6a76ff, #8191ff);
       border: none;
       border-radius: 20px;
-      padding: 0.75rem 2rem;
+      padding: 0.7rem 2.2rem;
       font-size: 1rem;
       font-weight: 700;
       color: white;
@@ -157,6 +166,7 @@
       align-items: center;
       user-select: none;
       border: 1.8px solid transparent;
+      user-select: none;
     }
     .btn-group button:hover {
       background: linear-gradient(135deg, #8191ff, #a1b0ff);
@@ -177,18 +187,19 @@
       user-select: none;
     }
 
-    /* Features grid */
+    /* Features grid with 3D tilt */
     #features {
       margin-top: 3rem;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.6rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.8rem;
       padding-bottom: 3.5rem;
+      perspective: 1000px;
     }
     .feature-item {
       background: #222533;
-      border-radius: 12px;
-      padding: 1.6rem 1.4rem;
+      border-radius: 14px;
+      padding: 1.8rem 1.6rem;
       box-shadow:
         0 1px 12px rgb(106 118 255 / 0.12);
       transition: box-shadow 0.3s ease, transform 0.3s ease;
@@ -196,17 +207,24 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
+      transform-style: preserve-3d;
+      will-change: transform;
+      user-select: none;
     }
+    /* Subtle 3D tilt on hover */
     .feature-item:hover,
     .feature-item:focus-visible {
       box-shadow:
-        0 4px 18px rgb(130 145 255 / 0.25);
-      transform: translateY(-3px);
+        0 8px 32px rgb(130 145 255 / 0.35);
       outline: none;
+      transform:
+        rotateX(6deg)
+        rotateY(8deg)
+        scale(1.03);
     }
     .feature-item h3 {
       font-weight: 700;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       margin-bottom: 0.8rem;
       color: #8ea0ff;
       display: flex;
@@ -214,37 +232,52 @@
       user-select: none;
     }
     .feature-item h3 img {
-      width: 24px;
-      height: 24px;
+      width: 26px;
+      height: 26px;
       margin-right: 10px;
-      filter: drop-shadow(0 0 3px #6a76ffcc);
+      filter: drop-shadow(0 0 4px #6a76ffcc);
       user-select: none;
     }
     .feature-item p {
-      font-size: 0.9rem;
-      line-height: 1.4;
+      font-size: 0.95rem;
+      line-height: 1.45;
       color: #bbb;
       user-select: none;
       margin: 0;
     }
 
-    /* Footer */
+    /* Footer with horizontal layout */
     footer {
       width: 100%;
       max-width: 860px;
       text-align: center;
-      padding: 1.8rem 1.5rem 2.8rem;
+      padding: 2rem 1.5rem 3rem;
       color: #555;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       border-top: 1px solid #222;
       user-select: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    footer .copyright {
+      flex-grow: 1;
+      text-align: left;
+    }
+    footer .social-icons {
+      flex-shrink: 0;
     }
     footer a {
-      margin: 0 0.8rem;
+      margin-left: 1rem;
       filter: grayscale(80%) brightness(140%);
       transition: filter 0.3s ease;
       vertical-align: middle;
       display: inline-block;
+    }
+    footer a:first-child {
+      margin-left: 0;
     }
     footer a:hover {
       filter: grayscale(0%) brightness(120%);
@@ -262,12 +295,27 @@
       #hero h2 {
         font-size: 1.9rem;
       }
+      .btn-group {
+        flex-direction: column;
+        align-items: flex-start;
+      }
       .btn-group button {
         font-size: 0.9rem;
         padding: 0.65rem 1.5rem;
+        width: 100%;
       }
-      .feature-item h3 {
-        font-size: 1rem;
+      #features {
+        grid-template-columns: 1fr;
+      }
+      footer {
+        flex-direction: column;
+        text-align: center;
+      }
+      footer .copyright {
+        text-align: center;
+      }
+      footer .social-icons {
+        margin-top: 0.5rem;
       }
     }
   </style>
@@ -315,14 +363,15 @@
 </main>
 
 <footer class="container">
-  &copy; 2025 grief.bio — Made with 💙 by grief
-  <br />
-  <a href="https://instagram.com/yourhandle" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-    <img src="assets/iglogo.png" alt="Instagram logo" />
-  </a>
-  <a href="https://last.fm/user/yourhandle" target="_blank" rel="noopener noreferrer" aria-label="Last.fm">
-    <img src="assets/lastfmlogo.png" alt="Last.fm logo" />
-  </a>
+  <div class="copyright">&copy; 2025 grief.bio — Made with 💙 by grief</div>
+  <div class="social-icons">
+    <a href="https://instagram.com/yourhandle" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <img src="assets/iglogo.png" alt="Instagram logo" />
+    </a>
+    <a href="https://last.fm/user/yourhandle" target="_blank" rel="noopener noreferrer" aria-label="Last.fm">
+      <img src="assets/lastfmlogo.png" alt="Last.fm logo" />
+    </a>
+  </div>
 </footer>
 
 <script>
