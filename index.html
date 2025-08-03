@@ -34,43 +34,41 @@
     /* Container max width */
     .container {
       width: 100%;
-      max-width: 960px;
-      padding: 0 2rem;
+      max-width: 860px;
+      padding: 0 1.5rem;
     }
 
     /* Header */
     header {
       width: 100%;
-      padding: 1.5rem 0;
+      padding: 1rem 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
       border-bottom: 1px solid #222;
       user-select: none;
-      background: rgba(15, 17, 21, 0.8);
-      backdrop-filter: saturate(180%) blur(15px);
+      background: rgba(15, 17, 21, 0.85);
+      backdrop-filter: saturate(180%) blur(10px);
       position: sticky;
       top: 0;
       z-index: 999;
     }
     header h1 {
       font-weight: 700;
-      font-size: 2rem;
-      letter-spacing: 0.15em;
+      font-size: 1.7rem;
+      letter-spacing: 0.1em;
       color: #6a76ff;
-      text-shadow:
-        0 0 6px #6a76ffaa,
-        0 0 12px #8191ffaa;
       cursor: default;
+      text-shadow: none;
     }
     nav a {
       font-weight: 600;
-      margin-left: 2rem;
-      font-size: 1rem;
-      letter-spacing: 0.05em;
+      margin-left: 1.6rem;
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
       color: #7a7fff;
       position: relative;
-      padding-bottom: 4px;
+      padding-bottom: 3px;
       transition: color 0.3s ease;
     }
     nav a::after {
@@ -93,13 +91,13 @@
 
     /* Hero */
     #hero {
-      margin-top: 3rem;
-      padding: 4rem 2rem;
-      background: radial-gradient(ellipse at center, #2a2d40 0%, #181a1f 100%);
-      border-radius: 16px;
+      margin-top: 2rem;
+      padding: 3rem 1.5rem;
+      background: #1a1c22;
+      border-radius: 12px;
       box-shadow:
-        0 0 20px 3px #6a76ff44,
-        inset 0 0 40px 10px #8191ff22;
+        0 0 12px 1px #6a76ff33,
+        inset 0 0 30px 5px #8191ff11;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -107,94 +105,92 @@
     #hero::before {
       content: "";
       position: absolute;
-      top: -30%;
-      right: -20%;
-      width: 320px;
-      height: 320px;
-      background: radial-gradient(circle, #6a76ff88 0%, transparent 70%);
-      filter: blur(80px);
+      top: -20%;
+      right: -15%;
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(circle, #6a76ff55 0%, transparent 70%);
+      filter: blur(60px);
       z-index: 0;
       pointer-events: none;
     }
     #hero h2 {
-      font-weight: 800;
-      font-size: 3rem;
-      letter-spacing: 0.12em;
-      margin-bottom: 1rem;
+      font-weight: 700;
+      font-size: 2.4rem;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.6rem;
       color: #8ea0ff;
-      text-shadow:
-        0 0 8px #6a76ffcc,
-        0 0 20px #8191ffbb;
       position: relative;
       z-index: 1;
     }
     #hero p {
-      font-size: 1.25rem;
-      color: #c0c0ffcc;
-      max-width: 720px;
-      margin: 0 auto 2.5rem;
-      line-height: 1.5;
+      font-size: 1.05rem;
+      color: #bbb;
+      max-width: 640px;
+      margin: 0 auto 1.8rem;
+      line-height: 1.4;
       position: relative;
       z-index: 1;
     }
 
     /* Hero buttons */
     .btn-group {
-      display: inline-flex;
-      gap: 1.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
       position: relative;
       z-index: 1;
     }
     .btn-group button {
       background: linear-gradient(135deg, #6a76ff, #8191ff);
       border: none;
-      border-radius: 24px;
-      padding: 1rem 2.5rem;
-      font-size: 1.2rem;
+      border-radius: 20px;
+      padding: 0.75rem 2rem;
+      font-size: 1rem;
       font-weight: 700;
       color: white;
       cursor: pointer;
       box-shadow:
-        0 6px 16px rgb(106 118 255 / 0.6);
-      transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+        0 4px 12px rgb(106 118 255 / 0.5);
+      transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.15s ease;
       display: flex;
       align-items: center;
       user-select: none;
-      border: 2px solid transparent;
+      border: 1.8px solid transparent;
     }
     .btn-group button:hover {
       background: linear-gradient(135deg, #8191ff, #a1b0ff);
       box-shadow:
-        0 8px 24px rgb(130 145 255 / 0.8);
+        0 6px 18px rgb(130 145 255 / 0.7);
       border-color: #a3adff;
-      transform: translateY(-2px);
+      transform: translateY(-1.5px);
     }
     .btn-group button:active {
       transform: translateY(0);
-      box-shadow: 0 4px 14px rgb(106 118 255 / 0.4);
+      box-shadow: 0 3px 10px rgb(106 118 255 / 0.3);
     }
     #btnLogin img.playIcon {
-      width: 20px;
-      height: 20px;
-      margin-right: 0.8rem;
+      width: 18px;
+      height: 18px;
+      margin-right: 0.5rem;
       filter: invert(90%) sepia(15%) saturate(300%) hue-rotate(210deg);
       user-select: none;
     }
 
     /* Features grid */
     #features {
-      margin-top: 4rem;
+      margin-top: 3rem;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      padding-bottom: 4rem;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.6rem;
+      padding-bottom: 3.5rem;
     }
     .feature-item {
-      background: #1e2130;
-      border-radius: 16px;
-      padding: 2rem 1.8rem;
+      background: #222533;
+      border-radius: 12px;
+      padding: 1.6rem 1.4rem;
       box-shadow:
-        0 3px 20px rgb(130 145 255 / 0.15);
+        0 1px 12px rgb(106 118 255 / 0.12);
       transition: box-shadow 0.3s ease, transform 0.3s ease;
       cursor: default;
       display: flex;
@@ -204,29 +200,29 @@
     .feature-item:hover,
     .feature-item:focus-visible {
       box-shadow:
-        0 6px 40px rgb(130 145 255 / 0.35);
-      transform: translateY(-6px);
+        0 4px 18px rgb(130 145 255 / 0.25);
+      transform: translateY(-3px);
       outline: none;
     }
     .feature-item h3 {
       font-weight: 700;
-      font-size: 1.3rem;
-      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      margin-bottom: 0.8rem;
       color: #8ea0ff;
       display: flex;
       align-items: center;
       user-select: none;
     }
     .feature-item h3 img {
-      width: 28px;
-      height: 28px;
-      margin-right: 12px;
-      filter: drop-shadow(0 0 6px #6a76ffcc);
+      width: 24px;
+      height: 24px;
+      margin-right: 10px;
+      filter: drop-shadow(0 0 3px #6a76ffcc);
       user-select: none;
     }
     .feature-item p {
-      font-size: 1rem;
-      line-height: 1.5;
+      font-size: 0.9rem;
+      line-height: 1.4;
       color: #bbb;
       user-select: none;
       margin: 0;
@@ -235,16 +231,16 @@
     /* Footer */
     footer {
       width: 100%;
-      max-width: 960px;
+      max-width: 860px;
       text-align: center;
-      padding: 2rem 2rem 3rem;
+      padding: 1.8rem 1.5rem 2.8rem;
       color: #555;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       border-top: 1px solid #222;
       user-select: none;
     }
     footer a {
-      margin: 0 1rem;
+      margin: 0 0.8rem;
       filter: grayscale(80%) brightness(140%);
       transition: filter 0.3s ease;
       vertical-align: middle;
@@ -254,8 +250,8 @@
       filter: grayscale(0%) brightness(120%);
     }
     footer img {
-      width: 28px;
-      height: 28px;
+      width: 24px;
+      height: 24px;
       object-fit: contain;
       user-select: none;
       vertical-align: middle;
@@ -264,11 +260,14 @@
     /* Responsive tweaks */
     @media (max-width: 600px) {
       #hero h2 {
-        font-size: 2.4rem;
+        font-size: 1.9rem;
       }
       .btn-group button {
+        font-size: 0.9rem;
+        padding: 0.65rem 1.5rem;
+      }
+      .feature-item h3 {
         font-size: 1rem;
-        padding: 0.9rem 1.8rem;
       }
     }
   </style>
