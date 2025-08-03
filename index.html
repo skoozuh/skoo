@@ -5,23 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>grief.bio — modern bio link platform</title>
   <style>
-    /* Reset & base */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+    /* Reset */
     *, *::before, *::after {
       box-sizing: border-box;
     }
     body {
       margin: 0;
-      background: #0f1115;
-      color: #e1e1e1;
-      font-family: "Poppins", sans-serif;
-      font-weight: 400;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
       min-height: 100vh;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f1115 0%, #181a1f 100%);
+      color: #e1e1e1;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 2rem 1rem;
       scroll-behavior: smooth;
     }
     a {
@@ -33,176 +31,202 @@
       color: #82c7ff;
     }
 
+    /* Container max width */
+    .container {
+      width: 100%;
+      max-width: 960px;
+      padding: 0 2rem;
+    }
+
     /* Header */
     header {
       width: 100%;
-      max-width: 420px;
+      padding: 1.5rem 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 2rem;
-      padding: 0 1rem;
+      border-bottom: 1px solid #222;
       user-select: none;
+      background: rgba(15, 17, 21, 0.8);
+      backdrop-filter: saturate(180%) blur(15px);
+      position: sticky;
+      top: 0;
+      z-index: 999;
     }
     header h1 {
       font-weight: 700;
-      font-size: 1.6rem;
-      letter-spacing: 2px;
+      font-size: 2rem;
+      letter-spacing: 0.15em;
       color: #6a76ff;
-      font-feature-settings: "calt" 0;
+      text-shadow:
+        0 0 6px #6a76ffaa,
+        0 0 12px #8191ffaa;
+      cursor: default;
     }
     nav a {
       font-weight: 600;
-      margin-left: 1.4rem;
-      font-size: 0.95rem;
-      letter-spacing: 0.04em;
-      cursor: pointer;
+      margin-left: 2rem;
+      font-size: 1rem;
+      letter-spacing: 0.05em;
       color: #7a7fff;
+      position: relative;
+      padding-bottom: 4px;
       transition: color 0.3s ease;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background: #6a76ff;
+      transition: width 0.3s ease;
+      border-radius: 2px;
     }
     nav a:hover {
       color: #aabaff;
     }
-
-    /* Hero section */
-    #hero {
-      position: relative;
-      max-width: 420px;
+    nav a:hover::after {
       width: 100%;
-      background: #181a1f;
-      border-radius: 14px;
-      padding: 2.8rem 2.4rem;
+    }
+
+    /* Hero */
+    #hero {
+      margin-top: 3rem;
+      padding: 4rem 2rem;
+      background: radial-gradient(ellipse at center, #2a2d40 0%, #181a1f 100%);
+      border-radius: 16px;
       box-shadow:
-        0 2px 12px rgb(255 255 255 / 0.04),
-        0 6px 24px rgb(0 0 0 / 0.7);
-      margin-bottom: 3rem;
+        0 0 20px 3px #6a76ff44,
+        inset 0 0 40px 10px #8191ff22;
+      text-align: center;
+      position: relative;
       overflow: hidden;
     }
     #hero::before {
       content: "";
       position: absolute;
-      top: 1rem;
-      right: 2rem;
-      width: 100px;
-      height: 100px;
-      background: url('assets/creator.png') no-repeat center/contain;
-      opacity: 0.08;
-      pointer-events: none;
-      user-select: none;
-      filter: drop-shadow(0 0 4px #6a76ffcc);
+      top: -30%;
+      right: -20%;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, #6a76ff88 0%, transparent 70%);
+      filter: blur(80px);
       z-index: 0;
-    }
-    #hero::after {
-      content: "";
-      position: absolute;
-      bottom: 1rem;
-      left: 2rem;
-      width: 80px;
-      height: 80px;
-      background: url('assets/staff.png') no-repeat center/contain;
-      opacity: 0.06;
       pointer-events: none;
-      user-select: none;
-      filter: drop-shadow(0 0 4px #8191ffcc);
-      z-index: 0;
     }
-    #hero > div {
+    #hero h2 {
+      font-weight: 800;
+      font-size: 3rem;
+      letter-spacing: 0.12em;
+      margin-bottom: 1rem;
+      color: #8ea0ff;
+      text-shadow:
+        0 0 8px #6a76ffcc,
+        0 0 20px #8191ffbb;
       position: relative;
       z-index: 1;
     }
-    #hero h2 {
-      font-weight: 700;
-      font-size: 1.8rem;
-      margin-bottom: 0.6rem;
-      color: #a0a8ff;
-    }
     #hero p {
-      font-size: 1rem;
+      font-size: 1.25rem;
+      color: #c0c0ffcc;
+      max-width: 720px;
+      margin: 0 auto 2.5rem;
       line-height: 1.5;
-      color: #bbb;
-      margin-bottom: 1.8rem;
+      position: relative;
+      z-index: 1;
     }
 
-    /* Buttons in hero */
+    /* Hero buttons */
     .btn-group {
-      display: flex;
-      gap: 1rem;
+      display: inline-flex;
+      gap: 1.5rem;
+      position: relative;
+      z-index: 1;
     }
     .btn-group button {
-      background: #6a76ff;
+      background: linear-gradient(135deg, #6a76ff, #8191ff);
       border: none;
-      border-radius: 12px;
-      color: white;
+      border-radius: 24px;
+      padding: 1rem 2.5rem;
+      font-size: 1.2rem;
       font-weight: 700;
-      font-size: 1.1rem;
-      padding: 0.9rem 1.8rem;
+      color: white;
       cursor: pointer;
-      letter-spacing: 0.03em;
       box-shadow:
-        0 4px 14px rgb(106 118 255 / 0.6);
-      transition: background 0.3s ease, box-shadow 0.3s ease;
+        0 6px 16px rgb(106 118 255 / 0.6);
+      transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
       display: flex;
       align-items: center;
       user-select: none;
-      border: 1.5px solid transparent;
+      border: 2px solid transparent;
     }
     .btn-group button:hover {
-      background: #8191ff;
+      background: linear-gradient(135deg, #8191ff, #a1b0ff);
       box-shadow:
-        0 6px 24px rgb(130 145 255 / 0.8);
+        0 8px 24px rgb(130 145 255 / 0.8);
       border-color: #a3adff;
+      transform: translateY(-2px);
+    }
+    .btn-group button:active {
+      transform: translateY(0);
+      box-shadow: 0 4px 14px rgb(106 118 255 / 0.4);
     }
     #btnLogin img.playIcon {
-      width: 18px;
-      height: 18px;
-      margin-right: 0.6rem;
-      filter: invert(85%) sepia(10%) saturate(200%) hue-rotate(210deg);
+      width: 20px;
+      height: 20px;
+      margin-right: 0.8rem;
+      filter: invert(90%) sepia(15%) saturate(300%) hue-rotate(210deg);
       user-select: none;
     }
 
-    /* Features section */
+    /* Features grid */
     #features {
-      max-width: 420px;
-      width: 100%;
+      margin-top: 4rem;
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.8rem;
-      margin-bottom: 3rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      padding-bottom: 4rem;
     }
     .feature-item {
-      background: #181a1f;
-      border-radius: 12px;
-      padding: 1.6rem 1.4rem;
+      background: #1e2130;
+      border-radius: 16px;
+      padding: 2rem 1.8rem;
       box-shadow:
-        0 1px 10px rgb(106 118 255 / 0.1);
-      transition: box-shadow 0.25s ease;
+        0 3px 20px rgb(130 145 255 / 0.15);
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
       cursor: default;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
     }
     .feature-item:hover,
     .feature-item:focus-visible {
       box-shadow:
-        0 4px 20px rgb(130 145 255 / 0.3);
+        0 6px 40px rgb(130 145 255 / 0.35);
+      transform: translateY(-6px);
       outline: none;
     }
     .feature-item h3 {
       font-weight: 700;
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
       color: #8ea0ff;
       display: flex;
       align-items: center;
       user-select: none;
     }
     .feature-item h3 img {
-      width: 22px;
-      height: 22px;
-      margin-right: 10px;
-      filter: drop-shadow(0 0 3px #6a76ffcc);
+      width: 28px;
+      height: 28px;
+      margin-right: 12px;
+      filter: drop-shadow(0 0 6px #6a76ffcc);
       user-select: none;
     }
     .feature-item p {
-      font-size: 0.9rem;
-      line-height: 1.4;
+      font-size: 1rem;
+      line-height: 1.5;
       color: #bbb;
       user-select: none;
       margin: 0;
@@ -210,45 +234,48 @@
 
     /* Footer */
     footer {
-      max-width: 420px;
       width: 100%;
+      max-width: 960px;
       text-align: center;
-      color: #666;
-      font-size: 0.85rem;
-      user-select: none;
-      padding: 1rem 1rem 0.8rem;
+      padding: 2rem 2rem 3rem;
+      color: #555;
+      font-size: 0.9rem;
       border-top: 1px solid #222;
+      user-select: none;
     }
     footer a {
-      margin: 0 0.6rem;
-      display: inline-block;
-      filter: grayscale(80%) brightness(150%);
+      margin: 0 1rem;
+      filter: grayscale(80%) brightness(140%);
       transition: filter 0.3s ease;
       vertical-align: middle;
+      display: inline-block;
     }
     footer a:hover {
       filter: grayscale(0%) brightness(120%);
     }
     footer img {
-      width: 24px;
-      height: 24px;
+      width: 28px;
+      height: 28px;
       object-fit: contain;
       user-select: none;
       vertical-align: middle;
     }
 
-    /* Responsive */
-    @media (max-width: 460px) {
-      #hero, #features, header, footer {
-        padding-left: 1rem;
-        padding-right: 1rem;
+    /* Responsive tweaks */
+    @media (max-width: 600px) {
+      #hero h2 {
+        font-size: 2.4rem;
+      }
+      .btn-group button {
+        font-size: 1rem;
+        padding: 0.9rem 1.8rem;
       }
     }
   </style>
 </head>
 <body>
 
-<header>
+<header class="container">
   <h1>grief.bio</h1>
   <nav id="navLinks">
     <a href="#login">Login</a>
@@ -256,20 +283,18 @@
   </nav>
 </header>
 
-<main>
+<main class="container" role="main">
 
   <section id="hero" aria-label="Welcome section">
-    <div>
-      <h2>Modern Bio Link Platform</h2>
-      <p>Create and customize your own unique bio page with music, profile pictures, backgrounds, social links, and more.</p>
+    <h2>Modern Bio Link Platform</h2>
+    <p>Create and customize your own unique bio page with music, profile pictures, backgrounds, social links, and more.</p>
 
-      <div class="btn-group">
-        <button id="btnLogin" aria-label="Login to your account">
-          <img src="assets/play.png" alt="" class="playIcon" aria-hidden="true" />
-          Login
-        </button>
-        <button id="btnRegister" aria-label="Register new account">Register</button>
-      </div>
+    <div class="btn-group">
+      <button id="btnLogin" aria-label="Login to your account">
+        <img src="assets/play.png" alt="" class="playIcon" aria-hidden="true" />
+        Login
+      </button>
+      <button id="btnRegister" aria-label="Register new account">Register</button>
     </div>
   </section>
 
@@ -290,7 +315,7 @@
 
 </main>
 
-<footer>
+<footer class="container">
   &copy; 2025 grief.bio — Made with 💙 by grief
   <br />
   <a href="https://instagram.com/yourhandle" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
@@ -302,7 +327,6 @@
 </footer>
 
 <script>
-  // Simple routing for the demo buttons (Login/Register) just to toggle nav links visually
   const navLinks = document.getElementById('navLinks');
 
   document.getElementById('btnLogin').addEventListener('click', () => {
