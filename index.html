@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>grief.bio — modern bio link platform</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
     /* Reset & base */
     *, *::before, *::after {
       box-sizing: border-box;
@@ -13,7 +15,7 @@
       margin: 0;
       background: #0f1115;
       color: #e1e1e1;
-      font-family: "Poppins", sans-serif;
+      font-family: 'Poppins', sans-serif;
       font-weight: 400;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
@@ -22,51 +24,39 @@
       flex-direction: column;
       align-items: center;
       padding: 2rem 1rem;
+      overflow-x: hidden;
     }
     a {
-      color: #4dabf7;
+      color: #6a76ff;
       text-decoration: none;
       transition: color 0.3s ease;
     }
-    a:hover {
-      color: #82c7ff;
+    a:hover, a:focus {
+      color: #8191ff;
+      outline: none;
     }
 
-    /* Container */
-    main {
-      max-width: 420px;
-      width: 100%;
-      background: #181a1f;
-      border-radius: 14px;
-      padding: 2.4rem 2.2rem;
-      box-shadow:
-        0 2px 12px rgb(255 255 255 / 0.04),
-        0 6px 24px rgb(0 0 0 / 0.7);
-    }
-
-    /* Header */
     header {
       width: 100%;
       max-width: 420px;
+      padding: 0 1rem;
+      margin-bottom: 3rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 1.8rem;
-      padding: 0 1rem;
+      user-select: none;
     }
     header h1 {
       font-weight: 700;
-      font-size: 1.5rem;
-      letter-spacing: 2px;
+      font-size: 1.8rem;
       color: #6a76ff;
-      user-select: none;
+      letter-spacing: 3px;
       font-feature-settings: "calt" 0;
     }
     nav a {
       font-weight: 600;
-      margin-left: 1.4rem;
-      font-size: 0.9rem;
-      letter-spacing: 0.04em;
+      font-size: 0.95rem;
+      margin-left: 1.6rem;
       cursor: pointer;
     }
     nav a#logoutLink {
@@ -77,167 +67,165 @@
       color: #ff7979;
     }
 
-    /* Forms & inputs */
-    form {
+    main {
+      width: 100%;
+      max-width: 900px;
       display: flex;
       flex-direction: column;
-      gap: 1.1rem;
-      margin-top: 0.8rem;
-    }
-    label {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: #a0a0a0;
-      user-select: none;
-    }
-    input, textarea {
-      background: #1c1e24;
-      border: none;
-      border-radius: 10px;
-      color: #e1e1e1;
-      padding: 0.8rem 1.1rem;
-      font-size: 1rem;
-      font-weight: 400;
-      resize: none;
-      box-shadow:
-        inset 0 0 8px #000000aa;
-      transition: box-shadow 0.2s ease;
-    }
-    input:focus, textarea:focus {
-      outline: none;
-      box-shadow:
-        inset 0 0 12px #6a76ffcc;
+      align-items: center;
+      gap: 2.8rem;
+      padding: 0 1rem;
     }
 
-    button {
-      background: #6a76ff;
-      border: none;
-      border-radius: 12px;
-      color: white;
-      font-weight: 700;
-      font-size: 1.1rem;
-      padding: 0.8rem 0;
-      margin-top: 0.6rem;
-      cursor: pointer;
-      letter-spacing: 0.03em;
-      box-shadow:
-        0 4px 14px rgb(106 118 255 / 0.6);
-      transition: background 0.3s ease, box-shadow 0.3s ease;
-      user-select: none;
-    }
-    button:hover {
-      background: #8191ff;
-      box-shadow:
-        0 6px 24px rgb(130 145 255 / 0.8);
-    }
-
-    /* Messages */
-    p.message {
-      font-weight: 600;
-      font-size: 0.9rem;
-      margin-top: -0.6rem;
-      margin-bottom: 1.4rem;
-      color: #e45c5c;
-      min-height: 1.2rem;
-      user-select: none;
-    }
-    p.message.success {
-      color: #61d661;
-    }
-
-    /* Links inside forms */
-    p.link-text {
-      font-size: 0.9rem;
-      text-align: center;
-      color: #8a8a8a;
-      margin-top: 0.8rem;
-    }
-    p.link-text a {
-      font-weight: 700;
-      color: #6a76ff;
-    }
-    p.link-text a:hover {
-      color: #8191ff;
-    }
-
-    /* Sections - show/hide */
-    section.hidden {
-      display: none;
-    }
-
-    /* Dashboard */
-    #dashboardPage p.welcome {
-      font-weight: 600;
-      font-size: 1.1rem;
-      margin-bottom: 1rem;
-      user-select: none;
-      color: #9a9eff;
-    }
-
-    /* Social links input note */
-    #dashSocialLinks {
-      font-style: italic;
-      color: #777;
-    }
-
-    /* File inputs style */
-    input[type="file"] {
-      padding: 0.3rem 1.1rem;
-      font-size: 0.9rem;
-      color: #ccc;
-      cursor: pointer;
-    }
-
-    /* Table for admin panel */
-    table {
+    /* Hero Section */
+    #hero {
       width: 100%;
-      border-collapse: collapse;
-      margin-top: 1rem;
-      color: #ddd;
-      font-size: 0.9rem;
+      background: linear-gradient(135deg, #1b1e25 0%, #0f1115 90%);
+      border-radius: 16px;
+      padding: 3rem 2.5rem;
+      box-shadow:
+        0 10px 30px rgb(106 118 255 / 0.3),
+        inset 0 0 40px rgb(106 118 255 / 0.15);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      color: #bfc2ff;
     }
-    th, td {
-      padding: 0.6rem 0.8rem;
-      border-bottom: 1px solid #2c2e35;
-      text-align: left;
+
+    #hero-left {
+      max-width: 480px;
     }
-    th {
-      color: #7a7fff;
-      font-weight: 600;
-    }
-    td .badge {
-      background: #6a76ff;
-      color: #121214;
-      padding: 0.15rem 0.4rem;
-      border-radius: 6px;
+    #hero-left h2 {
+      font-size: 2.4rem;
       font-weight: 700;
-      font-size: 0.85rem;
-      user-select: none;
-    }
-    button.action-btn {
-      background: transparent;
-      border: 1.8px solid #6a76ff;
+      margin: 0 0 0.5rem;
       color: #6a76ff;
-      font-weight: 700;
-      border-radius: 6px;
-      padding: 0.3rem 0.7rem;
-      cursor: pointer;
-      transition: background 0.25s ease, color 0.25s ease;
-      margin-right: 0.5rem;
-      user-select: none;
+      letter-spacing: 1.5px;
     }
-    button.action-btn:hover {
+    #hero-left p {
+      font-size: 1.1rem;
+      line-height: 1.5;
+      margin-bottom: 2rem;
+      color: #c0c3ffcc;
+    }
+    #hero-left .btn-group {
+      display: flex;
+      gap: 1.4rem;
+      flex-wrap: wrap;
+    }
+    #hero-left button {
+      cursor: pointer;
+      border-radius: 12px;
+      border: none;
+      padding: 0.8rem 2.4rem;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.04em;
+      user-select: none;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 6px 16px rgb(106 118 255 / 0.6);
+    }
+    #btnLogin {
       background: #6a76ff;
       color: white;
+    }
+    #btnLogin:hover {
+      background: #8191ff;
+      box-shadow: 0 8px 26px rgb(130 145 255 / 0.85);
+    }
+    #btnRegister {
+      background: transparent;
+      border: 2.5px solid #6a76ff;
+      color: #6a76ff;
+    }
+    #btnRegister:hover {
+      background: #6a76ff;
+      color: white;
+      box-shadow: 0 8px 26px rgb(130 145 255 / 0.85);
+    }
+
+    #hero-right {
+      max-width: 380px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #hero-right img#gunsImg {
+      max-width: 100%;
+      border-radius: 14px;
+      filter: drop-shadow(0 0 10px #6a76ffcc);
+      user-select: none;
+    }
+
+    /* Features section */
+    #features {
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+      color: #999bbc;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      user-select: none;
+    }
+    .feature-item {
+      flex: 1 1 250px;
+      background: #181a1f;
+      padding: 1.8rem 1.6rem;
+      border-radius: 12px;
+      box-shadow:
+        0 2px 10px rgb(106 118 255 / 0.2);
+      text-align: center;
+      transition: background 0.3s ease;
+    }
+    .feature-item:hover {
+      background: #2a2e43;
+      color: #b3b7ff;
+    }
+    .feature-item h3 {
+      margin-bottom: 0.8rem;
+      color: #6a76ff;
+      font-weight: 700;
+      font-size: 1.25rem;
+    }
+    .feature-item p {
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 1.4;
+      color: #bbbfffcc;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 4rem;
+      padding: 1rem 0;
+      width: 100%;
+      max-width: 420px;
+      color: #555a88;
+      font-size: 0.9rem;
+      user-select: none;
+      text-align: center;
     }
 
     /* Responsive */
-    @media (max-width: 460px) {
-      main {
-        padding: 1.6rem 1.2rem;
+    @media (max-width: 880px) {
+      #hero {
+        flex-direction: column;
+        gap: 2rem;
       }
-      header {
-        padding: 0 0.5rem;
+      #hero-left, #hero-right {
+        max-width: 100%;
+      }
+      #features {
+        flex-direction: column;
+      }
+      .feature-item {
+        max-width: 100%;
       }
     }
   </style>
@@ -247,181 +235,49 @@
 <header>
   <h1>grief.bio</h1>
   <nav id="navLinks">
-    <!-- Dynamic nav links -->
+    <!-- Nav links will be injected here -->
   </nav>
 </header>
 
 <main>
-  <!-- Register Page -->
-  <section id="registerPage" class="hidden" aria-label="Register form">
-    <h2>Register</h2>
-    <form id="registerForm" autocomplete="off" novalidate>
-      <label for="regUsername">Username</label>
-      <input
-        type="text"
-        id="regUsername"
-        name="username"
-        minlength="3"
-        maxlength="20"
-        pattern="^[a-zA-Z0-9_]+$"
-        required
-        autocomplete="username"
-        placeholder="Your username"
-        aria-describedby="regUsernameDesc"
-      />
-      <small id="regUsernameDesc" style="color:#777;font-size:0.8rem;user-select:none;">Only letters, numbers & underscores</small>
-
-      <label for="regEmail">Email</label>
-      <input
-        type="email"
-        id="regEmail"
-        name="email"
-        required
-        autocomplete="email"
-        placeholder="your.email@example.com"
-      />
-
-      <label for="regPassword">Password</label>
-      <input
-        type="password"
-        id="regPassword"
-        name="password"
-        minlength="6"
-        required
-        autocomplete="new-password"
-        placeholder="••••••••"
-      />
-
-      <button type="submit" aria-label="Register new account">Register</button>
-    </form>
-    <p class="message" id="regMessage" role="alert"></p>
-    <p class="link-text">Already have an account? <a href="#login" tabindex="0">Login</a></p>
+  <section id="hero" aria-label="Welcome section">
+    <div id="hero-left">
+      <h2>Modern Bio Link Platform</h2>
+      <p>Create and customize your own unique bio page with music, profile pictures, backgrounds, social links, and more.</p>
+      <div class="btn-group">
+        <button id="btnLogin" aria-label="Login to your account">Login</button>
+        <button id="btnRegister" aria-label="Register new account">Register</button>
+      </div>
+    </div>
+    <div id="hero-right">
+      <img src="assets/guns.png" alt="Decorative graphic" id="gunsImg" />
+    </div>
   </section>
 
-  <!-- Login Page -->
-  <section id="loginPage" class="hidden" aria-label="Login form">
-    <h2>Login</h2>
-    <form id="loginForm" autocomplete="off" novalidate>
-      <label for="loginUsername">Username</label>
-      <input
-        type="text"
-        id="loginUsername"
-        name="username"
-        required
-        autocomplete="username"
-        placeholder="Your username"
-      />
-
-      <label for="loginPassword">Password</label>
-      <input
-        type="password"
-        id="loginPassword"
-        name="password"
-        required
-        autocomplete="current-password"
-        placeholder="••••••••"
-      />
-
-      <button type="submit" aria-label="Login to your account">Login</button>
-    </form>
-    <p class="message" id="loginMessage" role="alert"></p>
-    <p class="link-text">Don't have an account? <a href="#register" tabindex="0">Register</a></p>
-  </section>
-
-  <!-- Dashboard Page -->
-  <section id="dashboardPage" class="hidden" aria-label="User dashboard">
-    <p class="welcome" aria-live="polite">Welcome, <strong id="dashUsername"></strong> (UID: <span id="dashUID"></span>)</p>
-
-    <form id="profileForm" autocomplete="off" novalidate>
-      <label for="dashBio">Bio (max 250 characters)</label>
-      <textarea
-        id="dashBio"
-        name="bio"
-        maxlength="250"
-        placeholder="Write something about yourself..."
-        rows="4"
-      ></textarea>
-
-      <label for="dashSocialLinks">Social Links (comma separated URLs)</label>
-      <input
-        type="text"
-        id="dashSocialLinks"
-        name="socialLinks"
-        placeholder="https://twitter.com/yourhandle, https://instagram.com/you"
-      />
-
-      <label for="dashMusicEmbed">Music Embed URL (Spotify, SoundCloud, etc.)</label>
-      <input
-        type="url"
-        id="dashMusicEmbed"
-        name="musicEmbed"
-        placeholder="https://open.spotify.com/track/..."
-      />
-
-      <label for="dashCursorUrl">Custom Cursor URL (PNG, GIF)</label>
-      <input
-        type="url"
-        id="dashCursorUrl"
-        name="cursorUrl"
-        placeholder="https://your-cursor-url.png"
-      />
-
-      <label for="dashUploadPFP">Upload Profile Picture</label>
-      <input
-        type="file"
-        id="dashUploadPFP"
-        name="pfp"
-        accept="image/*"
-      />
-
-      <label for="dashUploadBG">Upload Background Image</label>
-      <input
-        type="file"
-        id="dashUploadBG"
-        name="background"
-        accept="image/*"
-      />
-
-      <button type="submit" aria-label="Save profile settings">Save Profile</button>
-    </form>
-    <p class="message" id="dashMessage" role="alert"></p>
-
-    <button id="logoutBtn" aria-label="Logout from your account" style="margin-top: 2rem; width: 100%; background: #f44;">
-      Logout
-    </button>
-  </section>
-
-  <!-- Admin Page -->
-  <section id="adminPage" class="hidden" aria-label="Admin panel">
-    <h2 style="margin-bottom:1rem;color:#6a76ff;font-weight:700;">Admin Panel — User Management</h2>
-
-    <table aria-describedby="adminDesc" role="grid" tabindex="0">
-      <caption id="adminDesc" class="sr-only">List of users for admin management</caption>
-      <thead>
-        <tr>
-          <th scope="col">UID</th>
-          <th scope="col">Username</th>
-          <th scope="col">Email</th>
-          <th scope="col">Banned</th>
-          <th scope="col">Badges</th>
-          <th scope="col">Actions</th>
-        </tr>
-      </thead>
-      <tbody id="adminUserList"></tbody>
-    </table>
-
-    <button id="adminLogoutBtn" aria-label="Logout from admin panel" style="margin-top: 2rem; width: 100%; background: #f44;">
-      Logout
-    </button>
-    <p class="message" id="adminMessage" role="alert"></p>
+  <section id="features" aria-label="Features overview">
+    <article class="feature-item" tabindex="0">
+      <h3>Fully Customizable</h3>
+      <p>Personalize your bio with backgrounds, profile pictures, custom cursors, and embed music players.</p>
+    </article>
+    <article class="feature-item" tabindex="0">
+      <h3>Easy to Use</h3>
+      <p>Intuitive dashboard lets you edit your profile in real-time with seamless file uploads.</p>
+    </article>
+    <article class="feature-item" tabindex="0">
+      <h3>Secure & Reliable</h3>
+      <p>Login, register, and manage your account with full privacy and admin controls.</p>
+    </article>
   </section>
 </main>
 
-<script>
-  const apiBase = 'http://localhost:5000/api';
+<footer>
+  &copy; 2025 grief.bio — Made with 💙 by grief
+</footer>
 
-  // Utils
+<script>
   const navLinks = document.getElementById('navLinks');
+  const btnLogin = document.getElementById('btnLogin');
+  const btnRegister = document.getElementById('btnRegister');
 
   function updateNav() {
     navLinks.innerHTML = '';
@@ -442,20 +298,12 @@
     }
   }
 
-  function showPage(id) {
-    ['registerPage', 'loginPage', 'dashboardPage', 'adminPage'].forEach(page => {
-      document.getElementById(page).classList.toggle('hidden', page !== id);
-    });
-    updateNav();
-  }
-
   function logout() {
     localStorage.clear();
     location.hash = '#login';
-    showPage('loginPage');
+    updateNav();
   }
 
-  // Hash routing
   function route() {
     const token = localStorage.getItem('token');
     let hash = location.hash.toLowerCase() || '#login';
@@ -474,280 +322,39 @@
     }
 
     switch (hash) {
-      case '#register': showPage('registerPage'); break;
-      case '#login': showPage('loginPage'); break;
-      case '#dashboard': showPage('dashboardPage'); loadDashboard(); break;
-      case '#admin': showPage('adminPage'); loadAdminPanel(); break;
+      case '#register': showRegisterForm(); break;
+      case '#login': showLoginForm(); break;
+      case '#dashboard': showDashboard(); break;
+      case '#admin': showAdminPanel(); break;
       default: location.hash = '#login';
     }
   }
 
+  function showLoginForm() {
+    alert('Navigate to Login Page'); 
+    // In real app, you'd display login form section here
+  }
+  function showRegisterForm() {
+    alert('Navigate to Register Page');
+    // In real app, you'd display register form section here
+  }
+  function showDashboard() {
+    alert('Navigate to Dashboard');
+    // In real app, you'd display dashboard section here
+  }
+  function showAdminPanel() {
+    alert('Navigate to Admin Panel');
+    // In real app, you'd display admin panel here
+  }
+
+  // Buttons click to navigate
+  btnLogin.onclick = () => { location.hash = '#login'; };
+  btnRegister.onclick = () => { location.hash = '#register'; };
+
   window.addEventListener('hashchange', route);
-  window.addEventListener('load', route);
-
-  // Register
-  document.getElementById('registerForm').onsubmit = async e => {
-    e.preventDefault();
-    const username = e.target.username.value.trim();
-    const email = e.target.email.value.trim();
-    const password = e.target.password.value;
-    const msgEl = document.getElementById('regMessage');
-    msgEl.textContent = '';
-
-    if (!username.match(/^[a-zA-Z0-9_]+$/)) {
-      msgEl.textContent = 'Username can only contain letters, numbers, and underscores.';
-      return;
-    }
-
-    try {
-      const res = await fetch(`${apiBase}/auth/register`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, email, password }),
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.msg || 'Registration failed.');
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('uid', data.uid);
-      localStorage.setItem('username', data.username);
-      localStorage.setItem('isAdmin', 'false');
-      location.hash = '#dashboard';
-    } catch (err) {
-      msgEl.textContent = err.message;
-    }
-  };
-
-  // Login
-  document.getElementById('loginForm').onsubmit = async e => {
-    e.preventDefault();
-    const username = e.target.username.value.trim();
-    const password = e.target.password.value;
-    const msgEl = document.getElementById('loginMessage');
-    msgEl.textContent = '';
-
-    try {
-      const res = await fetch(`${apiBase}/auth/login`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password }),
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.msg || 'Login failed.');
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('uid', data.uid);
-      localStorage.setItem('username', data.username);
-      await checkAdminStatus();
-      location.hash = '#dashboard';
-    } catch (err) {
-      msgEl.textContent = err.message;
-    }
-  };
-
-  async function checkAdminStatus() {
-    try {
-      const token = localStorage.getItem('token');
-      if (!token) return;
-      const res = await fetch(`${apiBase}/auth/me`, {
-        headers: { 'Authorization': 'Bearer ' + token }
-      });
-      const data = await res.json();
-      if (res.ok && data.isAdmin) {
-        localStorage.setItem('isAdmin', 'true');
-      } else {
-        localStorage.setItem('isAdmin', 'false');
-      }
-    } catch {
-      localStorage.setItem('isAdmin', 'false');
-    }
+  window.addEventListener('load', () => {
     updateNav();
-  }
-
-  // Load dashboard user data
-  async function loadDashboard() {
-    const token = localStorage.getItem('token');
-    if (!token) return logout();
-
-    const usernameEl = document.getElementById('dashUsername');
-    const uidEl = document.getElementById('dashUID');
-    const bioEl = document.getElementById('dashBio');
-    const socialLinksEl = document.getElementById('dashSocialLinks');
-    const musicEmbedEl = document.getElementById('dashMusicEmbed');
-    const cursorUrlEl = document.getElementById('dashCursorUrl');
-
-    try {
-      const res = await fetch(`${apiBase}/user/profile`, {
-        headers: { 'Authorization': 'Bearer ' + token }
-      });
-      if (!res.ok) throw new Error('Failed to load profile.');
-      const data = await res.json();
-
-      usernameEl.textContent = data.username;
-      uidEl.textContent = data.uid;
-      bioEl.value = data.bio || '';
-      socialLinksEl.value = (data.socialLinks || []).join(', ');
-      musicEmbedEl.value = data.musicEmbed || '';
-      cursorUrlEl.value = data.cursorUrl || '';
-
-      // Apply custom cursor
-      if (data.cursorUrl) {
-        document.body.style.cursor = `url(${data.cursorUrl}), auto`;
-      } else {
-        document.body.style.cursor = 'auto';
-      }
-
-    } catch (err) {
-      console.error(err);
-    }
-  }
-
-  // Save profile changes
-  document.getElementById('profileForm').onsubmit = async e => {
-    e.preventDefault();
-
-    const token = localStorage.getItem('token');
-    if (!token) return logout();
-
-    const bio = e.target.bio.value.trim();
-    const socialLinks = e.target.socialLinks.value.split(',').map(s => s.trim()).filter(Boolean);
-    const musicEmbed = e.target.musicEmbed.value.trim();
-    const cursorUrl = e.target.cursorUrl.value.trim();
-
-    const msgEl = document.getElementById('dashMessage');
-    msgEl.textContent = '';
-
-    // Handle file uploads (profile pic and background)
-    const pfpFile = document.getElementById('dashUploadPFP').files[0];
-    const bgFile = document.getElementById('dashUploadBG').files[0];
-
-    const formData = new FormData();
-    formData.append('bio', bio);
-    formData.append('socialLinks', JSON.stringify(socialLinks));
-    formData.append('musicEmbed', musicEmbed);
-    formData.append('cursorUrl', cursorUrl);
-    if (pfpFile) formData.append('pfp', pfpFile);
-    if (bgFile) formData.append('background', bgFile);
-
-    try {
-      const res = await fetch(`${apiBase}/user/profile`, {
-        method: 'PUT',
-        headers: { 'Authorization': 'Bearer ' + token },
-        body: formData
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.msg || 'Failed to save profile.');
-      msgEl.textContent = 'Profile saved successfully!';
-      msgEl.className = 'message success';
-      loadDashboard();
-    } catch (err) {
-      msgEl.textContent = err.message;
-      msgEl.className = 'message';
-    }
-  };
-
-  // Admin panel
-  async function loadAdminPanel() {
-    const token = localStorage.getItem('token');
-    if (!token) return logout();
-
-    const userList = document.getElementById('adminUserList');
-    userList.innerHTML = '';
-    const msgEl = document.getElementById('adminMessage');
-    msgEl.textContent = '';
-
-    try {
-      const res = await fetch(`${apiBase}/admin/users`, {
-        headers: { 'Authorization': 'Bearer ' + token }
-      });
-      if (!res.ok) throw new Error('Failed to load users.');
-      const data = await res.json();
-
-      if (!Array.isArray(data)) {
-        msgEl.textContent = 'Unexpected response format.';
-        return;
-      }
-
-      data.forEach(user => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td>${user.uid}</td>
-          <td>${user.username}</td>
-          <td>${user.email}</td>
-          <td>${user.banned ? 'Yes' : 'No'}</td>
-          <td>${(user.badges || []).map(b => `<span class="badge">${b}</span>`).join(' ')}</td>
-          <td>
-            <button class="action-btn" data-uid="${user.uid}" data-action="toggleBan">${user.banned ? 'Unban' : 'Ban'}</button>
-            <button class="action-btn" data-uid="${user.uid}" data-action="addBadge">Add Badge</button>
-          </td>
-        `;
-        userList.appendChild(tr);
-      });
-
-      // Attach button listeners
-      userList.querySelectorAll('button.action-btn').forEach(btn => {
-        btn.onclick = async () => {
-          const uid = btn.dataset.uid;
-          const action = btn.dataset.action;
-          if (action === 'toggleBan') {
-            await toggleBan(uid);
-          } else if (action === 'addBadge') {
-            const badge = prompt('Enter badge name to add (e.g. creative, staff, donator):');
-            if (!badge) return;
-            await addBadge(uid, badge);
-          }
-          await loadAdminPanel();
-        };
-      });
-
-    } catch (err) {
-      msgEl.textContent = err.message;
-    }
-  }
-
-  async function toggleBan(uid) {
-    const token = localStorage.getItem('token');
-    if (!token) return logout();
-
-    try {
-      const res = await fetch(`${apiBase}/admin/toggleban`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
-        body: JSON.stringify({ uid })
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.msg || 'Failed to toggle ban.');
-    } catch (err) {
-      alert(err.message);
-    }
-  }
-
-  async function addBadge(uid, badge) {
-    const token = localStorage.getItem('token');
-    if (!token) return logout();
-
-    try {
-      const res = await fetch(`${apiBase}/admin/addbadge`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
-        body: JSON.stringify({ uid, badge })
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.msg || 'Failed to add badge.');
-    } catch (err) {
-      alert(err.message);
-    }
-  }
-
-  // Logout button dashboard
-  document.getElementById('logoutBtn').onclick = logout;
-  // Logout button admin
-  document.getElementById('adminLogoutBtn').onclick = logout;
-
-  // Support keyboard nav between forms links
-  document.querySelectorAll('p.link-text a').forEach(link => {
-    link.onclick = e => {
-      e.preventDefault();
-      location.hash = e.target.getAttribute('href');
-    };
+    route();
   });
 </script>
 
