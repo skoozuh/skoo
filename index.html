@@ -1,460 +1,512 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <meta charset="UTF-8" />
- <meta name="viewport" content="width=device-width, initial-scale=1" />
- <title>crd | praod</title>
- <link rel="icon" type="image/png" href="assets/favicon.png" />
- <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-
- <style>
- body {
- display: flex;
- justify-content: center;
- align-items: center;
- height: 100vh;
- background: #111;
- margin: 0;
- font-family: 'Poppins', sans-serif;
- }
-
- .card-wrapper {
-  padding: 4px;
-  border-radius: 24px;
-  background: linear-gradient(135deg, #1fbc8b, #ffd3a5, #fff6e0, #ffcba4, #ffbc8b);
-  background-size: 200% 200%;
-  animation: borderScroll 3s ease-in-out infinite alternate;
-  display: inline-block;
-  box-shadow: 0 0 14px rgba(255, 188, 139, 0.3), 0 0 20px rgba(255, 211, 165, 0.2), 0 4px 10px rgba(255, 203, 164, 0.15);
-  transition: transform 0.2s ease;
-  transform-style: preserve-3d;
-  will-change: transform;
-}
-
- @keyframes borderScroll {
- 0% { background-position: 0% 50%; }
- 100% { background-position: 100% 50%; }
- }
-
- .card {
- width: 750px;
- min-height: 750px;
- background: #111;
- border-radius: 20px;
- padding: 25px;
- box-sizing: border-box;
- display: flex;
- flex-direction: column;
- align-items: flex-start;
- transition: transform 0.1s ease, box-shadow 0.2s ease;
- transform-style: preserve-3d;
- will-change: transform;
- }
-
- .profile-pic {
- width: 120px;
- height: 120px;
- border-radius: 50%;
- object-fit: cover;
- margin-bottom: 5px;
- border: 4px solid rgba(255, 255, 255, 0.05);
- }
-
- .name {
- font-size: 35px;
- font-weight: 600;
- margin-left: 5px;
- color: #fff;
- }
-
- .description {
- font-size: 16px;
- color: #ddd;
- line-height: 1.4;
- max-width: 100%;
- margin-left: 5px;
- }
-
- .presence-card {
- display: flex;
- align-items: center;
- background: rgba(255, 255, 255, 0.05);
- border-radius: 12px;
- padding: 10px 14px;
- box-sizing: border-box;
- width: 100%;
- backdrop-filter: blur(5px);
- margin-top: 25px;
- }
-
- .avatar {
- width: 60px;
- height: 60px;
- border-radius: 50%;
- object-fit: cover;
- margin-right: 12px;
- }
-
- .details .username {
- font-size: 15px;
- font-weight: 500;
- color: #fff;
- }
-
- .badge {
- display: inline-block;
- width: 16px;
- height: 16px;
- border-radius: 0px;
- background-size: cover;
- background-position: center;
- vertical-align: middle;
- }
-
- .badge.quest {
- background-image: url('assets/quest.png');
- margin-left: 5px;
- }.
-
-badge.bravery {
- background-image: url('assets/bravery.png');
- margin-left: 1px;
- }
-
- .music-player {
- margin-top: 10px;
- width: 100%;
- background: rgba(30, 30, 30, 0.7);
- border-radius: 12px;
- padding: 12px 14px;
- box-sizing: border-box;
- backdrop-filter: blur(5px);
- display: flex;
- flex-direction: column;
- gap: 10px;
- }
-
- .track-info {
- color: rgb(255, 255, 255, 0.9);
- font-size: 14px;
- font-weight: 400;
- display: flex;
- flex-direction: column;
- line-height: 0.5;
- }
-
- .artist-name {
- font-weight: 400;
- color: rgba(255, 255, 255, 0.50);
- font-size: 14px;
- margin-top: 5px;
- }
-
- .controls {
- display: flex;
- justify-content: space-between;
- align-items: center;
- }
-
- .controls button {
- background: transparent;
- border: none;
- cursor: pointer;
- display: flex;
- align-items: center;
- justify-content: center;
- padding: 0;
- transition: transform 0.2s ease;
- }
-
- .controls button:hover {
- transform: scale(1.1);
- }
-
- .controls img {
- width: 26px;
- height: 26px;
- transition: opacity 0.25s ease;
- }
-
- #seekBar {
- -webkit-appearance: none;
- width: 100%;
- height: 4px;
- background: rgba(255, 255, 255, 0.165); /* darker gray background */
- border-radius: 10px;
- position: relative;
- cursor: pointer;
- overflow: hidden;
- transition: height 0.2s ease;
-}
-
-/* Remove the default thumb */
-#seekBar::-webkit-slider-thumb {
- -webkit-appearance: none;
- appearance: none;
- width: 0;
- height: 0;
- background: transparent;
- border: none;
-}
-
-#seekBar::before {
- content: '';
- position: absolute;
- height: 100%;
- background: rgba(255, 255, 255, 0.267); /* slightly lighter gray than background */
- width: 0%;
- z-index: 1;
- transition: width 0.1s linear;
-}
-
-#seekBar:hover,
-#seekBar:active {
- height: 8px;
-}
-
-.badge-container {
- display: flex;
- align-items: center;
- margin-left: 10px;
- padding: 5px;
- border-radius: 16px;
- background: #111;
- border: 2px solid transparent;
- background-clip: padding-box;
- position: relative;
-}
-
-.badge-container::before {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  z-index: -1;
-  border-radius: 18px;
-  background: linear-gradient(135deg, #ffbc8b, #ffd3a5, #fff6e0, #ffcba4, #ffbc8b);
-  background-size: 200% 200%;
-  animation: borderScroll 3s ease-in-out infinite alternate;
-}
-
-.badge-container img {
- width: 15px;
- height: 15px;
- border-radius: 2px;
- margin-right: 4px;
- margin-left: 1px;
- object-fit: cover;
-}
-
-.social-logos {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 15px;
-  margin-top: 25px;
-  margin-left: 5px;
-  opacity: 0.2;
-}
-
-.social-icon {
-  width: 35px;
-  height: 35px;
-  object-fit: contain;
-}
-
-.social-logos a {
-  display: inline-block;
-  transition: transform 0.3s ease;
-}
-
-.social-logos a:hover {
-  transform: scale(1.15);
-}
-
-@media (max-width: 480px) {
-  .card {
-    width: 90vw; /* use 90% of the viewport width */
-    padding: 20px;
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>grief.bio - Bio Link Platform</title>
+<style>
+  /* Basic reset & fonts */
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: #121214;
+    color: #ddd;
+    margin: 0; padding: 0;
+    min-height: 100vh;
   }
-
-  .profile-pic {
-    width: 100px;
-    height: 100px;
+  a {
+    color: #66ccff;
+    text-decoration: none;
   }
-
-  .name {
-    font-size: 28px;
+  header {
+    padding: 1rem;
+    background: #1f1f23;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
-
-  .description {
-    font-size: 14px;
+  header h1 {
+    margin: 0; font-weight: 700;
   }
-
-  .presence-card,
-  .music-player {
-    padding: 10px;
+  nav a {
+    margin-left: 1rem;
+    cursor: pointer;
+    font-weight: 600;
   }
-
-  .social-icon {
-    width: 28px;
-    height: 28px;
+  .hidden {
+    display: none;
   }
-
-  .avatar {
-    width: 48px;
-    height: 48px;
+  main {
+    padding: 1rem;
+    max-width: 900px;
+    margin: 1rem auto;
   }
-
-  .track-info {
-    font-size: 13px;
+  input, textarea, select {
+    width: 100%;
+    padding: 0.6rem;
+    margin: 0.3rem 0 1rem;
+    border-radius: 6px;
+    border: none;
+    background: #222;
+    color: #ddd;
   }
-
-  .artist-name {
-    font-size: 12px;
+  label {
+    font-weight: 600;
   }
-}
-
- </style>
+  button {
+    padding: 0.7rem 1.2rem;
+    background: #3366ff;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  button:hover {
+    background: #5599ff;
+  }
+  .btn-danger {
+    background: #cc4444;
+  }
+  .btn-danger:hover {
+    background: #dd5555;
+  }
+  .user-list {
+    margin-top: 1rem;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  .user-list th, .user-list td {
+    border: 1px solid #444;
+    padding: 0.5rem;
+    text-align: left;
+  }
+  .badge {
+    display: inline-block;
+    background: #66ccff;
+    color: #121214;
+    padding: 0.15rem 0.5rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    margin-right: 4px;
+  }
+</style>
 </head>
-
 <body>
 
- <div class="card-wrapper" id="cardWrapper">
- <div class="card" id="card">
- <img 
- src="assets/pfp.png" 
- alt="pfp" 
- class="profile-pic" 
- id="profilePic"
- />
- <div style="display: flex; align-items: center;">
- <div class="name" id="profileName">prod @skoozuh</div>
- <div class="badge-container">
- <img src="assets/crownw.png" alt="owner">
- <!-- You can add more badges here -->
- </div>
-</div>
- <div class="description" id="profileDescription">
- Owner <br> @skoozuh
- </div>
+<header>
+  <h1>grief.bio</h1>
+  <nav id="navLinks">
+    <!-- Links updated by JS -->
+  </nav>
+</header>
 
- <div class="presence-card">
- <img class="avatar" src="https://media.discordapp.net/attachments/1401010039681978381/1401023191757099170/pfp.png?ex=688ec406&is=688d7286&hm=f481589859fb09df918d82265f354b78dd08bedf1fa7e27f78a4c6ca467dcde2&format=webp&quality=lossless&width=1408&height=1408&" alt="Avatar">
- <div class="details">
- <div class="username">
- skoozuh
- <span class="badge quest"></span>
- <span class="badge bravery"></span>
- </div>
- </div>
- </div>
+<main>
+  <!-- Register Page -->
+  <section id="registerPage" class="hidden">
+    <h2>Register</h2>
+    <form id="registerForm">
+      <label for="regUsername">Username</label>
+      <input type="text" id="regUsername" required minlength="3" maxlength="20" pattern="^[a-zA-Z0-9_]+$" />
+      
+      <label for="regEmail">Email</label>
+      <input type="email" id="regEmail" required />
+      
+      <label for="regPassword">Password</label>
+      <input type="password" id="regPassword" required minlength="6" />
+      
+      <button type="submit">Register</button>
+    </form>
+    <p>Already have an account? <a href="#login">Login here</a></p>
+    <p id="regMessage" style="color: #f66;"></p>
+  </section>
 
- <div class="music-player">
-    <div class="controls">
-      <div class="track-info">
-        <span id="track-title">Lazy Boy and the Temple of Wonders</span><br>
-        <span id="track-artist" class="artist-name">Weedpecker</span>
-        </div>
-        <button id="playPauseBtn">
-        <img id="playPauseIcon" src="assets/play.png" alt="Play" />
-        </button>
-        </div>
-        <input type="range" id="seekBar" value="0" min="0" step="1">
-        <audio id="audio" src="assets/lazyboyweedpecker.mp3"></audio>
-      </div>
-    <div class="social-logos">
-  <a href="https://instagram.com/zccmu" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-    <img src="assets/iglogo.png" alt="Instagram" class="social-icon" />
-  </a>
-  <a href="https://last.fm/user/crsttt" target="_blank" rel="noopener noreferrer" aria-label="Last.fm">
-    <img src="assets/lastfmlogo.png" alt="Last.fm" class="social-icon" />
-  </a>
-</div>
-</div>
-  </div>
-  
+  <!-- Login Page -->
+  <section id="loginPage" class="hidden">
+    <h2>Login</h2>
+    <form id="loginForm">
+      <label for="loginUsername">Username</label>
+      <input type="text" id="loginUsername" required />
+      
+      <label for="loginPassword">Password</label>
+      <input type="password" id="loginPassword" required />
+      
+      <button type="submit">Login</button>
+    </form>
+    <p>Don't have an account? <a href="#register">Register here</a></p>
+    <p id="loginMessage" style="color: #f66;"></p>
+  </section>
 
- <script>
- const wrapper = document.getElementById('cardWrapper');
+  <!-- Dashboard Page -->
+  <section id="dashboardPage" class="hidden">
+    <h2>Your Dashboard</h2>
+    <p>Welcome, <span id="dashUsername"></span>! (UID: <span id="dashUID"></span>)</p>
 
- wrapper.addEventListener('mousemove', (e) => {
- const rect = wrapper.getBoundingClientRect();
- const x = e.clientX - rect.left;
- const y = e.clientY - rect.top;
+    <h3>Edit Your Bio</h3>
+    <textarea id="dashBio" rows="3" maxlength="250" placeholder="Write something about yourself..."></textarea>
 
- const centerX = rect.width / 2;
- const centerY = rect.height / 2;
+    <h3>Social Links (comma separated)</h3>
+    <input type="text" id="dashSocialLinks" placeholder="https://twitter.com/yourhandle, https://instagram.com/you" />
 
- const rotateX = ((y - centerY) / centerY) * 8;
- const rotateY = ((x - centerX) / centerX) * 8;
+    <h3>Music Embed URL (Spotify, Soundcloud, etc.)</h3>
+    <input type="url" id="dashMusicEmbed" placeholder="https://open.spotify.com/track/..." />
 
- wrapper.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
- });
+    <h3>Custom Cursor URL</h3>
+    <input type="url" id="dashCursorUrl" placeholder="https://your-cursor-url.png" />
 
- wrapper.addEventListener('mouseleave', () => {
- wrapper.style.transform = 'rotateX(0deg) rotateY(0deg)';
- });
- </script>
+    <h3>Upload Profile Picture</h3>
+    <input type="file" id="dashUploadPFP" accept="image/*" />
+
+    <h3>Upload Background</h3>
+    <input type="file" id="dashUploadBG" accept="image/*" />
+
+    <button id="saveProfileBtn">Save Profile</button>
+    <p id="dashMessage" style="color: #6f6;"></p>
+
+    <button id="logoutBtn" style="margin-top: 1rem;">Logout</button>
+  </section>
+
+  <!-- Admin Page -->
+  <section id="adminPage" class="hidden">
+    <h2>Admin Panel</h2>
+    <p><strong>Manage Users</strong></p>
+    <table class="user-list" aria-label="User list for admin">
+      <thead>
+        <tr>
+          <th>UID</th>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Banned</th>
+          <th>Badges</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="adminUserList"></tbody>
+    </table>
+    <button id="adminLogoutBtn" style="margin-top: 1rem;">Logout</button>
+    <p id="adminMessage" style="color: #f66;"></p>
+  </section>
+
+</main>
 
 <script>
-const audio = document.getElementById('audio');
-const playPauseBtn = document.getElementById('playPauseBtn');
-const playPauseIcon = document.getElementById('playPauseIcon');
-const trackTitle = document.getElementById('track-title');
-const trackArtist = document.getElementById('track-artist');
-const seekBar = document.getElementById('seekBar');
+const apiBase = 'http://localhost:5000/api'; // Change if backend on different url
 
-const song = {
-  title: "Lazy Boy and the Temple of Wonders",
-  artist: "Weedpecker",
-  url: "assets/lazyboyweedpecker.mp3"
+// === UTILS ===
+function showPage(id) {
+  ['registerPage', 'loginPage', 'dashboardPage', 'adminPage'].forEach(pid => {
+    document.getElementById(pid).classList.toggle('hidden', pid !== id);
+  });
+  updateNav();
+}
+
+function updateNav() {
+  const nav = document.getElementById('navLinks');
+  nav.innerHTML = '';
+  const token = localStorage.getItem('token');
+  if (!token) {
+    nav.innerHTML = '<a href="#login">Login</a> <a href="#register">Register</a>';
+  } else {
+    nav.innerHTML = `
+      <a href="#dashboard">Dashboard</a>
+      ${isAdmin() ? '<a href="#admin">Admin</a>' : ''}
+      <a href="#" id="logoutLink">Logout</a>
+    `;
+    document.getElementById('logoutLink').onclick = e => {
+      e.preventDefault();
+      logout();
+    };
+  }
+}
+
+function isAdmin() {
+  const adminFlag = localStorage.getItem('isAdmin');
+  return adminFlag === 'true';
+}
+
+function logout() {
+  localStorage.clear();
+  showPage('loginPage');
+}
+
+// --- HANDLE HASH ROUTING ---
+function handleRoute() {
+  const hash = location.hash.toLowerCase() || '#login';
+  const token = localStorage.getItem('token');
+
+  if (!token && hash !== '#login' && hash !== '#register') {
+    location.hash = '#login';
+    return;
+  }
+  if (token && (hash === '#login' || hash === '#register')) {
+    location.hash = '#dashboard';
+    return;
+  }
+  if (hash === '#dashboard' && !token) {
+    location.hash = '#login';
+    return;
+  }
+  if (hash === '#admin' && (!token || !isAdmin())) {
+    location.hash = '#dashboard';
+    return;
+  }
+
+  switch (hash) {
+    case '#register': showPage('registerPage'); break;
+    case '#login': showPage('loginPage'); break;
+    case '#dashboard': showPage('dashboardPage'); loadDashboard(); break;
+    case '#admin': showPage('adminPage'); loadAdminPanel(); break;
+    default: location.hash = '#login';
+  }
+}
+
+// === REGISTER FORM ===
+document.getElementById('registerForm').onsubmit = async e => {
+  e.preventDefault();
+  const username = document.getElementById('regUsername').value.trim();
+  const email = document.getElementById('regEmail').value.trim();
+  const password = document.getElementById('regPassword').value;
+  const msgEl = document.getElementById('regMessage');
+  msgEl.textContent = '';
+
+  try {
+    const res = await fetch(apiBase + '/auth/register', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({username, email, password})
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.msg || 'Register failed');
+    localStorage.setItem('token', data.token);
+    localStorage.setItem('uid', data.uid);
+    localStorage.setItem('username', data.username);
+    localStorage.setItem('isAdmin', 'false'); // new users not admin
+    location.hash = '#dashboard';
+  } catch (err) {
+    msgEl.textContent = err.message;
+  }
 };
 
-// Set initial text
-trackTitle.textContent = song.title;
-trackArtist.textContent = song.artist;
+// === LOGIN FORM ===
+document.getElementById('loginForm').onsubmit = async e => {
+  e.preventDefault();
+  const username = document.getElementById('loginUsername').value.trim();
+  const password = document.getElementById('loginPassword').value;
+  const msgEl = document.getElementById('loginMessage');
+  msgEl.textContent = '';
 
-// Load audio
-audio.src = song.url;
-audio.load();
+  try {
+    const res = await fetch(apiBase + '/auth/login', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({username, password})
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.msg || 'Login failed');
+    localStorage.setItem('token', data.token);
+    localStorage.setItem('uid', data.uid);
+    localStorage.setItem('username', data.username);
 
-let isPlaying = false;
+    // Check admin status on login
+    await checkAdminStatus();
 
-// Play/pause logic
-playPauseBtn.addEventListener('click', () => {
-  playPauseIcon.style.opacity = 0;
-
-  setTimeout(() => {
-    if (isPlaying) {
-      audio.pause();
-      playPauseIcon.src = "assets/play.png";
-    } else {
-      audio.play().catch(err => console.error("Playback failed:", err));
-      playPauseIcon.src = "assets/pause.png";
-    }
-
-    isPlaying = !isPlaying;
-    playPauseIcon.style.opacity = 1;
-  }, 200);
-});
-
-// Update seek bar as song plays
-audio.addEventListener('timeupdate', () => {
-  if (!isNaN(audio.duration)) {
-    seekBar.max = audio.duration;
-    seekBar.value = audio.currentTime;
-
-    const fillPercent = (audio.currentTime / audio.duration) * 100;
-    seekBar.style.background = `linear-gradient(to right, rgba(255, 255, 255, 0.267) ${fillPercent}%, rgba(255, 255, 255, 0.165) ${fillPercent}%)`;
+    location.hash = '#dashboard';
+  } catch (err) {
+    msgEl.textContent = err.message;
   }
-});
+};
 
-// Seek logic
-seekBar.addEventListener('input', () => {
-  audio.currentTime = seekBar.value;
+async function checkAdminStatus() {
+  try {
+    const token = localStorage.getItem('token');
+    if (!token) return;
+    const res = await fetch(apiBase + '/admin/users', {
+      headers: { Authorization: 'Bearer ' + token }
+    });
+    if (!res.ok) {
+      localStorage.setItem('isAdmin', 'false');
+      return;
+    }
+    const users = await res.json();
+    const currentUid = Number(localStorage.getItem('uid'));
+    const currentUser = users.find(u => u.uid === currentUid);
+    localStorage.setItem('isAdmin', currentUser?.isAdmin ? 'true' : 'false');
+  } catch {
+    localStorage.setItem('isAdmin', 'false');
+  }
+}
+
+// === DASHBOARD ===
+async function loadDashboard() {
+  const token = localStorage.getItem('token');
+  if (!token) return;
+
+  const res = await fetch(apiBase + '/dashboard', {
+    headers: { Authorization: 'Bearer ' + token }
+  });
+  if (!res.ok) {
+    logout();
+    return;
+  }
+  const profile = await res.json();
+  document.getElementById('dashUsername').textContent = profile.username;
+  document.getElementById('dashUID').textContent = profile.uid;
+  document.getElementById('dashBio').value = profile.bio || '';
+  document.getElementById('dashSocialLinks').value = (profile.socialLinks || []).join(', ');
+  document.getElementById('dashMusicEmbed').value = profile.musicEmbedUrl || '';
+  document.getElementById('dashCursorUrl').value = profile.cursorUrl || '';
+  document.getElementById('dashMessage').textContent = '';
+}
+
+document.getElementById('saveProfileBtn').onclick = async () => {
+  const token = localStorage.getItem('token');
+  if (!token) return logout();
+
+  const bio = document.getElementById('dashBio').value.trim();
+  const socialLinks = document.getElementById('dashSocialLinks').value.split(',').map(s => s.trim()).filter(Boolean);
+  const musicEmbedUrl = document.getElementById('dashMusicEmbed').value.trim();
+  const cursorUrl = document.getElementById('dashCursorUrl').value.trim();
+
+  try {
+    const res = await fetch(apiBase + '/dashboard', {
+      method: 'PUT',
+      headers: {
+        'Authorization': 'Bearer ' + token,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ bio, socialLinks, musicEmbedUrl, cursorUrl })
+    });
+    if (!res.ok) throw new Error('Failed to save profile');
+    document.getElementById('dashMessage').textContent = 'Profile saved successfully!';
+  } catch (err) {
+    document.getElementById('dashMessage').textContent = err.message;
+  }
+};
+
+// File uploads
+document.getElementById('dashUploadPFP').onchange = async function () {
+  const token = localStorage.getItem('token');
+  if (!token) return logout();
+
+  const file = this.files[0];
+  if (!file) return;
+
+  const formData = new FormData();
+  formData.append('pfp', file);
+
+  try {
+    const res = await fetch(apiBase + '/dashboard/upload-pfp', {
+      method: 'POST',
+      headers: { 'Authorization': 'Bearer ' + token },
+      body: formData
+    });
+    if (!res.ok) throw new Error('Upload failed');
+    alert('Profile picture uploaded successfully');
+  } catch (err) {
+    alert(err.message);
+  }
+};
+
+document.getElementById('dashUploadBG').onchange = async function () {
+  const token = localStorage.getItem('token');
+  if (!token) return logout();
+
+  const file = this.files[0];
+  if (!file) return;
+
+  const formData = new FormData();
+  formData.append('background', file);
+
+  try {
+    const res = await fetch(apiBase + '/dashboard/upload-background', {
+      method: 'POST',
+      headers: { 'Authorization': 'Bearer ' + token },
+      body: formData
+    });
+    if (!res.ok) throw new Error('Upload failed');
+    alert('Background uploaded successfully');
+  } catch (err) {
+    alert(err.message);
+  }
+};
+
+// === ADMIN PANEL ===
+async function loadAdminPanel() {
+  const token = localStorage.getItem('token');
+  if (!token) return logout();
+
+  const tbody = document.getElementById('adminUserList');
+  tbody.innerHTML = '';
+  document.getElementById('adminMessage').textContent = '';
+
+  try {
+    const res = await fetch(apiBase + '/admin/users', {
+      headers: { Authorization: 'Bearer ' + token }
+    });
+    if (!res.ok) throw new Error('Failed to load users');
+    const users = await res.json();
+
+    users.forEach(user => {
+      const tr = document.createElement('tr');
+
+      const bannedText = user.isBanned ? 'Yes' : 'No';
+      const badgesHTML = (user.badges || []).map(b => `<span class="badge">${b}</span>`).join(' ');
+
+      tr.innerHTML = `
+        <td>${user.uid}</td>
+        <td>${user.username}</td>
+        <td>${user.email}</td>
+        <td>${bannedText}</td>
+        <td>${badgesHTML}</td>
+        <td>
+          <button class="banBtn">${user.isBanned ? 'Unban' : 'Ban'}</button>
+          <button class="badgeBtn">Toggle Badge</button>
+        </td>
+      `;
+
+      // Ban/unban button
+      tr.querySelector('.banBtn').onclick = async () => {
+        try {
+          const res = await fetch(apiBase + '/admin/ban/' + user._id, {
+            method: 'PUT',
+            headers: { Authorization: 'Bearer ' + token }
+          });
+          if (!res.ok) throw new Error('Failed to update ban status');
+          await loadAdminPanel();
+        } catch (err) {
+          document.getElementById('adminMessage').textContent = err.message;
+        }
+      };
+
+      // Toggle badge button (example badge "premium")
+      tr.querySelector('.badgeBtn').onclick = async () => {
+        try {
+          const res = await fetch(apiBase + '/admin/badge/' + user._id, {
+            method: 'PUT',
+            headers: {
+              'Authorization': 'Bearer ' + token,
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ badge: 'premium' })
+          });
+          if (!res.ok) throw new Error('Failed to toggle badge');
+          await loadAdminPanel();
+        } catch (err) {
+          document.getElementById('adminMessage').textContent = err.message;
+        }
+      };
+
+      tbody.appendChild(tr);
+    });
+  } catch (err) {
+    document.getElementById('adminMessage').textContent = err.message;
+  }
+}
+
+window.addEventListener('hashchange', handleRoute);
+window.addEventListener('load', () => {
+  handleRoute();
+  updateNav();
 });
 </script>
 
