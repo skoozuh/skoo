@@ -1,293 +1,518 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>grief.bio — modern bio link platform</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>grief.bio — modern bio link platform</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
-    /* Reset */
-    *, *::before, *::after {
-      box-sizing: border-box;
+  /* Reset */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    background: #181818;
+    color: #ddd;
+    scroll-behavior: smooth;
+    line-height: 1.6;
+    user-select: none;
+  }
+  a {
+    color: #00bcd4;
+    text-decoration: none;
+    transition: color 0.25s ease;
+  }
+  a:hover {
+    color: #26c6da;
+  }
+
+  /* Container */
+  .container {
+    width: 90%;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem 0;
+  }
+
+  /* Header */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #333;
+    padding-bottom: 1rem;
+    position: sticky;
+    top: 0;
+    background: #181818;
+    z-index: 1000;
+  }
+  header h1 {
+    font-weight: 700;
+    font-size: 1.9rem;
+    letter-spacing: 0.1em;
+    color: #00bcd4;
+    margin: 0;
+  }
+  nav a {
+    font-weight: 600;
+    margin-left: 1.6rem;
+    font-size: 1rem;
+    color: #00bcd4;
+  }
+  nav a:hover {
+    color: #26c6da;
+  }
+
+  /* Buttons */
+  .btn {
+    background: #00bcd4;
+    border: none;
+    border-radius: 14px;
+    padding: 0.6rem 1.6rem;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #181818;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    user-select: none;
+  }
+  .btn:hover {
+    background: #26c6da;
+  }
+
+  /* Hero (split layout) */
+  #hero {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+    padding: 3rem 0;
+    border-bottom: 1px solid #333;
+  }
+  #hero-text {
+    flex: 1 1 320px;
+    max-width: 540px;
+  }
+  #hero-text h2 {
+    font-weight: 700;
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    color: #00bcd4;
+  }
+  #hero-text p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    color: #ccc;
+  }
+  #hero-buttons {
+    display: flex;
+    gap: 1rem;
+  }
+
+  #hero-visual {
+    flex: 1 1 320px;
+    max-width: 380px;
+    background: #222;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 188, 212, 0.3);
+    padding: 2rem;
+    color: #eee;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  #hero-visual .avatar {
+    width: 160px;
+    height: 160px;
+    background: #00bcd4;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 900;
+    font-size: 3.2rem;
+    color: #181818;
+    user-select: none;
+  }
+  #hero-visual .username {
+    font-weight: 700;
+    font-size: 1.4rem;
+    margin-bottom: 0.6rem;
+  }
+  #hero-visual .badges {
+    display: flex;
+    gap: 0.8rem;
+  }
+  #hero-visual .badge {
+    background: #00bcd4;
+    border-radius: 8px;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #181818;
+    user-select: none;
+  }
+
+  /* Features section */
+  #features {
+    padding: 3rem 0;
+    border-bottom: 1px solid #333;
+  }
+  #features h2 {
+    color: #00bcd4;
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  #features ul {
+    list-style: none;
+    padding-left: 0;
+    max-width: 720px;
+  }
+  #features ul li {
+    background: #222;
+    padding: 1rem 1.2rem;
+    margin-bottom: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,188,212,0.15);
+    font-weight: 500;
+  }
+
+  /* Profile preview */
+  #profile-preview {
+    padding: 3rem 0;
+    border-bottom: 1px solid #333;
+    background: #222;
+    border-radius: 16px;
+    max-width: 720px;
+    margin: 0 auto 3rem;
+    box-shadow: 0 5px 15px rgba(0,188,212,0.25);
+  }
+  #profile-preview h2 {
+    color: #00bcd4;
+    font-weight: 700;
+    font-size: 1.9rem;
+    margin-bottom: 1rem;
+  }
+  #profile-preview .mockup {
+    background: #181818;
+    border-radius: 12px;
+    padding: 1.5rem;
+    color: #ddd;
+    box-shadow: inset 0 0 15px rgba(0,188,212,0.15);
+  }
+  #profile-preview .mockup-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  #profile-preview .mockup-avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: #00bcd4;
+    color: #181818;
+    font-weight: 900;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1rem;
+    user-select: none;
+  }
+  #profile-preview .mockup-username {
+    font-weight: 700;
+    font-size: 1.4rem;
+  }
+  #profile-preview .mockup-badges {
+    margin-top: 0.6rem;
+    display: flex;
+    gap: 0.6rem;
+  }
+  #profile-preview .mockup-badge {
+    background: #00bcd4;
+    padding: 0.3rem 0.7rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #181818;
+    user-select: none;
+  }
+  #profile-preview .mockup-music {
+    background: #181818;
+    margin-top: 1.4rem;
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    color: #bbb;
+    user-select: none;
+    font-style: italic;
+  }
+
+  /* UID + Badges */
+  #uid-badges {
+    padding: 3rem 0;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  #uid-badges h2 {
+    color: #00bcd4;
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  .badge-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+  }
+  .badge-card {
+    background: #222;
+    border-radius: 14px;
+    flex: 1 1 180px;
+    padding: 1.4rem;
+    box-shadow: 0 2px 8px rgba(0,188,212,0.15);
+    cursor: default;
+    transition: background 0.3s ease;
+  }
+  .badge-card:hover {
+    background: #00bcd422;
+  }
+  .badge-card img {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 0.8rem;
+    user-select: none;
+  }
+  .badge-card h4 {
+    margin: 0 0 0.4rem;
+    font-weight: 700;
+    color: #00bcd4;
+  }
+  .badge-card p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #bbb;
+  }
+
+  .uid-tiers {
+    margin-top: 2rem;
+    background: #222;
+    padding: 1rem 1.4rem;
+    border-radius: 12px;
+  }
+  .uid-tiers h3 {
+    color: #00bcd4;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+  }
+  .uid-tiers p {
+    margin: 0.2rem 0;
+    font-weight: 500;
+    color: #ccc;
+  }
+
+  /* Roadmap */
+  #roadmap {
+    max-width: 720px;
+    margin: 3rem auto;
+    border-left: 3px solid #00bcd4;
+    padding-left: 1.5rem;
+  }
+  #roadmap h2 {
+    color: #00bcd4;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+  }
+  .roadmap-item {
+    margin-bottom: 2rem;
+    position: relative;
+  }
+  .roadmap-item::before {
+    content: '';
+    position: absolute;
+    left: -12px;
+    top: 4px;
+    width: 16px;
+    height: 16px;
+    background: #00bcd4;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0,188,212,0.7);
+  }
+  .roadmap-item h3 {
+    margin: 0 0 0.3rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+  .roadmap-item p {
+    margin: 0;
+    color: #bbb;
+  }
+
+  /* Community stats */
+  #stats {
+    max-width: 720px;
+    margin: 3rem auto;
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+    text-align: center;
+    color: #00bcd4;
+  }
+  #stats div {
+    font-weight: 700;
+  }
+  #stats div span {
+    display: block;
+    font-size: 2.2rem;
+    line-height: 1;
+  }
+  #stats div label {
+    font-weight: 500;
+    font-size: 1rem;
+    color: #bbb;
+  }
+
+  /* Pricing */
+  #pricing {
+    max-width: 720px;
+    margin: 3rem auto 5rem;
+  }
+  #pricing h2 {
+    color: #00bcd4;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  .pricing-cards {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .pricing-card {
+    background: #222;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,188,212,0.25);
+    flex: 1 1 280px;
+    color: #ddd;
+  }
+  .pricing-card h3 {
+    margin-top: 0;
+    color: #00bcd4;
+  }
+  .pricing-card ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  .pricing-card ul li {
+    margin-bottom: 0.8rem;
+  }
+  .pricing-card strong {
+    color: #26c6da;
+  }
+  .pricing-card .price {
+    font-size: 2rem;
+    margin: 1rem 0 1.5rem;
+    font-weight: 700;
+    color: #00bcd4;
+  }
+  .pricing-card .btn {
+    width: 100%;
+    text-align: center;
+    display: block;
+  }
+
+  /* FAQ */
+  #faq {
+    max-width: 720px;
+    margin: 0 auto 4rem;
+  }
+  #faq h2 {
+    color: #00bcd4;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+  }
+  details {
+    margin-bottom: 1rem;
+    background: #222;
+    border-radius: 10px;
+    padding: 1rem 1.4rem;
+    color: #ccc;
+    cursor: pointer;
+    user-select: none;
+  }
+  summary {
+    font-weight: 600;
+    font-size: 1rem;
+    outline: none;
+  }
+  details[open] {
+    background: #00bcd422;
+    color: #ddd;
+  }
+  details p {
+    margin-top: 0.8rem;
+    font-size: 0.95rem;
+  }
+
+  /* Footer */
+  footer {
+    background: #181818;
+    color: #555;
+    text-align: center;
+    padding: 2rem 1rem 4rem;
+    font-size: 0.9rem;
+    border-top: 1px solid #333;
+  }
+  footer a {
+    margin: 0 1rem;
+    color: #00bcd4;
+    transition: color 0.25s ease;
+  }
+  footer a:hover {
+    color: #26c6da;
+  }
+  footer img {
+    width: 28px;
+    height: 28px;
+    vertical-align: middle;
+  }
+
+  /* Responsive */
+  @media (max-width: 700px) {
+    #hero {
+      flex-direction: column;
+      text-align: center;
     }
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: 'Poppins', sans-serif;
-      background: #121622;
-      color: #d6d9e1;
-      scroll-behavior: smooth;
-      line-height: 1.5;
-      display: flex;
+    #hero-visual {
+      max-width: 100%;
+    }
+    .badge-list {
+      flex-direction: column;
+    }
+    .pricing-cards {
       flex-direction: column;
       align-items: center;
-      padding: 1.5rem 1rem;
-      user-select: none;
     }
-    a {
-      color: #58a6ff;
-      text-decoration: none;
-      transition: color 0.3s ease;
+    #stats {
+      flex-direction: column;
+      gap: 1.6rem;
     }
-    a:hover {
-      color: #8ec1ff;
-    }
-
-    /* Container */
-    .container {
-      width: 100%;
-      max-width: 920px;
-    }
-
-    /* Header */
-    header {
-      width: 100%;
-      padding: 1rem 0 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #2f3440;
-      user-select: none;
-      position: sticky;
-      top: 0;
-      background: #121622cc;
-      backdrop-filter: saturate(180%) blur(8px);
-      z-index: 999;
-    }
-    header h1 {
-      font-weight: 700;
-      font-size: 1.7rem;
-      letter-spacing: 0.12em;
-      color: #5c7cfa;
-      margin: 0;
-      user-select: none;
-    }
-    nav#userNav a {
-      font-weight: 600;
-      margin-left: 1.6rem;
-      font-size: 0.95rem;
-      color: #7b8aec;
-      transition: color 0.3s ease;
-    }
-    nav#userNav a:hover {
-      color: #a4b4ff;
-    }
-
-    /* Sections */
-    section {
-      background: #1c202c;
-      border-radius: 14px;
-      padding: 2rem 2.4rem;
-      margin-bottom: 3.5rem;
-      box-shadow: 0 2px 6px rgb(15 20 40 / 0.12);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-    section.tilt:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 10px 20px rgb(35 45 80 / 0.3);
-    }
-    section h2 {
-      font-weight: 700;
-      font-size: 1.9rem;
-      color: #7fa2ff;
-      margin-bottom: 1rem;
-      user-select: none;
-    }
-    section p {
-      font-size: 1rem;
-      color: #bfc4d9;
-      max-width: 720px;
-      user-select: none;
-      margin-bottom: 1.8rem;
-    }
-
-    /* Buttons */
-    .btn {
-      background: linear-gradient(135deg, #5c7cfa, #7d9fff);
-      border: none;
-      border-radius: 16px;
-      padding: 0.65rem 1.8rem;
-      font-weight: 700;
-      font-size: 1rem;
-      color: white;
-      cursor: pointer;
-      box-shadow: 0 3px 8px rgb(92 124 250 / 0.45);
-      transition: background 0.3s ease;
-      user-select: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .btn:hover {
-      background: linear-gradient(135deg, #7d9fff, #a2b7ff);
-      box-shadow: 0 5px 15px rgb(125 159 255 / 0.7);
-    }
-    .btn:active {
-      box-shadow: 0 2px 6px rgb(92 124 250 / 0.25);
-    }
-    .btn img {
-      width: 18px;
-      height: 18px;
-      filter: invert(85%) sepia(15%) saturate(250%) hue-rotate(210deg);
-      user-select: none;
-    }
-
-    /* Badges grid */
-    .badges-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 1.4rem;
-      margin-top: 1rem;
-    }
-    .badge {
-      background: #2a2f43;
-      border-radius: 14px;
-      padding: 1.3rem;
-      text-align: center;
-      cursor: default;
-      transition: box-shadow 0.3s ease, background 0.3s ease;
-    }
-    .badge:hover {
-      box-shadow: 0 6px 20px rgb(92 124 250 / 0.3);
-      background: #394563;
-      transform: translateY(-4px);
-    }
-    .badge img {
-      width: 56px;
-      height: 56px;
-      margin-bottom: 0.5rem;
-      filter: drop-shadow(0 0 4px #5c7cfaaa);
-      user-select: none;
-    }
-    .badge h4 {
-      margin: 0.3rem 0 0.1rem;
-      color: #7fa2ff;
-      font-weight: 700;
-      font-size: 1.05rem;
-      user-select: none;
-    }
-    .badge p {
-      margin: 0;
-      font-size: 0.9rem;
-      color: #bbc0d6;
-      user-select: none;
-    }
-
-    /* Features list */
-    ul.features-list {
-      list-style: none;
-      padding-left: 1rem;
-      max-width: 720px;
-      margin-top: 1rem;
-      color: #bfc4d9;
-      font-size: 1rem;
-      user-select: none;
-    }
-    ul.features-list li {
-      margin-bottom: 0.6rem;
-      position: relative;
-      padding-left: 1.3rem;
-    }
-    ul.features-list li::before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      color: #5c7cfa;
-      font-weight: 700;
-    }
-
-    /* UID Info */
-    .uid-info {
-      background: #2a2f43;
-      border-radius: 12px;
-      padding: 1rem 1.4rem;
-      margin-top: 1rem;
-      max-width: 720px;
-    }
-    .uid-info h3 {
-      margin-top: 0;
-      color: #7fa2ff;
-      font-weight: 700;
-      font-size: 1.2rem;
-      user-select: none;
-    }
-    .uid-info p {
-      margin: 0.25rem 0 0;
-      font-size: 0.95rem;
-      color: #d0d3e0;
-      user-select: none;
-    }
-
-    /* FAQ styles */
-    details {
-      margin-bottom: 1.2rem;
-      user-select: none;
-      max-width: 720px;
-    }
-    summary {
-      cursor: pointer;
-      font-weight: 600;
-      color: #7fa2ff;
-      list-style: none;
-      user-select: none;
-      font-size: 1.05rem;
-    }
-    summary::-webkit-details-marker {
-      display: none;
-    }
-    details p {
-      margin: 0.4rem 0 0 1rem;
-      color: #bbc0d6;
-      font-size: 0.95rem;
-      user-select: none;
-    }
-
-    /* Footer */
-    footer {
-      width: 100%;
-      max-width: 920px;
-      text-align: center;
-      padding: 2rem 1.5rem 3rem;
-      color: #555a70;
-      font-size: 0.9rem;
-      border-top: 1px solid #2f3440;
-      user-select: none;
-    }
-    footer a {
-      margin: 0 1rem;
-      filter: grayscale(80%) brightness(140%);
-      transition: filter 0.3s ease;
-      vertical-align: middle;
-      display: inline-block;
-    }
-    footer a:hover {
-      filter: grayscale(0%) brightness(120%);
-    }
-    footer img {
-      width: 28px;
-      height: 28px;
-      object-fit: contain;
-      user-select: none;
-      vertical-align: middle;
-    }
-
-    /* Responsive */
-    @media (max-width: 720px) {
-      .badges-grid {
-        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      }
-      ul.features-list {
-        font-size: 0.95rem;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
 
 <header class="container" role="banner">
   <h1>grief.bio</h1>
-  <nav id="userNav" aria-label="User actions">
+  <nav aria-label="User navigation">
     <a href="#login">Login</a>
     <a href="#register">Register</a>
   </nav>
@@ -295,134 +520,199 @@
 
 <main role="main" class="container">
 
-  <!-- Hero / Intro -->
-  <section aria-label="Welcome section" class="tilt">
-    <h2>Modern Bio Link Platform</h2>
-    <p>
-      Create and customize your own unique bio page with music, profile pictures, backgrounds, social links, and more.
-      grief.bio puts you in control of your online presence with easy tools and powerful features.
-    </p>
-    <button class="btn" id="btnLoginMain" aria-label="Login to your account">
-      <img src="assets/play.png" alt="" aria-hidden="true" />
-      Login
-    </button>
-    <button class="btn" id="btnRegisterMain" aria-label="Register a new account">Register</button>
+  <!-- Hero -->
+  <section id="hero" aria-label="Welcome to grief.bio">
+    <div id="hero-text">
+      <h2>Your modern bio link platform</h2>
+      <p>Customize your personal landing page with music, badges, backgrounds, social links, and more — all in one place.</p>
+      <div id="hero-buttons">
+        <button class="btn" id="btnLoginMain" aria-label="Login to your account">Login</button>
+        <button class="btn" id="btnRegisterMain" aria-label="Register a new account">Register</button>
+      </div>
+    </div>
+    <div id="hero-visual" aria-hidden="true">
+      <div class="avatar" title="User Avatar">G</div>
+      <div class="username">griefuser</div>
+      <div class="badges" aria-label="User badges">
+        <div class="badge" title="OG Badge">OG</div>
+        <div class="badge" title="Premium Badge">Premium</div>
+        <div class="badge" title="Creative Badge">Creative</div>
+      </div>
+    </div>
   </section>
 
   <!-- Features -->
-  <section aria-label="Features overview" class="tilt">
+  <section id="features" aria-label="Platform features">
     <h2>Key Features</h2>
-    <ul class="features-list">
-      <li>Fully customizable profiles: backgrounds, profile pictures, custom cursors</li>
+    <ul>
+      <li>Fully customizable profiles: backgrounds, avatars, custom cursors</li>
       <li>Embed music players from popular platforms</li>
-      <li>Real-time dashboard with seamless file uploads</li>
+      <li>Real-time dashboard with file upload support</li>
       <li>Unique UID system for verified usernames</li>
-      <li>Premium subscription with exclusive customization options</li>
-      <li>Secure login and privacy-focused account management</li>
-      <li>Admin panel to manage users, badges, and more</li>
-      <li>Responsive design for all screen sizes</li>
+      <li>Premium subscription with exclusive customization</li>
+      <li>Privacy focused & secure login system</li>
+      <li>Admin tools to manage users, badges & more</li>
+      <li>Responsive design, mobile friendly</li>
     </ul>
   </section>
 
-  <!-- Badges -->
-  <section aria-label="Badges and unlockables" class="tilt">
-    <h2>Badges & Unlockables</h2>
-    <p>Earn badges by achieving milestones on grief.bio. Show off your status and contributions on your profile.</p>
-    <div class="badges-grid">
-      <div class="badge" tabindex="0" aria-describedby="og-badge-desc">
-        <img src="assets/crownw.png" alt="OG Badge" />
-        <h4>OG Badge</h4>
-        <p id="og-badge-desc">For the first 50 users with UIDs 1–50 — true pioneers of grief.bio.</p>
+  <!-- Profile Preview -->
+  <section id="profile-preview" aria-label="Example profile preview">
+    <h2>Profile Preview</h2>
+    <div class="mockup" aria-hidden="true">
+      <div class="mockup-header">
+        <div class="mockup-avatar">G</div>
+        <div class="mockup-username">griefuser</div>
       </div>
-      <div class="badge" tabindex="0" aria-describedby="premium-badge-desc">
-        <img src="assets/creative.png" alt="Premium Badge" />
-        <h4>Premium Badge</h4>
-        <p id="premium-badge-desc">Unlock by subscribing to premium for extra profile customization options.</p>
+      <div class="mockup-badges" role="list" aria-label="User badges">
+        <div class="mockup-badge" role="listitem" title="OG Badge">OG</div>
+        <div class="mockup-badge" role="listitem" title="Premium Badge">Premium</div>
       </div>
-      <div class="badge" tabindex="0" aria-describedby="verified-badge-desc">
-        <img src="assets/booster.png" alt="Verified Badge" />
-        <h4>Verified Badge</h4>
-        <p id="verified-badge-desc">Awarded after completing identity verification to increase trust.</p>
-      </div>
-      <div class="badge" tabindex="0" aria-describedby="creative-badge-desc">
-        <img src="assets/creator.png" alt="Creative Badge" />
-        <h4>Creative Badge</h4>
-        <p id="creative-badge-desc">Given to users who contribute themes, music, and customizations.</p>
-      </div>
-      <div class="badge" tabindex="0" aria-describedby="supporter-badge-desc">
-        <img src="assets/booster.png" alt="Supporter Badge" />
-        <h4>Supporter Badge</h4>
-        <p id="supporter-badge-desc">For users supporting the community via events, feedback, or donations.</p>
-      </div>
+      <div class="mockup-music">🎵 Currently playing: "Chill Vibes"</div>
     </div>
   </section>
 
-  <!-- UID Info -->
-  <section aria-label="User ID and badge info">
-    <h2>User ID (UID) System</h2>
-    <p>The UID system ensures unique usernames with simple numeric IDs. Early users get special perks:</p>
-    <div class="uid-info" tabindex="0">
-      <h3>UID 1–50</h3>
-      <p>Receive the exclusive <strong>OG Badge</strong> for being early adopters.</p>
+  <!-- UID & Badges -->
+  <section id="uid-badges" aria-label="User ID and badges information">
+    <h2>UID & Badges</h2>
+    <p>Users are assigned a unique numeric User ID (UID) on signup. Badges can be unlocked based on UID or activity.</p>
+    <div class="badge-list">
+      <article class="badge-card" tabindex="0">
+        <img src="assets/ogbadge.png" alt="OG Badge icon" />
+        <h4>OG Badge</h4>
+        <p>Awarded to first 50 users (UID 1–50). Exclusive early adopters badge.</p>
+      </article>
+      <article class="badge-card" tabindex="0">
+        <img src="assets/premiumbadge.png" alt="Premium Badge icon" />
+        <h4>Premium Badge</h4>
+        <p>Granted to premium subscribers with enhanced customization features.</p>
+      </article>
+      <article class="badge-card" tabindex="0">
+        <img src="assets/creativebadge.png" alt="Creative Badge icon" />
+        <h4>Creative Badge</h4>
+        <p>For users who utilize advanced profile customization tools creatively.</p>
+      </article>
+      <article class="badge-card" tabindex="0">
+        <img src="assets/activebadge.png" alt="Active User Badge icon" />
+        <h4>Active User</h4>
+        <p>Earned by users active for over 6 months continuously.</p>
+      </article>
     </div>
-    <div class="uid-info" tabindex="0">
-      <h3>UID 51–500</h3>
-      <p>Access to special profile frames and community recognition badges.</p>
+
+    <div class="uid-tiers" aria-label="UID tiers explanation">
+      <h3>UID Tiers</h3>
+      <p><strong>UID 1–50:</strong> OG Early Adopters Badge</p>
+      <p><strong>UID 51–500:</strong> Veteran Badge (coming soon)</p>
+      <p><strong>UID 501+:</strong> Standard User</p>
     </div>
-    <div class="uid-info" tabindex="0">
-      <h3>UID 501+</h3>
-      <p>Standard users with full profile customization options.</p>
+  </section>
+
+  <!-- Roadmap -->
+  <section id="roadmap" aria-label="Platform roadmap">
+    <h2>Roadmap</h2>
+    <div class="roadmap-item">
+      <h3>Jan 2024</h3>
+      <p>Platform launch — grief.bio goes live to public.</p>
+    </div>
+    <div class="roadmap-item">
+      <h3>Feb 2024</h3>
+      <p>UID system introduced with OG badges for first 50 users.</p>
+    </div>
+    <div class="roadmap-item">
+      <h3>Q3 2024</h3>
+      <p>Premium subscription launch with exclusive badges and features.</p>
+    </div>
+    <div class="roadmap-item">
+      <h3>Q4 2025</h3>
+      <p>Expanded social link integrations and dashboard improvements.</p>
+    </div>
+  </section>
+
+  <!-- Community Stats -->
+  <section id="stats" aria-label="Community statistics">
+    <div>
+      <span>5,000+</span>
+      <label>Users</label>
+    </div>
+    <div>
+      <span>120,000+</span>
+      <label>Links Created</label>
+    </div>
+    <div>
+      <span>1,200+</span>
+      <label>Active Premium Users</label>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" aria-label="Pricing plans">
+    <h2>Pricing & Plans</h2>
+    <div class="pricing-cards">
+      <div class="pricing-card" tabindex="0">
+        <h3>Free</h3>
+        <p class="price">Free</p>
+        <ul>
+          <li>Customizable profile</li>
+          <li>Basic badge system</li>
+          <li>Standard UID assignment</li>
+          <li>Social links & music embeds</li>
+        </ul>
+        <button class="btn">Get Started</button>
+      </div>
+      <div class="pricing-card" tabindex="0">
+        <h3>Premium</h3>
+        <p class="price">$7 / month</p>
+        <ul>
+          <li>All Free features</li>
+          <li>Exclusive badges & priority UID</li>
+          <li>Advanced customization</li>
+          <li>File uploads: PFP & backgrounds</li>
+          <li>Custom cursors & embeds</li>
+        </ul>
+        <button class="btn">Upgrade Now</button>
+      </div>
     </div>
   </section>
 
   <!-- FAQ -->
-  <section aria-label="Frequently Asked Questions" class="tilt">
-    <h2>Frequently Asked Questions</h2>
-
-    <details open>
-      <summary>What is grief.bio?</summary>
-      <p>grief.bio is a customizable bio link platform where users can create personalized landing pages with music, social links, and badges.</p>
-    </details>
-
+  <section id="faq" aria-label="Frequently Asked Questions">
+    <h2>FAQ</h2>
     <details>
-      <summary>How do I get the OG Badge?</summary>
-      <p>The OG Badge is automatically awarded to the first 50 users with UIDs between 1 and 50.</p>
+      <summary>How does UID assignment work?</summary>
+      <p>Each user is assigned a unique ID when registering, which determines their badge and privileges.</p>
     </details>
-
     <details>
-      <summary>Can I customize my profile with music and backgrounds?</summary>
-      <p>Yes, you can upload profile pictures, select backgrounds, and embed music players from various platforms.</p>
+      <summary>What customization options are available?</summary>
+      <p>Profile backgrounds, profile pictures, music embeds, custom cursors, and social link integration.</p>
     </details>
-
     <details>
-      <summary>What payment methods are accepted for premium?</summary>
-      <p>We currently accept major credit cards and PayPal for premium subscriptions.</p>
-    </details>
-
-    <details>
-      <summary>Is my data safe?</summary>
-      <p>Yes, we use modern security standards to protect your data and privacy.</p>
+      <summary>How do I upgrade to premium?</summary>
+      <p>You can upgrade anytime from your dashboard with various payment options.</p>
     </details>
   </section>
 
 </main>
 
 <footer>
-  <div>&copy; 2025 grief.bio — Made with 💙 by grief</div>
-  <div>
-    <a href="https://instagram.com/yourhandle" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-      <img src="assets/iglogo.png" alt="Instagram logo" />
-    </a>
-    <a href="https://last.fm/user/yourhandle" target="_blank" rel="noopener noreferrer" aria-label="Last.fm">
-      <img src="assets/lastfmlogo.png" alt="Last.fm logo" />
-    </a>
-  </div>
+  &copy; 2025 grief.bio — Made with 💙 by grief
+  <br />
+  <a href="https://instagram.com/yourhandle" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+    <img src="assets/iglogo.png" alt="Instagram logo" />
+  </a>
+  <a href="https://last.fm/user/yourhandle" target="_blank" rel="noopener noreferrer" aria-label="Last.fm">
+    <img src="assets/lastfmlogo.png" alt="Last.fm logo" />
+  </a>
 </footer>
 
 <script>
-  // Login/Register demo alerts
+  // Demo button handlers
+  const nav = document.querySelector('nav');
   document.getElementById('btnLoginMain').addEventListener('click', () => {
-    alert('Login form would open here (demo)');
+    nav.innerHTML = `<a href="#dashboard">Dashboard</a> <a href="#" id="logoutLink">Logout</a>`;
+    document.getElementById('logoutLink').onclick = e => {
+      e.preventDefault();
+      nav.innerHTML = `<a href="#login">Login</a> <a href="#register">Register</a>`;
+    };
   });
   document.getElementById('btnRegisterMain').addEventListener('click', () => {
     alert('Registration form would open here (demo)');
