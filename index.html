@@ -1,506 +1,660 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-accent="magenta">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>grief.bio — modern bio link platform</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>grief.lol — Your Digital Identity</title>
+  <meta name="description" content="grief.lol — Create stunning, customizable biolink pages for your brand. All your content, one beautiful location." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg-0:#0b0b10;
+      --bg-1:#0f1016;
+      --bg-2:#151723;
+      --panel:#10121c;
+      --text:#e8ecf1;
+      --muted:#9aa4b2;
+      --glass:rgba(16,18,28,.6);
+      --border:rgba(255,255,255,.08);
+      --ring: rgba(255,255,255,.12);
+      --radius:18px;
+      --blur:14px;
+      --shadow-lg:0 20px 60px rgba(0,0,0,.5);
 
-  /* Reset */
-  *, *::before, *::after {
-    box-sizing: border-box;
-  }
-  body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background: #121212;
-    color: #d0d0d0;
-    min-height: 100vh;
-    line-height: 1.6;
-    scroll-behavior: smooth;
-  }
-  a {
-    color: #0097a7;
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-  a:hover {
-    color: #00acc1;
-  }
-
-  .container {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 3rem 1rem;
-  }
-
-  /* Header */
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.4rem 1rem;
-    border-bottom: 1px solid #2c2c2c;
-    background: #121212;
-    position: sticky;
-    top: 0;
-    z-index: 999;
-  }
-  header h1 {
-    font-weight: 700;
-    font-size: 2rem;
-    color: #0097a7;
-    letter-spacing: 0.12em;
-  }
-  nav a {
-    font-weight: 600;
-    margin-left: 1.8rem;
-    font-size: 1rem;
-  }
-
-  /* Hero section */
-  #hero {
-    text-align: center;
-    padding: 6rem 2rem 5rem;
-    background: #1c1c1c;
-    border-radius: 24px;
-    margin: 3rem auto 5rem;
-    max-width: 700px;
-  }
-  #hero img.pfp {
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 2rem;
-    border: 3px solid #0097a7;
-  }
-  #hero h2 {
-    font-size: 2.4rem;
-    margin-bottom: 0.6rem;
-    font-weight: 700;
-    color: #00acc1;
-  }
-  #hero p {
-    font-size: 1.1rem;
-    max-width: 480px;
-    margin: 0 auto 2.8rem;
-    font-weight: 500;
-    color: #bbb;
-  }
-  #hero .btn-group {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-  }
-  #hero .btn {
-    background: transparent;
-    border: 2.5px solid #0097a7;
-    border-radius: 30px;
-    font-weight: 700;
-    font-size: 1.15rem;
-    padding: 0.8rem 2.8rem;
-    cursor: pointer;
-    color: #0097a7;
-    user-select: none;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-  #hero .btn:hover {
-    background-color: #0097a7;
-    color: #121212;
-  }
-
-  /* Badges horizontal scroll */
-  #badges-bar {
-    display: flex;
-    overflow-x: auto;
-    gap: 2rem;
-    padding: 1rem 0 3rem;
-    max-width: 960px;
-    margin: 0 auto 3rem;
-    border-top: 1px solid #2c2c2c;
-    border-bottom: 1px solid #2c2c2c;
-  }
-  #badges-bar::-webkit-scrollbar {
-    height: 6px;
-  }
-  #badges-bar::-webkit-scrollbar-thumb {
-    background-color: #0097a7cc;
-    border-radius: 3px;
-  }
-  .badge-pill {
-    flex: 0 0 auto;
-    background: #222;
-    border-radius: 30px;
-    padding: 0.7rem 1.8rem;
-    font-weight: 600;
-    font-size: 1rem;
-    color: #0097a7;
-    cursor: default;
-    user-select: none;
-    white-space: nowrap;
-    border: 1px solid #0097a7;
-    transition: background 0.25s ease, color 0.25s ease;
-  }
-  .badge-pill:hover {
-    background: #0097a7;
-    color: #121212;
-  }
-
-  /* Features stacked */
-  #features {
-    max-width: 720px;
-    margin: 0 auto 4rem;
-  }
-  #features h2 {
-    font-size: 2.4rem;
-    font-weight: 700;
-    color: #0097a7;
-    margin-bottom: 2rem;
-    text-align: center;
-  }
-  .feature-item {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    background: #1a1a1a;
-    border-radius: 20px;
-    padding: 2rem 3rem;
-    margin-bottom: 2rem;
-    border: 1px solid #2c2c2c;
-  }
-  .feature-icon {
-    flex-shrink: 0;
-    width: 50px;
-    height: 50px;
-    user-select: none;
-  }
-  .feature-text {
-    flex: 1;
-    font-weight: 600;
-    font-size: 1.1rem;
-    color: #ccc;
-  }
-
-  /* UID tiers grid */
-  #uid-tiers {
-    max-width: 960px;
-    margin: 0 auto 5rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 3rem;
-  }
-  .tier-card {
-    background: #222;
-    border-radius: 22px;
-    padding: 2.5rem 2rem;
-    color: #0097a7;
-    text-align: center;
-    user-select: none;
-    cursor: default;
-    border: 1px solid #2c2c2c;
-    transition: background-color 0.3s ease;
-  }
-  .tier-card:hover {
-    background-color: #0097a722;
-  }
-  .tier-card h3 {
-    margin-bottom: 1rem;
-    font-weight: 700;
-    font-size: 1.5rem;
-  }
-  .tier-card p {
-    font-weight: 500;
-    font-size: 1.05rem;
-    color: #bbb;
-  }
-
-  /* Roadmap & Pricing side by side */
-  #bottom-sections {
-    max-width: 960px;
-    margin: 0 auto 6rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-  }
-
-  #roadmap, #pricing {
-    background: #1a1a1a;
-    border-radius: 20px;
-    padding: 2.5rem 3rem;
-    border: 1px solid #2c2c2c;
-  }
-  #roadmap h2, #pricing h2 {
-    color: #0097a7;
-    font-weight: 700;
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    text-align: center;
-  }
-  .roadmap-item {
-    margin-bottom: 1.8rem;
-    padding-left: 1rem;
-    border-left: 3px solid #0097a7;
-  }
-  .roadmap-item:last-child {
-    margin-bottom: 0;
-  }
-  .roadmap-item h3 {
-    margin: 0 0 0.4rem 0;
-    font-weight: 700;
-    color: #00acc1;
-  }
-  .roadmap-item p {
-    margin: 0;
-    color: #bbb;
-    font-size: 1rem;
-  }
-
-  .pricing-cards {
-    display: flex;
-    flex-direction: column;
-    gap: 2.5rem;
-  }
-  .pricing-card {
-    background: #222;
-    border-radius: 18px;
-    padding: 2.5rem 2rem;
-    color: #ccc;
-    border: 1px solid #2c2c2c;
-  }
-  .pricing-card h3 {
-    margin-top: 0;
-    color: #0097a7;
-    font-size: 1.7rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-  }
-  .pricing-card p.price {
-    font-weight: 700;
-    font-size: 2rem;
-    color: #00acc1;
-    margin: 0 0 1.8rem;
-  }
-  .pricing-card ul {
-    list-style: none;
-    padding-left: 1.2rem;
-    margin: 0 0 1.8rem;
-  }
-  .pricing-card ul li {
-    margin-bottom: 1rem;
-    font-size: 1.05rem;
-  }
-  .pricing-card button {
-    background: #0097a7;
-    border: none;
-    border-radius: 28px;
-    color: #121212;
-    padding: 0.75rem 2.2rem;
-    font-weight: 700;
-    font-size: 1.1rem;
-    cursor: pointer;
-    user-select: none;
-    transition: background 0.3s ease;
-  }
-  .pricing-card button:hover {
-    background: #00acc1;
-  }
-
-  /* Footer */
-  footer {
-    text-align: center;
-    color: #666;
-    padding: 3rem 1rem 6rem;
-    border-top: 1px solid #2c2c2c;
-    user-select: none;
-  }
-  footer a {
-    margin: 0 1.2rem;
-    color: #0097a7;
-    transition: color 0.3s ease;
-  }
-  footer a:hover {
-    color: #00acc1;
-  }
-  footer img {
-    width: 28px;
-    height: 28px;
-    vertical-align: middle;
-  }
-
-  /* Responsive */
-  @media (max-width: 840px) {
-    #bottom-sections {
-      grid-template-columns: 1fr;
+      /* Accent ramps (switch via [data-accent]) */
+      --accent:#ff49c2; --accent-600:#ff49c2; --accent-500:#ff6bd0; --accent-400:#ff8bda; --accent-300:#ffb0e6;
+      --grad-1: radial-gradient(60% 60% at 20% 10%, rgba(255,73,194,.25), transparent 60%),
+                radial-gradient(50% 50% at 80% 0%, rgba(0,255,209,.12), transparent 60%),
+                radial-gradient(60% 60% at 100% 80%, rgba(136,74,255,.16), transparent 60%);
     }
-    #hero {
-      max-width: 90vw;
+    html[data-accent="cyan"]{ --accent:#30e3ff; --accent-600:#30e3ff; --accent-500:#58eaff; --accent-400:#8ff1ff; --accent-300:#c8f8ff; }
+    html[data-accent="green"]{ --accent:#3cff9d; --accent-600:#3cff9d; --accent-500:#6bffb5; --accent-400:#9dffcf; --accent-300:#c8ffe4; }
+    html[data-accent="purple"]{ --accent:#9b5cff; --accent-600:#9b5cff; --accent-500:#b07aff; --accent-400:#c79bff; --accent-300:#dfc2ff; }
+    html[data-accent="magenta"]{ /* default */ }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+      color:var(--text);
+      background: radial-gradient(1200px 800px at 80% -10%, #16182a, transparent 50%), var(--bg-0);
+      background-attachment: fixed;
+      line-height:1.55;
     }
-  }
-  @media (max-width: 420px) {
-    #badges-bar {
-      padding-bottom: 1rem;
+    .page-wrap{ position:relative; isolation:isolate }
+    .bg-accents::before{
+      content:""; position:fixed; inset:-10vh -10vw; pointer-events:none; z-index:-1;
+      background: var(--grad-1);
+      filter: blur(40px) saturate(120%);
+      opacity:.8;
     }
-    .feature-item {
-      flex-direction: column;
-      text-align: center;
-      gap: 1rem;
+    /* Utilities */
+    .container{ width:min(1200px, 90vw); margin-inline:auto; }
+    .muted{ color:var(--muted); }
+    .heading{
+      font-family:Poppins, Inter, sans-serif; font-weight:800; letter-spacing:-.02em; line-height:1.05;
     }
-    .feature-icon {
-      margin: 0 auto;
+    .h1{ font-size: clamp(36px, 6vw, 68px); }
+    .h2{ font-size: clamp(28px, 4vw, 40px); }
+    .h3{ font-size: clamp(18px, 2vw, 22px); }
+    .btn{
+      --pad:16px;
+      display:inline-flex; align-items:center; gap:.6rem;
+      padding: var(--pad) 22px; border-radius:999px; border:1px solid var(--border);
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.01));
+      backdrop-filter:saturate(140%) blur(6px);
+      color:var(--text); text-decoration:none; font-weight:700; letter-spacing:.01em;
+      transition: all .25s ease;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.08), 0 6px 30px rgba(0,0,0,.4);
+      position:relative;
     }
-  }
-</style>
+    .btn:hover{ transform:translateY(-1px); box-shadow: 0 10px 40px rgba(0,0,0,.55), 0 0 30px rgba(255,255,255,.06); }
+    .btn.glow{
+      background: radial-gradient(120% 180% at 0% 0%, rgba(255,255,255,.08), rgba(255,255,255,.02)),
+                  linear-gradient(90deg, var(--accent-600), #00ffd1);
+      color:#0a0b10;
+      border:0;
+      box-shadow: 0 10px 50px color-mix(in oklab, var(--accent) 48%, #000 52%);
+    }
+    .btn.glow:hover{ filter:saturate(120%); }
+    .btn.outline{
+      background:transparent; color:var(--text); border-color:color-mix(in oklab, var(--accent) 35%, var(--border) 65%);
+      box-shadow:none;
+    }
+    .btn.outline:hover{ border-color:var(--accent-500); color:white; box-shadow: 0 0 0 4px color-mix(in oklab, var(--accent) 22%, transparent); }
+    .pill{ border-radius:999px; padding:.4rem .75rem; background:rgba(255,255,255,.06); border:1px solid var(--border); }
+    .glass{
+      background:var(--glass);
+      border:1px solid var(--border);
+      box-shadow: var(--shadow-lg), inset 0 1px 0 rgba(255,255,255,.06);
+      backdrop-filter: blur(var(--blur)) saturate(140%);
+      border-radius: var(--radius);
+    }
+    .divider{ height:1px; background:linear-gradient(90deg, transparent, var(--border), transparent); }
+    .icon{ width:1.1em; height:1.1em; display:inline-block; }
+    /* Nav */
+    .nav{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(16px) saturate(130%); background: rgba(10,11,16,.55);
+      border-bottom:1px solid var(--border);
+    }
+    .nav .row{ display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:.9rem 0; }
+    .brand{ display:flex; align-items:center; gap:.8rem; text-decoration:none; }
+    .logo{
+      width:34px; height:34px; border-radius:10px; position:relative; overflow:hidden;
+      background: conic-gradient(from 200deg, var(--accent) 0 35%, #00ffd1 35% 70%, #884aff 70% 100%);
+      box-shadow: 0 0 24px color-mix(in oklab, var(--accent) 35%, transparent);
+    }
+    .wordmark{ font-family:Poppins, Inter, sans-serif; font-weight:900; letter-spacing:-.02em; font-size:1.1rem;
+      background: linear-gradient(90deg, var(--accent-600), #00ffd1); -webkit-background-clip:text; background-clip:text; color:transparent;
+      text-shadow: 0 0 18px color-mix(in oklab, var(--accent) 40%, transparent);
+    }
+    .navlinks{ display:flex; gap:1.2rem; align-items:center; }
+    .navlinks a{ color:var(--muted); text-decoration:none; font-weight:600; font-size:.95rem; }
+    .navlinks a:hover{ color:white; }
+    .dash-btn{ padding:.65rem 1.1rem; border-radius:999px; border:1px solid color-mix(in oklab, var(--accent) 40%, var(--border) 60%);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.08), 0 0 24px color-mix(in oklab, var(--accent) 32%, transparent);
+    }
+    .hamburger{ display:none; width:42px; height:42px; border-radius:12px; border:1px solid var(--border); background:rgba(255,255,255,.04) }
+    @media (max-width: 960px){
+      .navlinks{ display:none }
+      .hamburger{ display:inline-grid; place-items:center }
+      .mobilemenu{ display:grid !important; }
+    }
+    .mobilemenu{ display:none; gap:.8rem; padding: .7rem; }
+    .mobilemenu a{ display:block; text-decoration:none; color:var(--muted); padding:.8rem 1rem; border-radius:10px; }
+    .mobilemenu a:hover{ color:white; background:rgba(255,255,255,.04) }
+
+    /* Hero */
+    .hero{ padding: clamp(44px, 6vw, 80px) 0 32px; position:relative; }
+    .hero-grid{ display:grid; grid-template-columns: 1.2fr .9fr; gap: clamp(20px, 3.2vw, 48px); align-items:center; }
+    @media (max-width: 960px){ .hero-grid{ grid-template-columns:1fr } }
+    .cta{ display:flex; gap:.8rem; flex-wrap:wrap; align-items:center; }
+    .signup{ display:flex; gap:.5rem; align-items:center; flex-wrap:wrap; margin-top:.9rem}
+    .input{
+      display:flex; align-items:center; gap:.6rem; padding:.7rem .9rem; border-radius:999px;
+      background:rgba(255,255,255,.04); border:1px solid var(--border);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.05);
+    }
+    .input input{
+      background:transparent; border:0; outline:0; color:var(--text); font:600 1rem/1 Inter, sans-serif; width:190px;
+    }
+    .tagline{ display:flex; align-items:center; gap:.6rem; margin-top:.6rem; color:var(--muted); font-weight:600 }
+    .tagline .dot{ width:8px; height:8px; border-radius:999px; background: var(--accent); box-shadow: 0 0 16px var(--accent); }
+
+    /* Profile Card Preview */
+    .card{
+      --p:16px;
+      padding: var(--p); border-radius: 22px; position:relative; overflow:hidden;
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border:1px solid var(--border);
+      box-shadow: var(--shadow-lg);
+      transform-style: preserve-3d;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .card:hover{ transform: translateY(-4px); box-shadow: 0 30px 80px rgba(0,0,0,.6); }
+    .card::before{
+      content:""; position:absolute; inset:-20%; background:
+        radial-gradient(120px 120px at var(--x,50%) var(--y,50%), color-mix(in oklab, var(--accent) 20%, transparent), transparent 60%);
+      filter: blur(30px); pointer-events:none; opacity:.8;
+    }
+    .pfp{
+      position:relative; width:84px; height:84px; border-radius:50%; overflow:hidden;
+      border:2px solid color-mix(in oklab, var(--accent) 60%, #fff 40%);
+      box-shadow: 0 0 30px color-mix(in oklab, var(--accent) 45%, transparent);
+    }
+    .pfp img{ width:100%; height:100%; object-fit:cover; display:block; }
+    .badges{ display:flex; flex-wrap:wrap; gap:.4rem; margin:.6rem 0 .2rem }
+    .badge{
+      padding:.35rem .55rem; border-radius:999px; background:rgba(255,255,255,.06); border:1px solid var(--border);
+      font-size:.78rem; display:inline-flex; align-items:center; gap:.4rem; position:relative;
+    }
+    .badge[data-tooltip]:hover::after{
+      content:attr(data-tooltip); position:absolute; bottom:120%; left:50%; transform:translateX(-50%);
+      background:#0b0c12; color:#fff; padding:.35rem .6rem; border-radius:8px; border:1px solid var(--border); white-space:nowrap;
+      box-shadow:0 10px 30px rgba(0,0,0,.6);
+    }
+    .status{ display:inline-flex; align-items:center; gap:.4rem; padding:.35rem .6rem; border-radius:999px;
+      background:rgba(60,255,157,.09); border:1px solid rgba(60,255,157,.25); color:#a7ffda; font-weight:700; font-size:.82rem; }
+    .socials{ display:flex; gap:.6rem; justify-content:center; }
+    .socials a{
+      width:34px; height:34px; border-radius:12px; display:grid; place-items:center; color:#dfe7f5;
+      background: rgba(255,255,255,.05); border:1px solid var(--border); text-decoration:none;
+      transition: transform .2s ease, box-shadow .2s ease, color .2s ease;
+    }
+    .socials a:hover{ transform: translateY(-2px) scale(1.02); color:#0a0b10; box-shadow: 0 10px 30px color-mix(in oklab, var(--accent) 40%, transparent); background: var(--accent); border-color:transparent; }
+
+    /* Features */
+    .features{ padding: clamp(38px, 6vw, 88px) 0; }
+    .grid{ display:grid; grid-template-columns: repeat(4, 1fr); gap:18px; }
+    @media (max-width: 960px){ .grid{ grid-template-columns:1fr 1fr } }
+    @media (max-width: 560px){ .grid{ grid-template-columns:1fr } }
+    .feat{ padding:18px; border-radius:16px; border:1px solid var(--border); background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); transition: transform .25s ease, box-shadow .25s ease; }
+    .feat:hover{ transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,.45); }
+    .feat .ico{
+      width:42px; height:42px; border-radius:12px; display:grid; place-items:center; margin-bottom:.6rem;
+      background: radial-gradient(120% 150% at 0 0, rgba(255,255,255,.09), rgba(255,255,255,.03));
+      border:1px solid color-mix(in oklab, var(--accent) 35%, var(--border) 65%);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 0 22px color-mix(in oklab, var(--accent) 28%, transparent);
+    }
+
+    /* Dashboard Preview */
+    .dash{ padding: clamp(38px, 6vw, 88px) 0; }
+    .stage{ position:relative; perspective:1200px; height:420px; }
+    @media (max-width: 900px){ .stage{ height:520px } }
+    .shot{
+      position:absolute; inset:auto; width:min(900px, 95%); left:50%; transform-style:preserve-3d;
+      border-radius:20px; border:1px solid var(--border); background:linear-gradient(180deg, #0e1119, #0b0d14);
+      box-shadow: 0 40px 120px rgba(0,0,0,.6), 0 0 80px color-mix(in oklab, var(--accent) 25%, transparent);
+      overflow:hidden;
+    }
+    .shot.one{ top:40px; transform: translateX(-52%) rotateX(14deg) rotateY(-10deg) rotateZ(-2deg); }
+    .shot.two{ top:140px; transform: translateX(-48%) rotateX(12deg) rotateY(8deg) rotateZ(2deg); }
+    .ui{
+      display:grid; grid-template-columns:260px 1fr; min-height:320px;
+    }
+    .side{ background:#0a0d13; border-right:1px solid var(--border); padding:14px; }
+    .side .item{ display:flex; align-items:center; gap:.6rem; padding:.6rem .7rem; border-radius:10px; color:var(--muted); }
+    .side .item.active{ background:rgba(155,92,255,.12); color:#e8dcff; border:1px solid rgba(155,92,255,.35) }
+    .main{ padding:14px; display:grid; gap:14px; }
+    .panel{ border:1px solid var(--border); border-radius:14px; background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015)); padding:14px; }
+    .chart{ width:100%; height:160px; }
+    .metric{ display:flex; align-items:center; justify-content:space-between; padding:10px; border:1px dashed var(--border); border-radius:12px; }
+
+    /* Leaderboard */
+    .leader{ padding: clamp(30px, 6vw, 70px) 0; }
+    .board{ display:grid; grid-template-columns:1fr; gap:10px }
+    .rowx{ display:grid; grid-template-columns: 42px 1fr auto; gap:10px; align-items:center; padding:10px 12px; border-radius:12px;
+      border:1px solid var(--border); background:rgba(255,255,255,.03); }
+    .rowx .rank{ font-weight:900; color: var(--accent-400); }
+    .rowx .name{ font-weight:700 }
+    .rowx .score{ color:var(--muted); font-weight:700 }
+
+    /* Footer */
+    footer{ padding: 30px 0 60px; color:var(--muted); text-align:center }
+    footer a{ color:var(--muted); text-decoration:none; margin:0 .6rem }
+    footer a:hover{ color:#fff }
+
+    /* Reveal on scroll */
+    .reveal{ opacity:0; transform: translateY(18px) scale(.98); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.show{ opacity:1; transform: translateY(0) scale(1); }
+
+    /* Small helpers */
+    .gradtext{ background:linear-gradient(90deg, var(--accent-600), #00ffd1); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .mono{ font-variant-numeric: tabular-nums; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
+    .hide{ display:none }
+  </style>
 </head>
 <body>
+  <div class="page-wrap bg-accents">
 
-<header role="banner" class="container">
-  <h1>grief.bio</h1>
-  <nav aria-label="Primary navigation">
-    <a href="#login">Login</a>
-    <a href="#register">Register</a>
-  </nav>
-</header>
-
-<main role="main">
-
-  <!-- Hero -->
-  <section id="hero" aria-label="User profile hero" role="region">
-    <img src="assets/pfp.png" alt="Profile picture of griefuser" class="pfp" />
-    <h2>griefuser</h2>
-    <p>Customizable bio links, music embeds, badges &amp; more — all on one page.</p>
-    <div class="btn-group">
-      <button class="btn" id="btnLoginHero" aria-label="Login to your account">Login</button>
-      <button class="btn" id="btnRegisterHero" aria-label="Register new account">Register</button>
-    </div>
-  </section>
-
-  <!-- Badges horizontal scroll -->
-  <section id="badges-bar" aria-label="Available badges">
-    <div class="badge-pill" title="OG Badge — awarded to first 50 users">OG</div>
-    <div class="badge-pill" title="Premium subscriber badge">Premium</div>
-    <div class="badge-pill" title="Creative profile customizer">Creative</div>
-    <div class="badge-pill" title="Veteran user badge coming soon">Veteran</div>
-    <div class="badge-pill" title="Exclusive supporter badge">Supporter</div>
-  </section>
-
-  <!-- Features stacked -->
-  <section id="features" aria-label="Platform features">
-    <h2>Features</h2>
-    <div class="feature-item">
-      <img src="assets/creative.png" alt="Creative icon" class="feature-icon" />
-      <div class="feature-text">Fully customizable profiles with backgrounds, profile pictures, custom cursors, and music embeds.</div>
-    </div>
-    <div class="feature-item">
-      <img src="assets/booster.png" alt="Booster icon" class="feature-icon" />
-      <div class="feature-text">Intuitive real-time dashboard with seamless file uploads and social link management.</div>
-    </div>
-    <div class="feature-item">
-      <img src="assets/crownw.png" alt="Crown icon" class="feature-icon" />
-      <div class="feature-text">Secure login, privacy-first account management, and admin controls.</div>
-    </div>
-  </section>
-
-  <!-- UID tiers -->
-  <section id="uid-tiers" aria-label="User ID badge tiers">
-    <div class="tier-card" tabindex="0">
-      <h3>UID 1-50</h3>
-      <p>OG Badge — Early adopters with exclusive perks.</p>
-    </div>
-    <div class="tier-card" tabindex="0">
-      <h3>UID 51-500</h3>
-      <p>Veteran Badge — Recognizing loyal users (coming soon).</p>
-    </div>
-    <div class="tier-card" tabindex="0">
-      <h3>UID 501+</h3>
-      <p>Standard User — Access to core features and customization.</p>
-    </div>
-  </section>
-
-  <!-- Roadmap & Pricing -->
-  <section id="bottom-sections" aria-label="Roadmap and Pricing">
-    <article id="roadmap" role="region">
-      <h2>Roadmap</h2>
-      <div class="roadmap-item">
-        <h3>Jan 2024</h3>
-        <p>grief.bio platform launch.</p>
-      </div>
-      <div class="roadmap-item">
-        <h3>Feb 2024</h3>
-        <p>UID and OG badges introduced.</p>
-      </div>
-      <div class="roadmap-item">
-        <h3>Q3 2024</h3>
-        <p>Premium subscriptions with exclusive badges and features.</p>
-      </div>
-      <div class="roadmap-item">
-        <h3>Q4 2025</h3>
-        <p>Expanded social link integrations and dashboard upgrades.</p>
-      </div>
-    </article>
-    <article id="pricing" role="region">
-      <h2>Pricing &amp; Plans</h2>
-      <div class="pricing-cards">
-        <div class="pricing-card" tabindex="0">
-          <h3>Free</h3>
-          <p class="price">Free</p>
-          <ul>
-            <li>Customizable profile</li>
-            <li>Basic badges</li>
-            <li>Standard UID</li>
-            <li>Music &amp; social embeds</li>
-          </ul>
-          <button>Get Started</button>
+    <!-- NAVBAR -->
+    <nav class="nav">
+      <div class="container">
+        <div class="row">
+          <a href="#" class="brand" aria-label="grief.lol home">
+            <div class="logo" aria-hidden="true"></div>
+            <div class="wordmark">grief.lol</div>
+          </a>
+          <div class="navlinks" role="navigation" aria-label="Primary">
+            <a href="#help">Help Center</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#discord">Discord</a>
+            <a href="#leaderboard">Leaderboard</a>
+            <a href="#team">Team</a>
+            <a class="btn dash-btn" href="#dashboard"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-width="2" d="M4 12h16M4 6h10M4 18h7"/></svg> Dashboard</a>
+          </div>
+          <button class="hamburger" id="hamburger" aria-label="Open menu">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
         </div>
-        <div class="pricing-card" tabindex="0">
-          <h3>Premium</h3>
-          <p class="price">$7 / month</p>
-          <ul>
-            <li>All Free features</li>
-            <li>Exclusive badges</li>
-            <li>Advanced customization</li>
-            <li>File uploads</li>
-            <li>Custom cursors</li>
-          </ul>
-          <button>Upgrade Now</button>
+        <div id="mobilemenu" class="mobilemenu hide">
+          <a href="#help">Help Center</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#discord">Discord</a>
+          <a href="#leaderboard">Leaderboard</a>
+          <a href="#team">Team</a>
+          <a href="#dashboard">Dashboard</a>
         </div>
       </div>
-    </article>
-  </section>
+    </nav>
 
-</main>
+    <!-- HERO -->
+    <header class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="pill" style="display:inline-flex; gap:.55rem; align-items:center; margin-bottom:10px">
+            <span class="dot" style="width:10px;height:10px;border-radius:999px;background:var(--accent)"></span>
+            <span class="mono" style="font-weight:800; letter-spacing:.06em">NEW</span> 100% Free to Start
+          </div>
 
-<footer role="contentinfo">
-  &copy; 2025 grief.bio — Made with 💙 by grief
-  <br />
-  <a href="https://instagram.com/yourhandle" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-    <img src="assets/iglogo.png" alt="Instagram logo" />
-  </a>
-  <a href="https://last.fm/user/yourhandle" target="_blank" rel="noopener noreferrer" aria-label="Last.fm">
-    <img src="assets/lastfmlogo.png" alt="Last.fm logo" />
-  </a>
-</footer>
+          <h1 class="heading h1">
+            <span class="gradtext">Your Digital Identity,</span> On Your Terms.
+          </h1>
+          <p class="muted" style="font-size:1.08rem; max-width:60ch">
+            Create stunning, customizable biolink pages for your brand. All your content, one beautiful location.
+          </p>
 
-<script>
-  const nav = document.querySelector('nav');
-  document.getElementById('btnLoginHero').addEventListener('click', () => {
-    nav.innerHTML = `
-      <a href="#dashboard">Dashboard</a>
-      <a href="#" id="logoutLink">Logout</a>
-    `;
-    document.getElementById('logoutLink').onclick = e => {
-      e.preventDefault();
-      nav.innerHTML = `
-        <a href="#login">Login</a>
-        <a href="#register">Register</a>
-      `;
-    };
-  });
-  document.getElementById('btnRegisterHero').addEventListener('click', () => {
-    alert('Registration form would open here (demo)');
-  });
-</script>
+          <div class="cta" style="margin-top:16px">
+            <a class="btn glow" href="#claim">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-width="2" d="M12 5v14m-7-7h14"/></svg>
+              Claim Username
+            </a>
+            <a class="btn outline" href="#features">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-width="2" d="M9 18l6-6-6-6"/></svg>
+              Explore Features
+            </a>
+          </div>
 
+          <div class="signup">
+            <div class="input" role="group" aria-label="Sign up">
+              <span class="muted">@</span>
+              <input id="username" placeholder="yourname" aria-label="Desired username"/>
+            </div>
+            <button class="btn" id="claimBtn">Claim Now</button>
+          </div>
+
+          <div class="tagline">
+            <span class="dot"></span>
+            <span>Trusted by creators & communities</span>
+          </div>
+        </div>
+
+        <!-- Example profile card -->
+        <div>
+          <div class="card reveal" id="profileCard">
+            <div style="display:flex; gap:14px; align-items:center; justify-content:center; padding-top:6px">
+              <div class="pfp" aria-hidden="true">
+                <!-- Placeholder avatar gradient -->
+                <img alt="User avatar" src="data:image/svg+xml;utf8,<?xml version='1.0'?><svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><defs><linearGradient id='g' x1='0' x2='1' y1='0' y2='1'><stop offset='0' stop-color='%23ff49c2'/><stop offset='1' stop-color='%2300ffd1'/></linearGradient></defs><rect width='100%' height='100%' fill='%2310151f'/><circle cx='100' cy='100' r='84' fill='url(%23g)'/></svg>">
+              </div>
+              <div>
+                <div class="heading h3">skoozuh <span class="muted" style="font-weight:700">/ grief</span></div>
+                <div class="badges">
+                  <span class="badge" data-tooltip="Verified Creator">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-width="2" d="M20 6l-11 11-5-5"/></svg>
+                    Verified
+                  </span>
+                  <span class="badge" data-tooltip="OG Member">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9" stroke-width="2"/></svg>
+                    OG
+                  </span>
+                  <span class="badge" data-tooltip="Premium">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-width="2" d="M12 2l3 7 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg>
+                    Premium
+                  </span>
+                </div>
+                <div class="muted" style="max-width:40ch">Artist & dev. Building neon interfaces that slap. <span aria-hidden="true">📍</span> Los Angeles</div>
+                <div style="margin-top:8px" class="status">
+                  <span style="width:8px;height:8px;background:#3cff9d;border-radius:50%;box-shadow:0 0 10px #3cff9d"></span>
+                  Playing Valorant
+                </div>
+              </div>
+            </div>
+
+            <div class="divider" style="margin:14px 0"></div>
+
+            <div class="socials" aria-label="Social links">
+              <a href="#" title="Discord" aria-label="Discord">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4a18 18 0 0 0-4.5-1l-.21.42A14 14 0 0 1 8.7 3L8.5 3A18 18 0 0 0 4 4c-1.78 2.6-2.82 5.7-2.82 8.87 0 0 1.58 2.73 5.73 2.87A6.4 6.4 0 0 1 8 15s.3.5 1.5 1.5a9 9 0 0 0 5 0C15.7 15.5 16 15 16 15a6.4 6.4 0 0 0 1.1.2c4.15-.14 5.73-2.87 5.73-2.87A16 16 0 0 0 20 4Z"/></svg>
+              </a>
+              <a href="#" title="Instagram" aria-label="Instagram">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5a5 5 0 1 0 .001 10.001A5 5 0 0 0 12 7zm6.5-.75a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z"/></svg>
+              </a>
+              <a href="#" title="Twitter/X" aria-label="Twitter">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 3h-3l-5 7-4-7H3l7 11-7 7h3l6-6 4 6h3l-7-11 8-7z"/></svg>
+              </a>
+              <a href="#" title="YouTube" aria-label="YouTube">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23 7.5s-.2-1.6-.8-2.3c-.8-.8-1.7-.8-2.1-.9C17.2 4 12 4 12 4s-5.2 0-8.1.3c-.4 0-1.3.1-2.1.9C1.2 5.9 1 7.5 1 7.5S.8 9.4.8 11.3v1.3c0 1.9.2 3.8.2 3.8s.2 1.6.8 2.3c.8.8 1.9.8 2.3.9C6.8 19.9 12 20 12 20s5.2 0 8.1-.3c.4 0 1.3-.1 2.1-.9.6-.7.8-2.3.8-2.3s.2-1.9.2-3.8v-1.3c0-1.9-.2-3.8-.2-3.8zM10 15V8l6 3.5L10 15z"/></svg>
+              </a>
+              <a href="#" title="Twitch" aria-label="Twitch">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4 3h16v10l-4 4h-4l-2 2H7v-2H4V3zm12 3h-2v5h2V6zm-5 0H9v5h2V6z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- FEATURES -->
+    <section id="features" class="features">
+      <div class="container">
+        <h2 class="heading h2 reveal">Everything you need to stand out</h2>
+        <p class="muted reveal" style="max-width:60ch">Sleek customization, analytics, badges, and seamless integrations — all wrapped in a premium, gamer-tech aesthetic.</p>
+        <div class="grid" style="margin-top:18px">
+          <div class="feat reveal">
+            <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-width="2" d="M4 7h16M4 12h10M4 17h16"/></svg></div>
+            <div class="h3 heading">Fully Customizable Themes</div>
+            <div class="muted">Dark neon vibes with gradients, fonts, and layouts that fit your brand.</div>
+          </div>
+          <div class="feat reveal">
+            <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-width="2" d="M3 3v18h18"/><path stroke-width="2" d="M7 15l4-4 4 4 5-7"/></svg></div>
+            <div class="h3 heading">Built-in Analytics</div>
+            <div class="muted">Track visits, CTR, referrers, and growth — all at a glance.</div>
+          </div>
+          <div class="feat reveal">
+            <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-width="2" d="M6 4h12v5H6zM6 13h12v7H6z"/></svg></div>
+            <div class="h3 heading">Unlimited Links & Buttons</div>
+            <div class="muted">Add everything you love. Reorder with a drag. Zero limits.</div>
+          </div>
+          <div class="feat reveal">
+            <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="8" r="4" stroke-width="2"/><path stroke-width="2" d="M4 20a8 8 0 0 1 16 0"/><path stroke-width="2" d="M16 3l2 2 3-3"/></svg></div>
+            <div class="h3 heading">Profile Badges & Verification</div>
+            <div class="muted">Flex achievements. Build trust. Unlock exclusive cosmetics.</div>
+          </div>
+          <div class="feat reveal">
+            <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-width="2" d="M21 15a4 4 0 0 1-4 4H7l-4 3V5a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/></svg></div>
+            <div class="h3 heading">Discord Integration</div>
+            <div class="muted">Verify roles, show status, and connect your community.</div>
+          </div>
+          <div class="feat reveal">
+            <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="7" stroke-width="2"/><rect x="14" y="3" width="7" height="7" stroke-width="2"/><rect x="3" y="14" width="7" height="7" stroke-width="2"/></svg></div>
+            <div class="h3 heading">Image & File Hosting</div>
+            <div class="muted">Upload assets and serve them fast from your profile.</div>
+          </div>
+          <div class="feat reveal">
+            <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-width="2" d="M12 3v18M3 12h18"/></svg></div>
+            <div class="h3 heading">Premium Upgrades</div>
+            <div class="muted">Advanced themes, vanity domains, and more when you’re ready.</div>
+          </div>
+          <div class="feat reveal">
+            <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-width="2" d="M9 18V5l12 6-12 6z"/></svg></div>
+            <div class="h3 heading">Micro-Animations</div>
+            <div class="muted">Subtle motion with buttery-smooth performance out of the box.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DASHBOARD PREVIEW -->
+    <section id="dashboard" class="dash">
+      <div class="container">
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:1rem">
+          <h2 class="heading h2 reveal">Creator Dashboard</h2>
+          <div class="pill reveal" style="display:flex; align-items:center; gap:.6rem; cursor:pointer" id="accentSwitcher" title="Switch accent">
+            <span class="muted">Accent</span>
+            <span class="swatch" data-color="magenta" style="width:16px;height:16px;border-radius:6px;background:#ff49c2;border:1px solid var(--border)"></span>
+            <span class="swatch" data-color="cyan" style="width:16px;height:16px;border-radius:6px;background:#30e3ff;border:1px solid var(--border)"></span>
+            <span class="swatch" data-color="purple" style="width:16px;height:16px;border-radius:6px;background:#9b5cff;border:1px solid var(--border)"></span>
+            <span class="swatch" data-color="green" style="width:16px;height:16px;border-radius:6px;background:#3cff9d;border:1px solid var(--border)"></span>
+          </div>
+        </div>
+        <p class="muted reveal" style="max-width:60ch">Clean sidebar, quick settings, rich analytics, and glowing accents — everything designed for momentum.</p>
+
+        <div class="stage">
+          <div class="shot one reveal">
+            <div class="ui">
+              <aside class="side">
+                <div class="item active"><span>Overview</span></div>
+                <div class="item"><span>Customize</span></div>
+                <div class="item"><span>Links</span></div>
+                <div class="item"><span>Premium</span></div>
+                <div class="item"><span>Image Host</span></div>
+                <div class="item"><span>Account</span></div>
+              </aside>
+              <main class="main">
+                <div class="panel">
+                  <strong>Analytics</strong>
+                  <svg class="chart" viewBox="0 0 600 200" preserveAspectRatio="none" aria-hidden="true">
+                    <defs>
+                      <linearGradient id="fill" x1="0" x2="0" y1="0" y2="1">
+                        <stop offset="0%" stop-color="var(--accent)" stop-opacity=".45"/>
+                        <stop offset="100%" stop-color="var(--accent)" stop-opacity="0"/>
+                      </linearGradient>
+                    </defs>
+                    <path d="M0 160 C 60 120, 120 130, 180 90 S 300 70, 360 110 480 100, 600 60 L600 200 L0 200 Z" fill="url(#fill)"/>
+                    <path d="M0 160 C 60 120, 120 130, 180 90 S 300 70, 360 110 480 100, 600 60" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round"/>
+                  </svg>
+                </div>
+                <div class="panel" style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px">
+                  <div class="metric"><span>Visitors</span><span class="mono">12,394</span></div>
+                  <div class="metric"><span>CTR</span><span class="mono">7.4%</span></div>
+                  <div class="metric"><span>Avg Time</span><span class="mono">01:26</span></div>
+                </div>
+                <div class="panel" style="display:grid; grid-template-columns:1fr 1fr; gap:12px">
+                  <div class="panel">
+                    <strong>Quick Settings</strong>
+                    <div style="margin-top:8px; display:grid; gap:8px">
+                      <label class="rowx" style="grid-template-columns:auto 1fr auto;background:transparent">
+                        <span>Public Profile</span>
+                        <span class="muted"></span>
+                        <input type="checkbox" checked />
+                      </label>
+                      <label class="rowx" style="grid-template-columns:auto 1fr auto;background:transparent">
+                        <span>Show Activity</span>
+                        <span class="muted"></span>
+                        <input type="checkbox" checked />
+                      </label>
+                      <label class="rowx" style="grid-template-columns:auto 1fr auto;background:transparent">
+                        <span>Enable Badges</span>
+                        <span class="muted"></span>
+                        <input type="checkbox" checked />
+                      </label>
+                    </div>
+                  </div>
+                  <div class="panel">
+                    <strong>Link Performance</strong>
+                    <div style="margin-top:8px; display:grid; gap:8px">
+                      <div class="rowx"><span class="name">/soundcloud</span><span class="score">2.1k clicks</span></div>
+                      <div class="rowx"><span class="name">/shop</span><span class="score">1.4k clicks</span></div>
+                      <div class="rowx"><span class="name">/discord</span><span class="score">1.2k clicks</span></div>
+                    </div>
+                  </div>
+                </div>
+              </main>
+            </div>
+          </div>
+
+          <div class="shot two reveal">
+            <div class="ui">
+              <aside class="side">
+                <div class="item"><span>Overview</span></div>
+                <div class="item active"><span>Customize</span></div>
+                <div class="item"><span>Links</span></div>
+                <div class="item"><span>Premium</span></div>
+                <div class="item"><span>Image Host</span></div>
+              </aside>
+              <main class="main">
+                <div class="panel" style="display:grid; grid-template-columns:1fr auto; align-items:center">
+                  <div>
+                    <div class="h3 heading">Theme</div>
+                    <div class="muted">Dark / Glass / Neon</div>
+                  </div>
+                  <button class="btn outline">Edit Theme</button>
+                </div>
+                <div class="panel">
+                  <div class="h3 heading">Preview</div>
+                  <div class="divider" style="margin:10px 0"></div>
+                  <div style="display:grid; grid-template-columns: 100px 1fr; gap:12px; align-items:center">
+                    <div class="pfp"><img alt="" src="data:image/svg+xml;utf8,<?xml version='1.0'?><svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><defs><linearGradient id='g' x1='0' x2='1' y1='0' y2='1'><stop offset='0' stop-color='%239b5cff'/><stop offset='1' stop-color='%2300ffd1'/></linearGradient></defs><rect width='100%' height='100%' fill='%2310151f'/><circle cx='100' cy='100' r='84' fill='url(%23g)'/></svg>"></div>
+                    <div>
+                      <div class="heading h3">grief / demo</div>
+                      <div class="muted">bio goes here — crisp, minimal, glowing.</div>
+                      <div class="badges" style="margin-top:.4rem">
+                        <span class="badge">Creator</span><span class="badge">Verified</span><span class="badge">OG</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="divider" style="margin:12px 0"></div>
+                  <div style="display:grid; gap:10px">
+                    <a class="rowx" style="text-decoration:none" href="#"><span>#1</span><span class="name">Discord</span><span class="score">/join</span></a>
+                    <a class="rowx" style="text-decoration:none" href="#"><span>#2</span><span class="name">YouTube</span><span class="score">@grief</span></a>
+                    <a class="rowx" style="text-decoration:none" href="#"><span>#3</span><span class="name">Shop</span><span class="score">grief.lol/shop</span></a>
+                  </div>
+                </div>
+              </main>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- LEADERBOARD -->
+    <section id="leaderboard" class="leader">
+      <div class="container">
+        <h2 class="heading h2 reveal">Top Creators</h2>
+        <p class="muted reveal">Weekly leaderboard of the most active grief.lol profiles.</p>
+        <div class="board reveal" style="margin-top:10px">
+          <div class="rowx"><div class="rank">#1</div><div class="name">ghostrunner</div><div class="score">4,920 pts</div></div>
+          <div class="rowx"><div class="rank">#2</div><div class="name">hauntlord</div><div class="score">4,580 pts</div></div>
+          <div class="rowx"><div class="rank">#3</div><div class="name">valkyrie</div><div class="score">4,110 pts</div></div>
+          <div class="rowx"><div class="rank">#4</div><div class="name">sentinel</div><div class="score">3,970 pts</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING / CTA -->
+    <section id="pricing" class="features">
+      <div class="container">
+        <div class="glass reveal" style="padding:18px; display:grid; grid-template-columns: 1.1fr .9fr; gap:18px; align-items:center">
+          <div>
+            <div class="pill" style="display:inline-flex; gap:.5rem; align-items:center"><span class="dot"></span><span class="mono" style="font-weight:800">Starter</span></div>
+            <h3 class="heading h2" style="margin:.3rem 0">100% Free to Start</h3>
+            <p class="muted">Custom themes, unlimited links, and a premium look — right out of the box.</p>
+          </div>
+          <div style="display:flex; gap:.6rem; justify-content:flex-end; flex-wrap:wrap">
+            <a class="btn glow" href="#claim">Get Started</a>
+            <a class="btn outline" href="#help">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container">
+        <div style="margin-bottom:8px">
+          <a href="#terms">Terms</a> •
+          <a href="#privacy">Privacy</a> •
+          <a href="#contact">Contact</a> •
+          <a id="discord" href="#">Discord</a>
+        </div>
+        <div>© <span id="year"></span> grief.lol — All rights reserved.</div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Mobile menu toggle
+    const burger = document.getElementById('hamburger');
+    const menu = document.getElementById('mobilemenu');
+    burger?.addEventListener('click', () => menu.classList.toggle('hide'));
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Claim username demo
+    const field = document.getElementById('username');
+    const claimBtn = document.getElementById('claimBtn');
+    claimBtn.addEventListener('click', () => {
+      const v = (field.value || '').trim().replace(/\s+/g,'').toLowerCase();
+      if(!v || !/^[a-z0-9_\.]{3,20}$/.test(v)){
+        alert('Pick a username 3-20 chars: letters, numbers, underscore, dot.');
+        field.focus();
+        return;
+      }
+      const url = `https://grief.lol/${encodeURIComponent(v)}`;
+      alert(`Reserved! (demo)\nYour page would be: ${url}`);
+    });
+
+    // Accent switcher
+    const switcher = document.getElementById('accentSwitcher');
+    switcher?.addEventListener('click', (e)=>{
+      const sw = e.target.closest('.swatch');
+      if(!sw) return;
+      const color = sw.getAttribute('data-color');
+      document.documentElement.setAttribute('data-accent', color);
+    });
+
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); }
+      })
+    },{threshold:.16});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    // Hero card parallax glow
+    const card = document.getElementById('profileCard');
+    card?.addEventListener('pointermove', (e)=>{
+      const rect = card.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      card.style.setProperty('--x', x + '%');
+      card.style.setProperty('--y', y + '%');
+    });
+
+    // Accessibility: reduce motion respect
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('*').forEach(el=> el.style.scrollBehavior='auto');
+    }
+
+    // Tiny theming via hash (#accent=purple)
+    const params = new URLSearchParams(location.hash.slice(1));
+    if(params.get('accent')) document.documentElement.setAttribute('data-accent', params.get('accent'));
+  </script>
 </body>
 </html>
